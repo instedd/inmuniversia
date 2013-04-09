@@ -1,0 +1,30 @@
+en:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: Add New Vaccine
+            reorder: Reorder Vaccines
+            reorder_done: Done Reordering Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Vaccines yet. Click "Add New Vaccine" to add your first vaccine.
+          vaccine:
+            view_live_html: View this vaccine live <br/><em>(opens in a new window)</em>
+            edit: Edit this vaccine
+            delete: Remove this vaccine forever
+      vaccines:
+        show:
+          other: Other Vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

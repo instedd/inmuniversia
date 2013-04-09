@@ -1,0 +1,32 @@
+zh-CN:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: 建立新的 Vaccine
+            reorder: 对 Vaccines 重新排序
+            reorder_done: 对 Vaccines 的重新排序结束
+          records:
+            title: Vaccines
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Vaccines yet. Click "Add New Vaccine" to add your first vaccine.
+            no_items_yet: 目前没有 Vaccines . 点击 "Add New Vaccine" 创建一个vaccine.
+          vaccine:
+            view_live_html: 查看 vaccine 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 vaccine
+            delete: 永久删除 vaccine
+      vaccines:
+        show:
+          other: 其他 Vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

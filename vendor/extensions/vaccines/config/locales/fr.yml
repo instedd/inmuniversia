@@ -1,0 +1,30 @@
+fr:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Vaccine
+            reorder: Réordonner les Vaccines
+            reorder_done: Fin de réordonnancement des Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Vaccine. Cliquer sur "Créer un(e) nouve(au/l/lle) Vaccine" pour créer votre premi(er/ère) vaccine.'
+          vaccine:
+            view_live_html: Voir ce(t/tte) vaccine <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) vaccine
+            delete: Supprimer définitivement ce(t/tte) vaccine
+      vaccines:
+        show:
+          other: Autres Vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

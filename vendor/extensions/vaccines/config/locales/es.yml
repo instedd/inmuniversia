@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+#        article: masculino/femenino
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: Crear nuevo vaccine
+            reorder: Reordenar vaccines
+            reorder_done: Reordenación de vaccines completada
+          records:
+            title: Vaccines
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay vaccines todavía. Pulsa en "Crear nuevo Vaccine" para crear tu primer vaccine.
+          vaccine:
+            view_live_html: Ver este vaccine como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este vaccine
+            delete: Borrar este vaccine para siempre
+      vaccines:
+        show:
+          other: Otros vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

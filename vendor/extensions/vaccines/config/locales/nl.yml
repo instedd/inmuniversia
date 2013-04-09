@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: Maak een nieuwe Vaccine
+            reorder: Wijzig de volgorde van de Vaccines
+            reorder_done: Klaar met het wijzingen van de volgorde van de Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Vaccines. Druk op 'Maak een nieuwe Vaccine' om de eerste aan te maken.
+          vaccine:
+            view_live_html: Bekijk deze vaccine op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze vaccine
+            delete: Verwijder deze vaccine voor eeuwig
+      vaccines:
+        show:
+          other: Andere Vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

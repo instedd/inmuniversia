@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  vaccine_type: MyString
+  description: MyText
+  photo: 
+
+two:
+  name: MyString
+  vaccine_type: MyString
+  description: MyText
+  photo: 

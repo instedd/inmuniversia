@@ -1,0 +1,49 @@
+%h2 User
+- if current_user
+  %p You are signed in as user #{current_user.email}
+  = link_to 'Logout', destroy_user_session_path, :method => :delete
+- else
+  %p You are not signed in as a user
+  = link_to 'Login', new_user_session_path
+
+%h2 Refinery user
+- if current_refinery_user
+  %p You are signed in as a refinery user #{current_refinery_user.email}
+  -# link_to 'Logout', destroy_refinery_user_session_path, :method => :delete
+- else
+  %p You are not signed in as a refinery user
+  -# link_to 'Login', new_refinery_user_session_path
+
+%h2 Subscriber
+- if current_subscriber
+  %p You are signed in as subscriber #{current_subscriber.email}
+  = link_to 'Logout', destroy_subscriber_session_path, :method => :delete
+- else
+  %p You are not signed in as a subscriber
+  = link_to 'Login', new_subscriber_session_path
+
+%h1 Listing vaccines
+
+%table
+  %tr
+    %th Name
+    %th Vaccine type
+    %th Description
+    %th Photo
+    %th
+    %th
+    %th
+
+  - @vaccines.each do |vaccine|
+    %tr
+      %td= vaccine.name
+      %td= vaccine.vaccine_type
+      %td= vaccine.description
+      %td= vaccine.photo
+      %td= link_to 'Show', vaccine
+      %td= link_to 'Edit', edit_vaccine_path(vaccine)
+      %td= link_to 'Destroy', vaccine, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Vaccine', new_vaccine_path

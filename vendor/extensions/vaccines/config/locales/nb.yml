@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        vaccines:
+          actions:
+            create_new: Lag en ny Vaccine
+            reorder: Endre rekkefølgen på Vaccines
+            reorder_done: Ferdig å endre rekkefølgen Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Vaccines enda. Klikk på "Lag en ny Vaccine" for å legge til din første vaccine.
+          vaccine:
+            view_live_html: Vis hvordan denne vaccine ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne vaccine
+            delete: Fjern denne vaccine permanent
+      vaccines:
+        show:
+          other: Andre Vaccines
+  activerecord:
+    attributes:
+      'refinery/vaccines/vaccine':
+        name: Name
+        vaccine_type: Vaccine Type
+        description: Description
+        photo: Photo

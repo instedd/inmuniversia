@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @vaccine.name
+%p
+  %b Vaccine type:
+  = @vaccine.vaccine_type
+%p
+  %b Description:
+  = @vaccine.description
+%p
+  %b Photo:
+  = @vaccine.photo
+
+= link_to 'Edit', edit_vaccine_path(@vaccine)
+\|
+= link_to 'Back', vaccines_path
