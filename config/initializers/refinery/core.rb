@@ -15,7 +15,7 @@ Refinery::Core.configure do |config|
   # config.base_cache_key = :refinery
 
   # Site name
-  # config.site_name = "Company Name"
+  config.site_name = "Inmuniversia"
 
   # This activates Google Analytics tracking within your website. If this
   # config is left blank or set to UA-xxxxxx-x then no remote calls to
@@ -36,10 +36,10 @@ Refinery::Core.configure do |config|
   # config.dragonfly_secret = "ee5387b1a861662b6b501fea8c877b2fa95a6f7acebfe060"
 
   # Show/hide IE6 upgrade message in the backend
-  # config.ie6_upgrade_message_enabled = true
+  config.ie6_upgrade_message_enabled = true
 
   # Show/hide browser update message in the backend
-  # config.show_internet_explorer_upgrade_message = false
+  config.show_internet_explorer_upgrade_message = true
 
   # Add extra tags to the wymeditor whitelist e.g. = {'tag' => {'attributes' => {'1' => 'href'}}} or just {'tag' => {}}
   # config.wymeditor_whitelist_tags = {}
