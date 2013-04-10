@@ -23,6 +23,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'capistrano'
+  gem 'rvm'
+  gem 'rvm-capistrano'
+  gem 'thin'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

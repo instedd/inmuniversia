@@ -1,0 +1,1 @@
+server "inmuniversia-stg.instedd.org", :app, :web, :db, :primary => true
