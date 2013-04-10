@@ -14,6 +14,8 @@ set :scm, :mercurial
 ssh_options[:forward_agent] = true
 default_environment['TERM'] = ENV['TERM']
 
+load 'lib/deploy/seed'
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
@@ -21,3 +23,5 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+after "deploy:update_code", "deploy:migrate"
