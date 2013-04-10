@@ -5,6 +5,4 @@ Refinery::Pages::Engine.load_seed
 Refinery::Vaccines::Engine.load_seed
 
 # Generate initial admin user as initial Refinery setup generates redirect loop
-admin = User.create email: 'admin@example.com', password: 'ChangeMe'
-admin.add_role :refinery
-admin.add_role :superuser
+User.new(email: 'admin@example.com', password: 'ChangeMe').create_first
