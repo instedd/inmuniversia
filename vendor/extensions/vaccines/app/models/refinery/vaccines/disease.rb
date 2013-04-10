@@ -14,3 +14,4 @@ module Refinery
     end
   end
 end
+Disease
