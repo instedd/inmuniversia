@@ -10,7 +10,6 @@ set :rvm_type, :system
 set :application, "inmuniversia"
 set :repository,  "ssh://hg@bitbucket.org/instedd/inmuniversia"
 set :scm, :mercurial
-set :user, 'ec2-user'
 
 ssh_options[:forward_agent] = true
 default_environment['TERM'] = ENV['TERM']

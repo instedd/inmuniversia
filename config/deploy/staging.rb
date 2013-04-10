@@ -1,1 +1,2 @@
-server "inmuniversia-stg.instedd.org", :app, :web, :db, :primary => true
+server "staging.instedd.org", :app, :web, :db, :primary => true
+set :user, 'ubuntu'
