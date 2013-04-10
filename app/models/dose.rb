@@ -10,6 +10,11 @@ class Dose < ActiveRecord::Base
   end
 
   def in_date_for?(child)
-    date_for(child) <= Date.today
+    date = date_for(child)
+    date && date <= Date.today
+  end
+
+  def vaccination_for(child)
+    child.vaccinations.find{|v| v.dose == self}
   end
 end
