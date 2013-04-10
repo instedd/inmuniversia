@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20130410195948) do
 
   add_index "children", ["parent_id"], :name => "index_children_on_parent_id"
 
+  create_table "diseases_vaccines", :id => false, :force => true do |t|
+    t.integer "disease_id"
+    t.integer "vaccine_id"
+  end
+
+  add_index "diseases_vaccines", ["disease_id", "vaccine_id"], :name => "index_diseases_vaccines"
+
   create_table "doses", :force => true do |t|
     t.integer  "age_value"
     t.string   "age_unit"
@@ -149,6 +156,15 @@ ActiveRecord::Schema.define(:version => 20130410195948) do
     t.integer  "position"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "refinery_vaccines_diseases", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "photo_id"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "roles", :force => true do |t|

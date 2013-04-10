@@ -1,10 +1,27 @@
 nb:
   refinery:
     plugins:
+      diseases:
+        title: Diseases
       vaccines:
         title: Vaccines
     vaccines:
       admin:
+        diseases:
+          actions:
+            create_new: Lag en ny Disease
+            reorder: Endre rekkefølgen på Diseases
+            reorder_done: Ferdig å endre rekkefølgen Diseases
+          records:
+            title: Diseases
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Diseases enda. Klikk på "Lag en ny Disease"
+              for å legge til din første disease.
+          disease:
+            view_live_html: Vis hvordan denne disease ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne disease
+            delete: Fjern denne disease permanent
         vaccines:
           actions:
             create_new: Lag en ny Vaccine
@@ -13,17 +30,26 @@ nb:
           records:
             title: Vaccines
             sorry_no_results: Beklager! Vi fant ikke noen resultater.
-            no_items_yet: Det er ingen Vaccines enda. Klikk på "Lag en ny Vaccine" for å legge til din første vaccine.
+            no_items_yet: Det er ingen Vaccines enda. Klikk på "Lag en ny Vaccine"
+              for å legge til din første vaccine.
           vaccine:
-            view_live_html: Vis hvordan denne vaccine ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            view_live_html: Vis hvordan denne vaccine ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
             edit: Rediger denne vaccine
             delete: Fjern denne vaccine permanent
+      diseases:
+        show:
+          other: Andre Diseases
       vaccines:
         show:
           other: Andre Vaccines
   activerecord:
     attributes:
-      'refinery/vaccines/vaccine':
+      refinery/vaccines/disease:
+        name: Name
+        description: Description
+        photo: Photo
+      refinery/vaccines/vaccine:
         name: Name
         vaccine_type: Vaccine Type
         description: Description

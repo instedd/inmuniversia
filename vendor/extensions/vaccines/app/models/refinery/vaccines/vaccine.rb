@@ -13,3 +13,4 @@ module Refinery
     end
   end
 end
+Vaccine

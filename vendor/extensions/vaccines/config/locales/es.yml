@@ -1,11 +1,27 @@
 es:
   refinery:
     plugins:
+      diseases:
+        title: Diseases
       vaccines:
         title: Vaccines
-#        article: masculino/femenino
     vaccines:
       admin:
+        diseases:
+          actions:
+            create_new: Crear nuevo disease
+            reorder: Reordenar diseases
+            reorder_done: Reordenación de diseases completada
+          records:
+            title: Diseases
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay diseases todavía. Pulsa en "Crear nuevo Disease"
+              para crear tu primer disease.
+          disease:
+            view_live_html: Ver este disease como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este disease
+            delete: Borrar este disease para siempre
         vaccines:
           actions:
             create_new: Crear nuevo vaccine
@@ -14,17 +30,26 @@ es:
           records:
             title: Vaccines
             sorry_no_results: Lo siento, no hay resultados
-            no_items_yet: No hay vaccines todavía. Pulsa en "Crear nuevo Vaccine" para crear tu primer vaccine.
+            no_items_yet: No hay vaccines todavía. Pulsa en "Crear nuevo Vaccine"
+              para crear tu primer vaccine.
           vaccine:
-            view_live_html: Ver este vaccine como abierto al público <br/><em>(abre en ventana nueva)</em>
+            view_live_html: Ver este vaccine como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
             edit: Editar este vaccine
             delete: Borrar este vaccine para siempre
+      diseases:
+        show:
+          other: Otros diseases
       vaccines:
         show:
           other: Otros vaccines
   activerecord:
     attributes:
-      'refinery/vaccines/vaccine':
+      refinery/vaccines/disease:
+        name: Name
+        description: Description
+        photo: Photo
+      refinery/vaccines/vaccine:
         name: Name
         vaccine_type: Vaccine Type
         description: Description

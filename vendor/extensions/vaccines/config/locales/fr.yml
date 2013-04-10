@@ -1,10 +1,26 @@
 fr:
   refinery:
     plugins:
+      diseases:
+        title: Diseases
       vaccines:
         title: Vaccines
     vaccines:
       admin:
+        diseases:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Disease
+            reorder: Réordonner les Diseases
+            reorder_done: Fin de réordonnancement des Diseases
+          records:
+            title: Diseases
+            sorry_no_results: Désolé ! Aucun résultat.
+            no_items_yet: Il n'y a actuellement aucun(e) Disease. Cliquer sur "Créer
+              un(e) nouve(au/l/lle) Disease" pour créer votre premi(er/ère) disease.
+          disease:
+            view_live_html: Voir ce(t/tte) disease <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) disease
+            delete: Supprimer définitivement ce(t/tte) disease
         vaccines:
           actions:
             create_new: Créer un(e) nouve(au/l/lle) Vaccine
@@ -12,18 +28,26 @@ fr:
             reorder_done: Fin de réordonnancement des Vaccines
           records:
             title: Vaccines
-            sorry_no_results: "Désolé ! Aucun résultat."
-            no_items_yet: 'Il n''y a actuellement aucun(e) Vaccine. Cliquer sur "Créer un(e) nouve(au/l/lle) Vaccine" pour créer votre premi(er/ère) vaccine.'
+            sorry_no_results: Désolé ! Aucun résultat.
+            no_items_yet: Il n'y a actuellement aucun(e) Vaccine. Cliquer sur "Créer
+              un(e) nouve(au/l/lle) Vaccine" pour créer votre premi(er/ère) vaccine.
           vaccine:
             view_live_html: Voir ce(t/tte) vaccine <br/><em>(Ouvre une nouvelle fenêtre)</em>
             edit: Modifier ce(t/tte) vaccine
             delete: Supprimer définitivement ce(t/tte) vaccine
+      diseases:
+        show:
+          other: Autres Diseases
       vaccines:
         show:
           other: Autres Vaccines
   activerecord:
     attributes:
-      'refinery/vaccines/vaccine':
+      refinery/vaccines/disease:
+        name: Name
+        description: Description
+        photo: Photo
+      refinery/vaccines/vaccine:
         name: Name
         vaccine_type: Vaccine Type
         description: Description
