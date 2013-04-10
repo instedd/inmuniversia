@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410195948) do
+ActiveRecord::Schema.define(:version => 20130410210252) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130410195948) do
   create_table "doses", :force => true do |t|
     t.integer  "age_value"
     t.string   "age_unit"
-    t.integer  "order"
+    t.integer  "number"
     t.string   "name"
     t.integer  "interval_value"
     t.string   "interval_unit"

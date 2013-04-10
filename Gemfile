@@ -8,6 +8,8 @@ gem 'json'
 gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails', '~> 2.0.0'
+gem 'acts_as_list'
+gem 'enumerated_attribute'
 
 #Refinery
 gem 'refinerycms-core'
