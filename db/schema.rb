@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409191449) do
+ActiveRecord::Schema.define(:version => 20130410195948) do
 
   create_table "app_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -30,6 +30,32 @@ ActiveRecord::Schema.define(:version => 20130409191449) do
 
   add_index "app_users", ["email"], :name => "index_app_users_on_email", :unique => true
   add_index "app_users", ["reset_password_token"], :name => "index_app_users_on_reset_password_token", :unique => true
+
+  create_table "children", :force => true do |t|
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.integer  "parent_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "children", ["parent_id"], :name => "index_children_on_parent_id"
+
+  create_table "doses", :force => true do |t|
+    t.integer  "age_value"
+    t.string   "age_unit"
+    t.integer  "order"
+    t.string   "name"
+    t.integer  "interval_value"
+    t.string   "interval_unit"
+    t.string   "type"
+    t.integer  "vaccine_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "doses", ["vaccine_id"], :name => "index_doses_on_vaccine_id"
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
@@ -194,6 +220,19 @@ ActiveRecord::Schema.define(:version => 20130409191449) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vaccinations", :force => true do |t|
+    t.integer  "child_id"
+    t.integer  "dose_id"
+    t.integer  "vaccine_id"
+    t.date     "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "vaccinations", ["child_id"], :name => "index_vaccinations_on_child_id"
+  add_index "vaccinations", ["dose_id"], :name => "index_vaccinations_on_dose_id"
+  add_index "vaccinations", ["vaccine_id"], :name => "index_vaccinations_on_vaccine_id"
 
   create_table "vaccines", :force => true do |t|
     t.string   "name"
