@@ -1,0 +1,3 @@
+class DoseByInterval < Dose
+
+end
