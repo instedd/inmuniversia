@@ -1,0 +1,63 @@
+<%= form_for [refinery, :vaccines_admin, @vaccine] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @vaccine,
+              :include_object_name => true %>
+
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+
+  </div>
+
+  <div class='field'>
+    <%= f.label :vaccine_type -%>
+    <%= f.text_field :vaccine_type  -%>
+
+  </div>
+  <div class='field'>
+    <%= f.label :diseases -%>
+    <%= f.collection_select( :disease_ids, Refinery::Vaccines::Disease.all, :id, :name, {:selected => @vaccine.disease_ids, :include_blank => true}, {:multiple => true} )%>
+  </div>
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:description].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/vaccines/vaccine", :default => part.to_s.titleize), "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+      <div id='page_part_editors'>
+        <% [:description].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='field'>
+    <%= f.label :photo -%>
+    <%= render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :photo_id,
+               :image => @vaccine.photo,
+               :toggle_image_display => false %>
+
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.vaccines.admin.vaccines.vaccine'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @vaccine.name) %>
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>
