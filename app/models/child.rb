@@ -6,6 +6,10 @@ class Child < ActiveRecord::Base
 
   attr_accessible :date_of_birth, :gender, :name, :parent_id
 
+  def subscriber
+    parent
+  end
+
   def assume_vaccinated_until_today!(vaccines=nil)
     vaccines ||= Vaccine.defaults.includes(:doses)
     vaccines.each do |vaccine|
@@ -29,6 +33,17 @@ class Child < ActiveRecord::Base
     end
 
     save!
+  end
+
+  def pending_doses_for(vaccine)
+    last_vaccination = last_vaccination_for(vaccine)
+    return vaccine.doses if last_vaccination.nil?
+    last_vaccination.dose.lower_items
+  end
+
+  def last_vaccination_for(vaccine)
+    # TODO: Define proper order for vaccinations
+    self.vaccinations.where(vaccine_id: vaccine.id).last
   end
 
 end

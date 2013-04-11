@@ -17,4 +17,8 @@ class Dose < ActiveRecord::Base
   def vaccination_for(child)
     child.vaccinations.find{|v| v.dose == self}
   end
+
+  def full_name
+    "#{name} de #{vaccine.name}"
+  end
 end

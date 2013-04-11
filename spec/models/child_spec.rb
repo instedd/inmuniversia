@@ -7,13 +7,9 @@ describe Child do
     let(:vaccine) { create(:vaccine) }
     let(:child)   { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
 
-    before(:each) do
-      Timecop.freeze(Time.local(2010,1,1))
-    end
+    before(:each) { Timecop.freeze(Time.local(2010,1,1)) }
+    after(:each)  { Timecop.return }
 
-    after(:each) do
-      Timecop.return
-    end
 
     it "should assume to be vaccinated until today for doses by age" do
       doses = [
@@ -89,6 +85,21 @@ describe Child do
       child.should have(3).subscriptions
       child.reload.should have(3).subscriptions
       child.subscriptions.map(&:vaccine_id).should eq(vaccines.map(&:id))
+    end
+
+  end
+
+  context "vaccinations" do
+
+    let(:child)    { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
+    let!(:vaccine) { create(:vaccine_with_doses_by_age) }
+    let!(:vaccination) { create(:vaccination, child: child, dose: vaccine.doses.first) }
+
+    it "should return pending doses for a vaccine based on last vaccination" do
+      child.reload.pending_doses_for(vaccine).tap do |doses|
+        doses.should have(2).items
+        doses.should eq(vaccine.doses[1..2])
+      end
     end
 
   end
