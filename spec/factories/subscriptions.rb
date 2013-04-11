@@ -1,9 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :subscription do
-    vaccine nil
-    child nil
-    status "MyString"
+    vaccine
+    child
+    status "active"
   end
 end

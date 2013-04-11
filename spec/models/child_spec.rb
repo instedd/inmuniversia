@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Child do
   
-  context "on creation" do
-    
+  context "when assuming vaccinations" do
+
     let(:vaccine) { create(:vaccine) }
     let(:child)   { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
 
@@ -62,7 +62,35 @@ describe Child do
         v.date.should eq(Date.new(2009,5,10))
       end
     end
-  
+
   end
 
+  context "subscribing" do
+
+    let(:child)     { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
+    let!(:vaccines) { create_list(:vaccine, 3) }
+
+    it "should create subscription for vaccines" do
+      expect { 
+        child.subscribe!
+      }.to change(Subscription, :count).by(3)
+
+      child.should have(3).subscriptions
+      child.subscriptions.map(&:vaccine_id).should eq(vaccines.map(&:id))
+    end
+
+    it "should not create subscription for vaccines already subscribed" do
+      create(:subscription, child: child, vaccine: vaccines.first)
+
+      expect { 
+        child.subscribe!
+      }.to change(Subscription, :count).by(2)
+
+      child.should have(3).subscriptions
+      child.reload.should have(3).subscriptions
+      child.subscriptions.map(&:vaccine_id).should eq(vaccines.map(&:id))
+    end
+
+  end
+  
 end
