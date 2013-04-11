@@ -1,2 +1,5 @@
 hosts:
   local: inmuniversia.instedd.org
+
+email:
+  delivery_method: sendmail
