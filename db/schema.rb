@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411175431) do
+ActiveRecord::Schema.define(:version => 20130411205246) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(:version => 20130411175431) do
   end
 
   add_index "children", ["parent_id"], :name => "index_children_on_parent_id"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",        :default => 0
+    t.integer  "attempts",        :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "subscription_id"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+  add_index "delayed_jobs", ["subscription_id"], :name => "index_delayed_jobs_on_subscription_id"
 
   create_table "diseases_vaccines", :id => false, :force => true do |t|
     t.integer "disease_id"
@@ -197,6 +215,17 @@ ActiveRecord::Schema.define(:version => 20130411175431) do
 
   add_index "subscribers", ["email"], :name => "index_subscribers_on_email", :unique => true
   add_index "subscribers", ["reset_password_token"], :name => "index_subscribers_on_reset_password_token", :unique => true
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "vaccine_id"
+    t.integer  "child_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subscriptions", ["child_id"], :name => "index_subscriptions_on_child_id"
+  add_index "subscriptions", ["vaccine_id"], :name => "index_subscriptions_on_vaccine_id"
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"

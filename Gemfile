@@ -10,6 +10,7 @@ gem 'haml-rails'
 gem 'jquery-rails', '~> 2.0.0'
 gem 'acts_as_list'
 gem 'enumerated_attribute'
+gem 'delayed_job_active_record'
 
 #Refinery
 gem 'refinerycms-core'
