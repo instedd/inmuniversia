@@ -17,7 +17,6 @@ gem 'refinerycms-dashboard'
 gem 'refinerycms-images'
 gem 'refinerycms-pages'
 gem 'refinerycms-resources'
-gem 'refinerycms-vaccines', :path => 'vendor/extensions'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -44,3 +43,5 @@ group :test do
 end
 
 
+
+gem 'refinerycms-vaccines', :path => 'vendor/extensions'

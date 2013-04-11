@@ -10,24 +10,19 @@
 
   </div>
 
-  <div class='field'>
-    <%= f.label :vaccine_type -%>
-    <%= f.text_field :vaccine_type  -%>
-  </div>
-
   <%= render "shared/multiple_select_for_vaccine" , f: f %>
 
   <div class='field'>
     <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
       <ul id='page_parts'>
-        <% [:description].each_with_index do |part, part_index| %>
+        <% [:general_info, :commercial_name, :doses_info, :recommendations, :side_effects, :more_info].each_with_index do |part, part_index| %>
           <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
             <%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/vaccines/vaccine", :default => part.to_s.titleize), "##{part}" %>
           </li>
         <% end %>
       </ul>
       <div id='page_part_editors'>
-        <% [:description].each do |part| %>
+        <% [:general_info, :commercial_name, :doses_info, :recommendations, :side_effects, :more_info].each do |part| %>
           <div class='page_part' id='<%= part %>'>
             <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
           </div>
@@ -37,13 +32,24 @@
 
   </div>
 
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
   <div class='field'>
-    <%= f.label :photo -%>
-    <%= render '/refinery/admin/image_picker',
-               :f => f,
-               :field => :photo_id,
-               :image => @vaccine.photo,
-               :toggle_image_display => false %>
+    <%= f.label :published -%>
+    <%= f.check_box :published, :checked => @vaccine[:published]  -%>
 
   </div>
 

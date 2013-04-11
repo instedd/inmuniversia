@@ -3,9 +3,13 @@ class CreateVaccinesVaccines < ActiveRecord::Migration
   def up
     create_table :refinery_vaccines do |t|
       t.string :name
-      t.string :vaccine_type
-      t.text :description
-      t.integer :photo_id
+      t.text :general_info
+      t.text :commercial_name
+      t.text :doses_info
+      t.text :recommendations
+      t.text :side_effects
+      t.text :more_info
+      t.boolean :published
       t.integer :position
 
       t.timestamps

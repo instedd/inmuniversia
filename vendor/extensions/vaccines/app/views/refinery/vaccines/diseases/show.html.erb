@@ -10,15 +10,33 @@
     </p>
   </section>
   <section>
-    <h1>Description</h1>
+    <h1>Incidence Info</h1>
     <p>
-      <%=raw @disease.description %>
+      <%=raw @disease.incidence_info %>
     </p>
   </section>
   <section>
-    <h1>Photo</h1>
+    <h1>Geographical Distribution</h1>
     <p>
-      <%= image_fu @disease.photo, nil %>
+      <%=raw @disease.geographical_distribution %>
+    </p>
+  </section>
+  <section>
+    <h1>High Risk Groups</h1>
+    <p>
+      <%=raw @disease.high_risk_groups %>
+    </p>
+  </section>
+  <section>
+    <h1>Rate Info</h1>
+    <p>
+      <%=raw @disease.rate_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Published</h1>
+    <p>
+      <%=raw @disease.published %>
     </p>
   </section>
 <% end %>

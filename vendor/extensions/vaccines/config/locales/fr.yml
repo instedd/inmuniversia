@@ -45,10 +45,17 @@ fr:
     attributes:
       refinery/vaccines/disease:
         name: Name
-        description: Description
-        photo: Photo
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+        published: Published
       refinery/vaccines/vaccine:
         name: Name
-        vaccine_type: Vaccine Type
-        description: Description
-        photo: Photo
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published

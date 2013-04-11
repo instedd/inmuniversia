@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410210252) do
+ActiveRecord::Schema.define(:version => 20130411175431) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -132,21 +132,27 @@ ActiveRecord::Schema.define(:version => 20130410210252) do
 
   create_table "refinery_vaccines", :force => true do |t|
     t.string   "name"
-    t.string   "vaccine_type"
-    t.text     "description"
-    t.integer  "photo_id"
     t.integer  "position"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.text     "general_info"
+    t.text     "commercial_name"
+    t.text     "doses_info"
+    t.text     "recommendations"
+    t.text     "side_effects"
+    t.text     "more_info"
+    t.boolean  "published"
   end
 
   create_table "refinery_vaccines_diseases", :force => true do |t|
     t.string   "name"
-    t.text     "description"
-    t.integer  "photo_id"
     t.integer  "position"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.text     "incidence_info"
+    t.text     "geographical_distribution"
+    t.text     "high_risk_groups"
+    t.text     "rate_info"
   end
 
   create_table "roles", :force => true do |t|

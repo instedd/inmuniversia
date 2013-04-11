@@ -10,21 +10,45 @@
     </p>
   </section>
   <section>
-    <h1>Vaccine Type</h1>
+    <h1>General Info</h1>
     <p>
-      <%=raw @vaccine.vaccine_type %>
+      <%=raw @vaccine.general_info %>
     </p>
   </section>
   <section>
-    <h1>Description</h1>
+    <h1>Commercial Name</h1>
     <p>
-      <%=raw @vaccine.description %>
+      <%=raw @vaccine.commercial_name %>
     </p>
   </section>
   <section>
-    <h1>Photo</h1>
+    <h1>Doses Info</h1>
     <p>
-      <%= image_fu @vaccine.photo, nil %>
+      <%=raw @vaccine.doses_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Recommendations</h1>
+    <p>
+      <%=raw @vaccine.recommendations %>
+    </p>
+  </section>
+  <section>
+    <h1>Side Effects</h1>
+    <p>
+      <%=raw @vaccine.side_effects %>
+    </p>
+  </section>
+  <section>
+    <h1>More Info</h1>
+    <p>
+      <%=raw @vaccine.more_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Published</h1>
+    <p>
+      <%=raw @vaccine.published %>
     </p>
   </section>
 <% end %>
