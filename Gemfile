@@ -36,12 +36,12 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'timecop'
 end
 
 group :test do
   gem 'ci_reporter'
   gem 'cover_me'
-  gem 'timecop'
 end
 
 
