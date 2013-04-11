@@ -10,10 +10,7 @@
 
   </div>
 
-  <div class='field'>
-    <%= f.label :vaccines -%>
-    <%= f.collection_select( :vaccine_ids, Refinery::Vaccines::Vaccine.all, :id, :name, {:selected => @disease.vaccine_ids, :include_blank => true}, {:multiple => true} )%>
-  </div>
+  <%= render "shared/multiple_select_for_disease", f: f %>
 
   <div class='field'>
     <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>

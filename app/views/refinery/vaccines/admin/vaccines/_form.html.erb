@@ -13,12 +13,10 @@
   <div class='field'>
     <%= f.label :vaccine_type -%>
     <%= f.text_field :vaccine_type  -%>
+  </div>
 
-  </div>
-  <div class='field'>
-    <%= f.label :diseases -%>
-    <%= f.collection_select( :disease_ids, Refinery::Vaccines::Disease.all, :id, :name, {:selected => @vaccine.disease_ids, :include_blank => true}, {:multiple => true} )%>
-  </div>
+  <%= render "shared/multiple_select_for_vaccine" , f: f %>
+
   <div class='field'>
     <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
       <ul id='page_parts'>
