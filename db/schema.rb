@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411205246) do
+ActiveRecord::Schema.define(:version => 20130412201259) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20130411205246) do
     t.text     "geographical_distribution"
     t.text     "high_risk_groups"
     t.text     "rate_info"
+    t.boolean  "published"
   end
 
   create_table "roles", :force => true do |t|
