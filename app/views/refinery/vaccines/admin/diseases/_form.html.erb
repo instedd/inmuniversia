@@ -32,15 +32,6 @@
 
   </div>
 
-
-  </div>
-
-
-  </div>
-
-
-  </div>
-
   <div class='field'>
     <%= f.label :published -%>
     <%= f.check_box :published, :checked => @disease[:published]  -%>
@@ -51,6 +42,16 @@
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.diseases.admin.diseases.disease'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @disease.name) %>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
 <% end -%>
 <% content_for :javascripts do %>
   <script>
