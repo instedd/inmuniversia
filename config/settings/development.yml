@@ -1,2 +1,3 @@
 time:
-  scale_factor: 1
+  global_scale_factor: 1
+  delayed_job_scale_factor: 1

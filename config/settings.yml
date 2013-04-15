@@ -3,3 +3,7 @@ hosts:
 
 email:
   delivery_method: sendmail
+
+time:
+  global_scale_factor: 1
+  delayed_job_scale_factor: 1
