@@ -1,10 +1,13 @@
 class Subscription < ActiveRecord::Base
+  
+  extend Enumerize
+
   belongs_to :vaccine, class_name: '::Vaccine'
   belongs_to :child
 
   attr_accessible :status, :vaccine, :child
 
-  enum_attr :status, %w(^active disabled)
+  enumerize :status, in: %w(active disabled), predicates: {prefix: true}, default: :active
 
   validates :vaccine_id, presence: true, uniqueness: {scope: :child_id}
 

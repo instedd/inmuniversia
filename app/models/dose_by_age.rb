@@ -1,6 +1,8 @@
 class DoseByAge < Dose
 
-  enum_attr :age_unit, %w(^years months)
+  extend Enumerize
+
+  enumerize :age_unit, in: %w(years months), predicates: {prefix: true}, default: :years
 
   def age
     return nil unless age_value

@@ -1,6 +1,8 @@
 class DoseByInterval < Dose
 
-  enum_attr :interval_unit, %w(^years months weeks days)
+  extend Enumerize
+
+  enumerize :interval_unit, in: %w(years months weeks days), predicates: {prefix: true}, default: :years
 
   def interval
     return nil unless interval_value

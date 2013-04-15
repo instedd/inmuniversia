@@ -9,7 +9,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails', '~> 2.0.0'
 gem 'acts_as_list'
-gem 'enumerated_attribute'
+gem 'enumerize'
 gem 'delayed_job_active_record'
 gem 'rails_config'
 
@@ -19,6 +19,9 @@ gem 'refinerycms-dashboard'
 gem 'refinerycms-images'
 gem 'refinerycms-pages'
 gem 'refinerycms-resources'
+
+# Custom engines
+gem 'refinerycms-vaccines', :path => 'vendor/extensions'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -43,7 +46,3 @@ group :test do
   gem 'ci_reporter'
   gem 'cover_me'
 end
-
-
-
-gem 'refinerycms-vaccines', :path => 'vendor/extensions'
