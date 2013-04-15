@@ -4,6 +4,7 @@ Refinery::Vaccines::Vaccine.class_eval do
 
   attr_accessible :disease_ids, :name
 
+  scope :published, where(published: true)
   scope :defaults, scoped
 
   def next_dose_for(child)

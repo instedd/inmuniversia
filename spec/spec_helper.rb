@@ -13,6 +13,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, type: :controller
 
   # Uncomment to view full backtraces
   # config.backtrace_clean_patterns = []
