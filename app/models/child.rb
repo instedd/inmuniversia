@@ -11,7 +11,7 @@ class Child < ActiveRecord::Base
   end
 
   def assume_vaccinated_until_today!(vaccines=nil)
-    vaccines ||= Vaccine.defaults.includes(:doses)
+    vaccines ||= ::Vaccine.defaults.includes(:doses)
     vaccines.each do |vaccine|
       vaccine.doses.each do |dose|
         if dose.in_date_for?(self)

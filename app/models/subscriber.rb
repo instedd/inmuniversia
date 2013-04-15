@@ -4,6 +4,8 @@ class Subscriber < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
+  has_many :children, inverse_of: :parent, foreign_key: :parent_id
+
   def time_offset
     '-3'
   end

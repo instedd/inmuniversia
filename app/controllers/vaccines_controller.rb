@@ -1,5 +1,6 @@
 class VaccinesController < ApplicationController
   before_filter :authenticate_subscriber!
+  
   # GET /vaccines
   # GET /vaccines.json
   def index

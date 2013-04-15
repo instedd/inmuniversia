@@ -1,10 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :child do
-    name "MyString"
+    sequence(:name) {|n| "Joe #{n}"}
     date_of_birth "2013-04-10 16:52:57"
-    gender "MyString"
-    parent_id 1
+    gender "Male"
+    parent
   end
 end
