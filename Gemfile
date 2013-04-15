@@ -12,6 +12,7 @@ gem 'acts_as_list'
 gem 'enumerize'
 gem 'delayed_job_active_record'
 gem 'rails_config'
+gem 'timecop'
 
 #Refinery
 gem 'refinerycms-core'
@@ -39,7 +40,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'timecop'
 end
 
 group :test do
