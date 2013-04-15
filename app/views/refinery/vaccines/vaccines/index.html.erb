@@ -2,7 +2,7 @@
   <ul id="vaccines">
     <% @vaccines.each do |vaccine| %>
       <li>
-        <%= link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine) %>
+        <%= link_to vaccine.name, vaccine %>
       </li>
     <% end %>
   </ul>

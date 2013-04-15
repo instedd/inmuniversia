@@ -4,11 +4,9 @@ Inmuniversia::Application.routes.draw do
 
   devise_for :users
 
-  # resources :vaccines, path: "/my_vaccines"
-
   resources :children
 
-  root :to => "refinery/vaccines/vaccines#index"
+  root :to => "home#index"
 
   mount Refinery::Core::Engine, :at => '/'
 
