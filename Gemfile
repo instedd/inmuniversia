@@ -12,6 +12,8 @@ gem 'acts_as_list'
 gem 'enumerize'
 gem 'delayed_job_active_record'
 gem 'rails_config'
+
+# We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
 
 #Refinery
@@ -35,6 +37,7 @@ group :development do
   gem 'rvm'
   gem 'rvm-capistrano'
   gem 'thin'
+  gem 'html2haml'
 end
 
 group :development, :test do
