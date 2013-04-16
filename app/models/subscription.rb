@@ -15,8 +15,8 @@ class Subscription < ActiveRecord::Base
     child.parent
   end
 
-  def next_planned_vaccination
-    vaccinations.planned.to_a.min_by(&:planned_date)
+  def next_reminder_date
+    vaccinations.planned.map(&:next_reminder_date).compact.min
   end
 
   def vaccinations

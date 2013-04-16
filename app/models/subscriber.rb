@@ -16,8 +16,8 @@ class Subscriber < ActiveRecord::Base
   end
 
   def update_next_message_date!
-    subscriptions.map{|s| s.next_planned_vaccination.try(:planned_date)}.compact.min.tap do |next_message_date|
-      update_column :next_message_at, next_message_date if next_message_date != next_message_at
+    subscriptions.map(&:next_reminder_date).compact.min.tap do |next_reminder_date|
+      update_column :next_message_at, next_reminder_date if next_reminder_date != next_message_at
     end
   end
 

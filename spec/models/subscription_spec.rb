@@ -32,7 +32,7 @@ describe Subscription do
         vaccination.planned_date.should be_during(2013, 5)
       end
 
-      subscription.next_planned_vaccination.should eq(next_vaccination)
+      subscription.next_reminder_date.should be_during(2013,5)
     end
 
   end

@@ -35,16 +35,16 @@ class Child < ActiveRecord::Base
   end
 
 
-  def pending_doses_for(vaccine)
-    last_vaccination = last_vaccination_for(vaccine)
-    return vaccine.doses if last_vaccination.nil?
-    last_vaccination.dose.lower_items
-  end
+  # def pending_doses_for(vaccine)
+  #   last_vaccination = last_vaccination_for(vaccine)
+  #   return vaccine.doses if last_vaccination.nil?
+  #   last_vaccination.dose.lower_items
+  # end
 
-  def last_vaccination_for(vaccine)
-    # TODO: Define proper order for vaccinations
-    self.vaccinations.where(vaccine_id: vaccine.id).last
-  end
+  # def last_vaccination_for(vaccine)
+  #   # TODO: Define proper order for vaccinations
+  #   self.vaccinations.where(vaccine_id: vaccine.id).last
+  # end
 
   protected
 

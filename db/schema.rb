@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416173226) do
+ActiveRecord::Schema.define(:version => 20130416194332) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -173,6 +173,17 @@ ActiveRecord::Schema.define(:version => 20130416173226) do
     t.text     "rate_info"
     t.boolean  "published"
   end
+
+  create_table "reminders", :force => true do |t|
+    t.integer  "vaccination_id"
+    t.string   "type"
+    t.date     "sent_at"
+    t.string   "status"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "reminders", ["vaccination_id"], :name => "index_reminders_on_vaccination_id"
 
   create_table "roles", :force => true do |t|
     t.string "title"

@@ -1,6 +1,6 @@
 class Dose < ActiveRecord::Base
   
-  belongs_to :vaccine, :class_name => '::Vaccine'
+  belongs_to :vaccine, class_name: '::Vaccine'
   acts_as_list scope: :vaccine, column: :number
 
   attr_accessible :age_unit, :age_value, :interval_unit, :interval_value, :name, :number
@@ -21,4 +21,5 @@ class Dose < ActiveRecord::Base
   def full_name
     "#{name} de #{vaccine.name}"
   end
+
 end
