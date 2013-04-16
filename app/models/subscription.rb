@@ -11,23 +11,16 @@ class Subscription < ActiveRecord::Base
 
   validates :vaccine_id, presence: true, uniqueness: {scope: :child_id}
 
-  after_create :generate_notifications!
-
   def subscriber
     child.parent
   end
 
-  def generate_notifications!
-    child.pending_doses_for(vaccine).each do |dose|
-      date = dose.date_for(child)
-      register_dose_notification(dose, date) if date
-    end
+  def next_planned_vaccination
+    vaccinations.planned.to_a.min_by(&:planned_date)
   end
 
-  protected
-
-  def register_dose_notification(dose, date)
-    Notification.register_dose(subscription: self, dose: dose, date: date)
+  def vaccinations
+    child.vaccinations.where(vaccine_id: vaccine_id)
   end
 
 end

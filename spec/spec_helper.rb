@@ -19,6 +19,9 @@ RSpec.configure do |config|
     User.new(email: 'admin@example.com', password: 'ChangeMe').create_first if User.count == 0
   end
 
+  # Ignore tests
+  def ignore(*args); end;
+
   # Uncomment to view full backtraces
   # config.backtrace_clean_patterns = []
 end

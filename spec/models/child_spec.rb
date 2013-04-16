@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Child do
   
-  context "when assuming vaccinations" do
+  context "creating vaccinations" do
 
     let(:vaccine) { create(:vaccine) }
     let(:child)   { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
@@ -11,7 +11,7 @@ describe Child do
     after(:each)  { Timecop.return }
 
 
-    it "should assume to be vaccinated until today for doses by age" do
+    it "should create vaccinations with vaccine with doses by age" do
       doses = [
         create(:dose_by_age, vaccine: vaccine, age_value: 5),
         create(:dose_by_age, vaccine: vaccine, age_value: 8),
@@ -19,23 +19,32 @@ describe Child do
       ]
 
       expect {
-        child.assume_vaccinated_until_today!
-      }.to change(Vaccination, :count).by(2)
+        child.create_vaccinations!
+      }.to change(Vaccination, :count).by(3)
 
-      child.should have(2).vaccinations
+      child.should have(3).vaccinations
 
       child.vaccinations[0].tap do |v|
         v.dose.should eq(doses[0])
-        v.date.should eq(Date.new(2005,5,10))
+        v.planned_date.should eq(Date.new(2005,5,10))
+        v.should be_past
       end
 
       child.vaccinations[1].tap do |v|
         v.dose.should eq(doses[1])
-        v.date.should eq(Date.new(2008,5,10))
+        v.planned_date.should eq(Date.new(2008,5,10))
+        v.should be_past
+      end
+
+      child.vaccinations[2].tap do |v|
+        v.dose.should eq(doses[2])
+        v.planned_date.should eq(Date.new(2012,5,10))
+        v.should be_planned
       end
     end
 
-    it "should assume to be vaccinated until today for complex doses" do
+
+    it "should create vaccinations with vaccine with doses by age and by interval" do
       doses = [
         create(:dose_by_age, vaccine: vaccine, age_value: 4),
         create(:dose_by_interval, vaccine: vaccine, interval_value: 5),
@@ -43,23 +52,32 @@ describe Child do
       ]
 
       expect {
-        child.assume_vaccinated_until_today!
-      }.to change(Vaccination, :count).by(2)
+        child.create_vaccinations!
+      }.to change(Vaccination, :count).by(3)
 
-      child.should have(2).vaccinations
+      child.should have(3).vaccinations
 
       child.vaccinations[0].tap do |v|
         v.dose.should eq(doses[0])
-        v.date.should eq(Date.new(2004,5,10))
+        v.planned_date.should eq(Date.new(2004,5,10))
+        v.should be_past
       end
 
       child.vaccinations[1].tap do |v|
         v.dose.should eq(doses[1])
-        v.date.should eq(Date.new(2009,5,10))
+        v.planned_date.should eq(Date.new(2009,5,10))
+        v.should be_past
+      end
+
+      child.vaccinations[2].tap do |v|
+        v.dose.should eq(doses[2])
+        v.planned_date.should eq(Date.new(2011,5,10))
+        v.should be_planned
       end
     end
 
   end
+
 
   context "subscribing" do
 
@@ -85,21 +103,6 @@ describe Child do
       child.should have(3).subscriptions
       child.reload.should have(3).subscriptions
       child.subscriptions.map(&:vaccine_id).should eq(vaccines.map(&:id))
-    end
-
-  end
-
-  context "vaccinations" do
-
-    let(:child)    { create(:child, date_of_birth: Date.new(2000, 5, 10)) }
-    let!(:vaccine) { create(:vaccine_with_doses_by_age) }
-    let!(:vaccination) { create(:vaccination, child: child, dose: vaccine.doses.first) }
-
-    it "should return pending doses for a vaccine based on last vaccination" do
-      child.reload.pending_doses_for(vaccine).tap do |doses|
-        doses.should have(2).items
-        doses.should eq(vaccine.doses[1..2])
-      end
     end
 
   end

@@ -4,10 +4,11 @@ FactoryGirl.define do
     published true
 
     factory :vaccine_with_doses_by_age do
-      ignore { doses_count 3 }
+      ignore { dose_count 3 }
+      ignore { first_dose_at 1 }
       after(:create) do |vaccine, evaluator|
-        evaluator.doses_count.times do |i|
-          create(:dose_by_age, age_value: (i+1), vaccine: vaccine)
+        evaluator.dose_count.times do |i|
+          create(:dose_by_age, age_value: (i + evaluator.first_dose_at), vaccine: vaccine)
         end
       end
     end
