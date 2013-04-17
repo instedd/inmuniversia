@@ -28,7 +28,6 @@ class Vaccination < ActiveRecord::Base
   end
 
   def next_reminder
-    today = Date.today
     reminders.pending.first
   end
 

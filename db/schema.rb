@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416194332) do
+ActiveRecord::Schema.define(:version => 20130416230442) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20130416194332) do
     t.string   "status"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "number"
   end
 
   add_index "reminders", ["vaccination_id"], :name => "index_reminders_on_vaccination_id"

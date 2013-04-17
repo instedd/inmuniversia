@@ -14,4 +14,8 @@ class Object
   def subclass_responsibility
     raise 'Subclasses must redefine this method'
   end
+
+  def unimplemented
+    raise "Implement this method"
+  end
 end
