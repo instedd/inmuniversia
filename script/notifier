@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-$DELAYED_JOB = true
+$NOTIFIER = true
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
-require 'delayed/command'
-Delayed::Command.new(ARGV).daemonize
+Notifier.start!

@@ -1,5 +1,19 @@
 class Notifier
 
+  def self.start!
+    puts "Starting notifier loop"
+    while true
+      sleep sleep_time
+      Notifier.new.run!
+    end
+  end
+
+  def self.sleep_time
+    now = Time.now
+    next_run = now.hour < 16 ? now.change(hour: 16) : now.tomorrow.change(hour: 16)
+    next_run - now
+  end
+
   def run!
     Subscriber.where("next_message_at <= ?", Date.today).each do |subscriber|
       notify_subscriber(subscriber)
@@ -27,7 +41,7 @@ class Notifier
         
         vaccination = subscription.next_vaccination
         next if vaccination.nil?
-        
+
         reminders = collect_vaccination_pending_reminders(vaccination)
         last_reminder = reminders.pop
 
