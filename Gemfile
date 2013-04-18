@@ -38,6 +38,8 @@ group :development do
   gem 'rvm-capistrano'
   gem 'thin'
   gem 'html2haml'
+  gem "better_errors"
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
