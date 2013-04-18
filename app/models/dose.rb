@@ -9,9 +9,8 @@ class Dose < ActiveRecord::Base
     subclass_responsibility
   end
 
-  def in_date_for?(child)
-    date = date_for(child)
-    date && date <= Date.today
+  def span
+    subclass_responsibility
   end
 
   def vaccination_for(child)
@@ -20,6 +19,14 @@ class Dose < ActiveRecord::Base
 
   def full_name
     "#{name} de #{vaccine.name}"
+  end
+
+  def previous_dose
+    self.higher_item
+  end
+
+  def next_dose
+    self.lower_item
   end
 
 end

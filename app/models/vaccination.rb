@@ -13,7 +13,7 @@ class Vaccination < ActiveRecord::Base
   attr_accessible :child_id, :dose_id, :vaccine_id, :taken_at, :planned_date, :status
   attr_accessible :child, :vaccine, :dose
 
-  after_create  :create_reminders!
+  after_create :create_reminders!
 
   before_save do |vaccination|
     vaccination.vaccine ||= vaccination.dose.vaccine if vaccination.dose

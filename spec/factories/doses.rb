@@ -10,9 +10,5 @@ FactoryGirl.define do
       age_unit "years"
     end
 
-    factory :dose_by_interval, :class => 'DoseByInterval' do
-      interval_value 1
-      interval_unit "years"
-    end
   end
 end
