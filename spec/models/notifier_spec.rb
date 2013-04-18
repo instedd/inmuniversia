@@ -45,6 +45,12 @@ describe Notifier do
     let!(:subscriber) { create(:subscriber, next_message_at: Date.new(2013)) }
     let!(:child)      { create(:child, :with_vaccinations, :with_subscriptions, parent: subscriber, date_of_birth: Date.new(2012, 6, 10)) }
 
+    before(:each) do
+      ReminderUpcomingDose.any_instance.stub(:delta).and_return(-1.week)
+      ReminderCurrentDose.any_instance.stub(:delta).and_return(0)
+      ReminderAfterDose.any_instance.stub(:delta).and_return(+1.week)
+    end
+
 
     context "with single subscription" do
 

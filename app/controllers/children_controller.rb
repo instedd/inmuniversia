@@ -44,9 +44,11 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
+        
         # TODO: Move to callbacks?
-        @child.assume_vaccinated_until_today!
+        @child.create_vaccinations!
         @child.subscribe!
+
         format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render json: @child, status: :created, location: @child }
       else

@@ -12,6 +12,10 @@ class Reminder < ActiveRecord::Base
   scope :pending, where(status: :pending)
 
   def send_at
+    vaccination.planned_date + delta
+  end
+
+  def delta
     subclass_responsibility
   end
 

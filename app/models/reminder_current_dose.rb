@@ -1,7 +1,7 @@
 class ReminderCurrentDose < Reminder
 
-  def send_at
-    vaccination.planned_date
+  def delta
+    +1.day
   end
 
 end
