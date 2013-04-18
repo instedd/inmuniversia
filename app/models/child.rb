@@ -1,8 +1,8 @@
 class Child < ActiveRecord::Base
   belongs_to :parent, class_name: 'Subscriber'
 
-  has_many :vaccinations
-  has_many :subscriptions
+  has_many :vaccinations, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   attr_accessible :date_of_birth, :gender, :name, :parent_id
 
@@ -18,7 +18,7 @@ class Child < ActiveRecord::Base
       vaccine.doses.each do |dose|
         date = dose.date_for(self)
         status = date < today ? :past : :planned
-        vaccinations.build(dose: dose, planned_date: date, status: status)
+        vaccinations.build(dose: dose, status: status)
       end
     end
 

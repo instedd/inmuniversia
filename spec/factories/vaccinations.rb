@@ -5,6 +5,5 @@ FactoryGirl.define do
     child
     dose
     vaccine { dose.vaccine }
-    date "2013-04-10"
   end
 end

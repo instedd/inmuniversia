@@ -16,7 +16,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def next_vaccination
-    vaccinations.planned.order(:planned_date).first
+    vaccinations.planned.sort_by(&:planned_date).first
   end
 
   def next_reminder_date

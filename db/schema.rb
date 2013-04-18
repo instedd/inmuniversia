@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416230442) do
+ActiveRecord::Schema.define(:version => 20130418154914) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -272,11 +272,12 @@ ActiveRecord::Schema.define(:version => 20130416230442) do
     t.integer  "child_id"
     t.integer  "dose_id"
     t.integer  "vaccine_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "status"
-    t.date     "planned_date"
     t.datetime "taken_at"
+    t.integer  "planned_age_value"
+    t.string   "planned_age_unit"
   end
 
   add_index "vaccinations", ["child_id"], :name => "index_vaccinations_on_child_id"

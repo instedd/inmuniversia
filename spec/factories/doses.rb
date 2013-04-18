@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     factory :dose_by_age, :class => 'DoseByAge' do
       age_value 1
-      age_unit "years"
+      age_unit "year"
     end
 
   end

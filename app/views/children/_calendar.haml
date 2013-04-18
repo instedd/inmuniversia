@@ -1,0 +1,29 @@
+%h2= calendar.child.name
+%span= "Nacido el #{calendar.child.date_of_birth.to_formatted_s(:long)}"
+%table{border: 1}
+  %thead
+    %tr
+      %th
+      - calendar.timespans.each do |timespan|
+        %th= timespan.age_description
+    %tr
+      %th
+      - calendar.timespans.each do |timespan|
+        %th= timespan.year
+    %tr
+      %th
+      - calendar.timespans.each do |timespan|
+        %th= timespan.month_name
+  %tbody
+    - calendar.vaccines.each do |vaccine|
+      %tr
+        %th
+          = vaccine.name
+          = vaccine.diseases_list
+        - calendar.vaccinations_for(vaccine).each do |vaccination|
+          %td
+            - if vaccination
+              = vaccination.name
+              = vaccination.status
+
+

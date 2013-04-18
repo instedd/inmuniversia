@@ -20,4 +20,9 @@
 
 %br
 
+%h1 Calendars
+
+- @children.each do |child|
+  = render 'calendar', calendar: CalendarPresenter.new(child)
+
 = link_to 'New Child', new_child_path
