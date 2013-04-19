@@ -17,7 +17,7 @@ gem 'nuntium_api'
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
 
-#Refinery
+# Refinery
 gem 'refinerycms-core'
 gem 'refinerycms-dashboard'
 gem 'refinerycms-images'

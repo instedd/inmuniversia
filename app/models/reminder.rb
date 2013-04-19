@@ -19,4 +19,8 @@ class Reminder < ActiveRecord::Base
     subclass_responsibility
   end
 
+  def dose
+    vaccination.try(:dose)
+  end
+
 end

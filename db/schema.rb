@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418154914) do
+ActiveRecord::Schema.define(:version => 20130419225909) do
+
+  create_table "channels", :force => true do |t|
+    t.string   "type"
+    t.integer  "subscriber_id"
+    t.string   "address"
+    t.boolean  "notifications_enabled"
+    t.string   "verification_code"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "channels", ["subscriber_id"], :name => "index_channels_on_subscriber_id"
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -177,7 +189,7 @@ ActiveRecord::Schema.define(:version => 20130418154914) do
   create_table "reminders", :force => true do |t|
     t.integer  "vaccination_id"
     t.string   "type"
-    t.date     "sent_at"
+    t.datetime "sent_at"
     t.string   "status"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
@@ -225,6 +237,7 @@ ActiveRecord::Schema.define(:version => 20130418154914) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.date     "next_message_at"
+    t.string   "sms_number"
   end
 
   add_index "subscribers", ["email"], :name => "index_subscribers_on_email", :unique => true

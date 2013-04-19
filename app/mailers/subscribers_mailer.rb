@@ -1,13 +1,20 @@
+# encoding: utf-8
 class SubscribersMailer < ActionMailer::Base
-  default from: "no-reply@inmuniversia.instedd.org"
+  default from: Settings.email.sender
 
-  def dose_reminder(child, dose)
-    @child = child
-    @dose = dose
-    @vaccine = dose.vaccine
-    @subscriber = child.subscriber
+  def reminder_upcoming_dose(reminder, address)    
+    @reminder = ReminderPresenter.new(reminder)
+    mail(to: address, subject: "Se aproxima la #{@reminder.dose_name} para #{@reminder.child_name}")
+  end
 
-    mail(to: @subscriber.email, subject: "#{dose.full_name.capitalize} para #{child.name}")
+  def reminder_current_dose(reminder, address)
+    @reminder = ReminderPresenter.new(reminder)
+    mail(to: address, subject: "Ya podés darle la #{@reminder.dose_name} a #{@reminder.child_name}")
+  end
+
+  def reminder_after_dose(reminder)
+    @reminder = ReminderPresenter.new(reminder, address)
+    mail(to: address, subject: "Ya deberías haberle dado #{@reminder.dose_name} a #{@reminder.child_name}")
   end
 
 end

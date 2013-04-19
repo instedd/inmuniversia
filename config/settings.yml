@@ -2,6 +2,7 @@ hosts:
   local: inmuniversia.instedd.org
 
 email:
+  sender: no-reply@inmuniversia.instedd.org
   delivery_method: sendmail
 
 time:

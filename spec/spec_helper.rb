@@ -14,9 +14,15 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
+  config.include MailHelpers
+  config.include DelayedJobHelpers
 
   config.before(:all) do
     User.new(email: 'admin@example.com', password: 'ChangeMe').create_first if User.count == 0
+  end
+
+  config.before(:each) do
+    ActionMailer::Base.deliveries.clear
   end
 
   # Ignore tests

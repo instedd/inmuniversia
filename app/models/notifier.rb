@@ -29,7 +29,9 @@ class Notifier
   end
 
   def send_reminders(reminders, subscriber)
-    unimplemented
+    subscriber.channels.each do |channel|
+      Notification.enqueue(channel, reminders, subscriber)
+    end
   end
 
   protected
