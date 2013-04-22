@@ -7,7 +7,7 @@ Refinery::Vaccines::VaccinesController.class_eval do
 
   def find_all_vaccines
     @vaccines = if user_signed_in?
-      Vaccine.all
+      Vaccine.scoped
     else
       Vaccine.published
     end
