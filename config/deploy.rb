@@ -26,9 +26,9 @@ namespace :deploy do
 
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/settings.yml #{release_path}/config/settings.local.yml"
-    run "rm #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/"
   end
 end
 
+before "deploy:finalize_update", "deploy:symlinks"
 after "deploy:update_code", "deploy:migrate"
