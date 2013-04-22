@@ -8,7 +8,7 @@ require 'rvm/capistrano'
 set :rvm_ruby_string, '1.9.3'
 set :rvm_type, :system
 set :application, "inmuniversia"
-set :repository,  "ssh://hg@bitbucket.org/instedd/inmuniversia"
+set :repository,  "https://bitbucket.org/instedd/inmuniversia"
 set :scm, :mercurial
 
 ssh_options[:forward_agent] = true
@@ -19,7 +19,7 @@ load 'lib/deploy/seed'
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  
+
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
