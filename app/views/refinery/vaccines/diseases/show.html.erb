@@ -3,44 +3,33 @@
 <% end %>
 
 <% content_for :body do %>
+  <h1><%= @disease.name %></h1>
   <section>
-    <h1>Name</h1>
-    <p>
-      <%=raw @disease.name %>
-    </p>
-  </section>
-  <section>
-    <h1>Incidence Info</h1>
+    <h1>Incidencia</h1>
     <p>
       <%=raw @disease.incidence_info %>
     </p>
   </section>
   <section>
-    <h1>Geographical Distribution</h1>
+    <h1>Distribucion geografica</h1>
     <p>
       <%=raw @disease.geographical_distribution %>
     </p>
   </section>
   <section>
-    <h1>High Risk Groups</h1>
+    <h1>Grupos de riesgo</h1>
     <p>
       <%=raw @disease.high_risk_groups %>
     </p>
   </section>
   <section>
-    <h1>Rate Info</h1>
+    <h1>Tasa</h1>
     <p>
       <%=raw @disease.rate_info %>
     </p>
   </section>
   <section>
-    <h1>Published</h1>
-    <p>
-      <%=raw @disease.published %>
-    </p>
-  </section>
-  <section>
-    <h2>Related Vaccines</h2>
+    <h2>Vacunas que previenen esta enfermedad</h2>
     <ul id="diseases">
       <% @disease.vaccines.each do |vaccine| %>
         <li>
