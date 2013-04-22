@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419225909) do
+ActiveRecord::Schema.define(:version => 20130422153415) do
 
   create_table "channels", :force => true do |t|
     t.string   "type"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20130419225909) do
     t.text     "side_effects"
     t.text     "more_info"
     t.boolean  "published"
+    t.boolean  "in_calendar"
   end
 
   create_table "refinery_vaccines_diseases", :force => true do |t|
@@ -296,14 +297,5 @@ ActiveRecord::Schema.define(:version => 20130419225909) do
   add_index "vaccinations", ["child_id"], :name => "index_vaccinations_on_child_id"
   add_index "vaccinations", ["dose_id"], :name => "index_vaccinations_on_dose_id"
   add_index "vaccinations", ["vaccine_id"], :name => "index_vaccinations_on_vaccine_id"
-
-  create_table "vaccines", :force => true do |t|
-    t.string   "name"
-    t.string   "vaccine_type"
-    t.text     "description"
-    t.string   "photo"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
 end

@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :vaccine do
     sequence(:name) { |n| "Vaccine #{n}" }
     published true
+    in_calendar true
 
     factory :vaccine_with_doses_by_age do
       ignore { dose_count 3 }
