@@ -13,6 +13,7 @@ gem 'enumerize'
 gem 'delayed_job_active_record'
 gem 'rails_config'
 gem 'nuntium_api'
+gem 'newrelic_rpm'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
