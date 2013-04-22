@@ -202,6 +202,8 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.10)
+    refinerycms-settings (2.0.2)
+      refinerycms-core (~> 2.0.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.13.1)
@@ -244,6 +246,10 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     truncate_html (0.5.5)
+    twitter-bootstrap-rails (2.2.6)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -283,6 +289,7 @@ DEPENDENCIES
   refinerycms-images
   refinerycms-pages
   refinerycms-resources
+  refinerycms-settings
   refinerycms-vaccines!
   rspec-rails
   rvm
@@ -290,4 +297,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   thin
   timecop
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)

@@ -18,8 +18,12 @@ gem 'newrelic_rpm'
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
 
+# Bootstrap
+gem 'twitter-bootstrap-rails'
+
 # Refinery
 gem 'refinerycms-core'
+gem 'refinerycms-settings'
 gem 'refinerycms-dashboard'
 gem 'refinerycms-images'
 gem 'refinerycms-pages'
