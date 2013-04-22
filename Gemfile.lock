@@ -146,6 +146,8 @@ GEM
       activerecord (~> 3.0)
       railties (~> 3.0)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -273,6 +275,7 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   nuntium_api
+  quiet_assets
   rails (= 3.2.13)
   rails_config
   refinerycms-core
