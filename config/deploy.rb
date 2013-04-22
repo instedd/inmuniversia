@@ -27,6 +27,7 @@ namespace :deploy do
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/settings.yml #{release_path}/config/settings.local.yml"
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/"
+    run "ln -nfs #{shared_path}/newrelic.yml #{release_path}/config/"
   end
 end
 
