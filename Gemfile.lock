@@ -47,6 +47,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bootstrap-datepicker-rails (1.0.0.5)
+      railties (>= 3.0)
     builder (3.0.4)
     capistrano (2.14.2)
       highline
@@ -273,6 +275,7 @@ DEPENDENCIES
   acts_as_list
   better_errors
   binding_of_caller
+  bootstrap-datepicker-rails
   capistrano
   ci_reporter
   coffee-rails (~> 3.2.1)
