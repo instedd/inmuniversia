@@ -23,7 +23,7 @@ describe Notifier do
 
     context "via email" do
 
-      let!(:channel) { create(:email_channel, subscriber: subscriber) }
+      let(:channel) { subscriber.email_channels.first }
 
       it "should deliver a single reminder of upcoming dose via email" do
         reminder = child.vaccinations.first.reminders.first
