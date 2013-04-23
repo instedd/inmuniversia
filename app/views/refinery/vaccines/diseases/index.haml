@@ -1,0 +1,11 @@
+- diseases_hash = @diseases.group_by{|v| v.name[0]}
+
+- content_for :body do
+  %ul#diseases
+    - diseases_hash.keys.sort.each do |starting_letter|
+      %h3
+        = starting_letter
+      - diseases_hash[starting_letter].each do |disease|
+        %li
+          = link_to disease.name, refinery.vaccines_disease_path(disease)
+= render '/refinery/content_page'
