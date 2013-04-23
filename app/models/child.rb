@@ -1,10 +1,15 @@
 class Child < ActiveRecord::Base
+
+  extend Enumerize
+
   belongs_to :parent, class_name: 'Subscriber'
 
   has_many :vaccinations, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
   attr_accessible :date_of_birth, :gender, :name, :parent_id
+
+  enumerize :gender, in: %w(male female), predicates: true, default: nil
 
   def subscriber
     parent

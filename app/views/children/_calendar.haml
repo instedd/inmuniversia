@@ -1,6 +1,6 @@
 %h2= calendar.child.name
-%span= "Nacido el #{calendar.child.date_of_birth.to_formatted_s(:long)}"
-%table{border: 1}
+%span= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
+%table.table.table-bordered
   %thead
     %tr
       %th

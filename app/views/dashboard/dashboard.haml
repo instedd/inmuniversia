@@ -1,0 +1,18 @@
+%h1 Hijos
+
+#add-new-child
+  = link_to 'Agregar hijo', '#'
+
+#new-child-form.collapse.out
+  = render 'children/form', child: Child.new
+
+- @children.each do |child|
+  = render 'children/calendar', calendar: CalendarPresenter.new(child)
+
+%br/
+%hr/
+
+%h1 Channels
+#channels
+  = render_channels(current_subscriber, :email)
+
