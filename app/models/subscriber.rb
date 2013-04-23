@@ -6,7 +6,13 @@ class Subscriber < ActiveRecord::Base
 
   has_many :children, inverse_of: :parent, foreign_key: :parent_id
   has_many :subscriptions, through: :children
+  
   has_many :channels, dependent: :destroy
+
+  has_many :email_channels, class_name: "Channel::Email", dependent: :destroy
+  has_many :sms_channels,   class_name: "Channel::Sms",   dependent: :destroy
+
+  before_create :build_email_channel
 
   def time_offset
     '-3'
@@ -20,6 +26,10 @@ class Subscriber < ActiveRecord::Base
     subscriptions.map(&:next_reminder_date).compact.min.tap do |next_reminder_date|
       update_column :next_message_at, next_reminder_date if next_reminder_date != next_message_at
     end
+  end
+
+  def build_email_channel
+    email_channels.build(address: email, notifications_enabled: true)
   end
 
 end

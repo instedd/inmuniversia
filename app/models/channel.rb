@@ -13,6 +13,10 @@ class Channel < ActiveRecord::Base
     reminders.update_all(status: 'sent', sent_at: DateTime.now)
   end
 
+  def to_partial_path
+    "channels/#{self.class.name.split(/::/).last.underscore}"
+  end
+
   protected
 
   def do_send_reminders(reminders, subscriber)

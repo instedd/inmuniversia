@@ -1,5 +1,4 @@
-class ChildrenController < ApplicationController
-  before_filter :authenticate_subscriber!
+class ChildrenController < AuthenticatedController
   
   before_filter :load_children, only: [:index]
   before_filter :load_child, only: [:show, :edit, :update, :destroy]

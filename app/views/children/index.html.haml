@@ -18,7 +18,8 @@
       %td= link_to 'Edit', edit_child_path(child)
       %td= link_to 'Destroy', child, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+%br/
+%hr/
 
 %h1 Calendars
 
@@ -26,3 +27,11 @@
   = render 'calendar', calendar: CalendarPresenter.new(child)
 
 = link_to 'New Child', new_child_path
+
+%br/
+%hr/
+
+%h1 Channels
+#channels
+  = render_channels(current_subscriber, :email)
+  = render_add_new_channel(current_subscriber, :email)
