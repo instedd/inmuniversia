@@ -13,7 +13,7 @@ class Notifier::Notification < Struct.new(:channel_id, :reminders_ids, :subscrib
     
     # TODO: Validate if these subscriber, channel and reminders are still elligible for sending
     return unless channel && subscriber && reminders.any?
-    channel.send_reminders(reminders, subscriber)
+    channel.send_reminders(reminders)
   end
 
   def self.enqueue(channel, reminders, subscriber)

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class ReminderPresenter
 
   def initialize(reminder)
@@ -18,6 +20,17 @@ class ReminderPresenter
 
   def child_name
     @reminder.vaccination.child.name
+  end
+
+  def sms_text
+    case reminder
+    when ReminderUpcomingDose
+      "A partir del #{dose_date.to_formatted_s(:long)} corresponde la aplicación de la #{dose_name} a #{child_name} | #{Settings.hosts.local}"
+    when ReminderCurrentDose
+      "Ya corresponde la aplicación de la #{@reminder.dose_name} a #{@reminder.child_name} | #{Settings.hosts.local}"
+    when ReminderAfterDose
+      "Ya deberías haberle aplicado la #{@reminder.dose_name} a #{@reminder.child_name} | #{Settings.hosts.local}"
+    end
   end
 
 end

@@ -8,8 +8,8 @@ class Channel < ActiveRecord::Base
   scope :sms,   where(type: 'Channel::Sms')
   scope :email, where(type: 'Channel::Email')
 
-  def send_reminders(reminders, subscriber)
-    do_send_reminders(reminders, subscriber)
+  def send_reminders(reminders)
+    do_send_reminders(reminders)
     reminders.update_all(status: 'sent', sent_at: DateTime.now)
   end
 
@@ -19,7 +19,7 @@ class Channel < ActiveRecord::Base
 
   protected
 
-  def do_send_reminders(reminders, subscriber)
+  def do_send_reminders(reminders)
     subclass_responsibility
   end
 
