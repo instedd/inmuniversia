@@ -14,12 +14,11 @@ gem 'delayed_job_active_record'
 gem 'rails_config'
 gem 'nuntium_api'
 gem 'newrelic_rpm'
+gem 'therubyracer'
+gem 'less-rails', "~> 2.3.3"
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
-
-# Bootstrap
-gem 'twitter-bootstrap-rails'
 
 # Refinery
 gem 'refinerycms-core'
