@@ -88,6 +88,7 @@ GEM
     dragonfly (0.9.14)
       multi_json (~> 1.0)
       rack
+    dynamic_form (1.1.4)
     enumerize (0.5.1)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -282,6 +283,7 @@ DEPENDENCIES
   cover_me
   delayed_job_active_record
   devise
+  dynamic_form
   enumerize
   factory_girl_rails
   haml-rails

@@ -11,6 +11,9 @@ class Child < ActiveRecord::Base
 
   enumerize :gender, in: %w(male female), predicates: true, default: nil
 
+  validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :parent_id, message: "%{value} ya fue registrado en Inmuniversia"}
+  validates :date_of_birth, presence: true
+
   def subscriber
     parent
   end

@@ -17,6 +17,7 @@ gem 'newrelic_rpm'
 gem 'therubyracer'
 gem 'less-rails', "~> 2.3.3"
 gem 'bootstrap-datepicker-rails'
+gem 'dynamic_form'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
