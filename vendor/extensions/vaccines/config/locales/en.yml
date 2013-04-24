@@ -45,11 +45,16 @@ en:
     attributes:
       refinery/vaccines/disease:
         name: Name
+        summary: Summary
+        transmission: Transmission
+        diagnosis: Diagnosis
+        treatment: Treatment
+        statistics: Statistics
+        published: Published
         incidence_info: Incidence Info
         geographical_distribution: Geographical Distribution
         high_risk_groups: High Risk Groups
         rate_info: Rate Info
-        published: Published
       refinery/vaccines/vaccine:
         name: Name
         general_info: General Info

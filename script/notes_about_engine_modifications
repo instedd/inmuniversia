@@ -1,8 +1,5 @@
 Notes:
 
-rails d refinery:engine disease --extension vaccines --namespace vaccines
-rails d refinery:engine vaccine
-
 rails generate refinery:engine vaccine name:string general_info:text commercial_name:text doses_info:text recommendations:text side_effects:text more_info:text published:boolean
 
 rails g refinery:engine disease name:string summary:text transmission:text diagnosis:text treatment:text statistics:text published:boolean --extension vaccines --namespace vaccines
