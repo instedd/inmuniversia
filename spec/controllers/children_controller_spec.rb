@@ -14,6 +14,15 @@ describe ChildrenController do
       response.should be_successful
     end
 
+    it "should create vaccinations and subscriptions" do
+      vaccine = create(:vaccine_with_doses_by_age)
+      xhr :post, :create, child: attributes_for(:child)
+      
+      child = subscriber.reload.children.first
+      child.should have(1).subscription
+      child.should have(3).vaccinations
+    end
+
     it "should not create a child if invalid params" do
       expect {
         xhr :post, :create, child: attributes_for(:child, name: "")

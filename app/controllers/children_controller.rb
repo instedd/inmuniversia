@@ -4,12 +4,7 @@ class ChildrenController < AuthenticatedController
 
   def create
     @child = current_subscriber.children.new(params[:child])
-
-    if @child.save
-      # TODO: Move to on create callbacks
-      @child.create_vaccinations!
-      @child.subscribe!
-    end
+    @child.setup! if @child.save
   end
 
   protected

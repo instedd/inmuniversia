@@ -18,6 +18,11 @@ class Child < ActiveRecord::Base
     parent
   end
 
+  def setup!(vaccines=nil)
+    subscribe!(vaccines)
+    create_vaccinations!(vaccines)
+  end
+
   def create_vaccinations!(vaccines=nil)
     vaccines ||= default_vaccines
     today = Date.today
@@ -33,7 +38,6 @@ class Child < ActiveRecord::Base
     save!
   end
 
-
   def subscribe!(vaccines=nil)
     vaccines ||= default_vaccines
     vaccines.each do |vaccine|
@@ -41,18 +45,6 @@ class Child < ActiveRecord::Base
     end
     save!
   end
-
-
-  # def pending_doses_for(vaccine)
-  #   last_vaccination = last_vaccination_for(vaccine)
-  #   return vaccine.doses if last_vaccination.nil?
-  #   last_vaccination.dose.lower_items
-  # end
-
-  # def last_vaccination_for(vaccine)
-  #   # TODO: Define proper order for vaccinations
-  #   self.vaccinations.where(vaccine_id: vaccine.id).last
-  # end
 
   protected
 
