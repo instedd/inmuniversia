@@ -5,11 +5,14 @@
 %body
   = site_bar # This is the only section we do need to keep
   = render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/
-  #page_container
-    %header#header
-      = render '/refinery/header'
-    %section#page.container
-      = yield
-    %footer
-      = render '/refinery/footer'
+  .wrapper
+    .header
+      .container
+        = render '/refinery/header'
+    .content
+      .container
+        = yield
+    .footer
+      .container
+        = render '/refinery/footer'
   = render '/refinery/javascripts'
