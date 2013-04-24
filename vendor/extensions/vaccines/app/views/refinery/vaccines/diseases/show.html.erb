@@ -1,0 +1,57 @@
+<% content_for :body_content_title do %>
+  <%= @disease.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @disease.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Incidence Info</h1>
+    <p>
+      <%=raw @disease.incidence_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Geographical Distribution</h1>
+    <p>
+      <%=raw @disease.geographical_distribution %>
+    </p>
+  </section>
+  <section>
+    <h1>High Risk Groups</h1>
+    <p>
+      <%=raw @disease.high_risk_groups %>
+    </p>
+  </section>
+  <section>
+    <h1>Rate Info</h1>
+    <p>
+      <%=raw @disease.rate_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Published</h1>
+    <p>
+      <%=raw @disease.published %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="diseases">
+      <% @diseases.each do |disease| %>
+        <li>
+          <%= link_to disease.name, refinery.vaccines_disease_path(disease) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

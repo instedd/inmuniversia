@@ -1,0 +1,17 @@
+hosts:
+  local: inmuniversia.instedd.org
+
+email:
+  sender: no-reply@inmuniversia.instedd.org
+  delivery_method: sendmail
+
+time:
+  global_scale_factor: 1
+  delayed_job_scale_factor: 1
+
+nuntium:
+  url: nuntium.instedd.org
+  account:
+  application:
+  password:
+  sms_from: 0

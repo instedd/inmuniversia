@@ -1,0 +1,59 @@
+zh-CN:
+  refinery:
+    plugins:
+      diseases:
+        title: Diseases
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        diseases:
+          actions:
+            create_new: 建立新的 Disease
+            reorder: 对 Diseases 重新排序
+            reorder_done: 对 Diseases 的重新排序结束
+          records:
+            title: Diseases
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Diseases . 点击 "Add New Disease" 创建一个disease.
+          disease:
+            view_live_html: 查看 disease 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 disease
+            delete: 永久删除 disease
+        vaccines:
+          actions:
+            create_new: 建立新的 Vaccine
+            reorder: 对 Vaccines 重新排序
+            reorder_done: 对 Vaccines 的重新排序结束
+          records:
+            title: Vaccines
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Vaccines . 点击 "Add New Vaccine" 创建一个vaccine.
+          vaccine:
+            view_live_html: 查看 vaccine 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 vaccine
+            delete: 永久删除 vaccine
+      diseases:
+        show:
+          other: 其他 Diseases
+      vaccines:
+        show:
+          other: 其他 Vaccines
+  activerecord:
+    attributes:
+      refinery/vaccines/disease:
+        name: Name
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+        published: Published
+      refinery/vaccines/vaccine:
+        name: Name
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published

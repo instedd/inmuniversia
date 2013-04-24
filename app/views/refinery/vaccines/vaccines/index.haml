@@ -1,0 +1,11 @@
+- vaccines_hash = @vaccines.group_by{|v| v.name[0]}
+
+- content_for :body do
+  %ul#vaccines
+    - vaccines_hash.keys.sort.each do |starting_letter|
+      %h3
+        = starting_letter
+      - vaccines_hash[starting_letter].each do |vaccine|
+        %li
+          = link_to vaccine.name, vaccine
+= render '/refinery/content_page'

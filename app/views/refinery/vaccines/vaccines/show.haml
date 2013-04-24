@@ -1,0 +1,40 @@
+.row
+  .span3
+    %aside
+      %h2= t('.other')
+      %ul#vaccines
+        - @vaccines.each do |vaccine|
+          %li
+            = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
+  .span9
+    %section
+      %h1 Informacion general
+      %p
+        = raw @vaccine.general_info
+    %section
+      %h1 Nombre comercial
+      %p
+        = raw @vaccine.commercial_name
+    %section
+      %h1 Dosis
+      %p
+        = raw @vaccine.doses_info
+    %section
+      %h1 Recomendaciones
+      %p
+        = raw @vaccine.recommendations
+    %section
+      %h1 Efectos secundarios
+      %p
+        = raw @vaccine.side_effects
+    %section
+      %h1 Mas informacion
+      %p
+        = raw @vaccine.more_info
+    %section
+      %h2 Enfermedades que previene
+      %ul#diseases
+        - @vaccine.diseases.each do |disease|
+          %li
+            = link_to disease.name, refinery.vaccines_disease_path(disease)
+

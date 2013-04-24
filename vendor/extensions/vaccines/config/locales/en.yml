@@ -1,0 +1,61 @@
+en:
+  refinery:
+    plugins:
+      diseases:
+        title: Diseases
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        diseases:
+          actions:
+            create_new: Add New Disease
+            reorder: Reorder Diseases
+            reorder_done: Done Reordering Diseases
+          records:
+            title: Diseases
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Diseases yet. Click "Add New Disease" to add
+              your first disease.
+          disease:
+            view_live_html: View this disease live <br/><em>(opens in a new window)</em>
+            edit: Edit this disease
+            delete: Remove this disease forever
+        vaccines:
+          actions:
+            create_new: Add New Vaccine
+            reorder: Reorder Vaccines
+            reorder_done: Done Reordering Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Vaccines yet. Click "Add New Vaccine" to add
+              your first vaccine.
+          vaccine:
+            view_live_html: View this vaccine live <br/><em>(opens in a new window)</em>
+            edit: Edit this vaccine
+            delete: Remove this vaccine forever
+      diseases:
+        show:
+          other: Other Diseases
+      vaccines:
+        show:
+          other: Other Vaccines
+  activerecord:
+    attributes:
+      refinery/vaccines/disease:
+        name: Name
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+        published: Published
+      refinery/vaccines/vaccine:
+        name: Name
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published
