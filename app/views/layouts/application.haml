@@ -11,7 +11,7 @@
         = render '/refinery/header'
     .content
       .container
-        = yield
+        = yield(:body).presence || yield
     .footer
       .container
         = render '/refinery/footer'

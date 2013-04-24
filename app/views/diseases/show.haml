@@ -1,0 +1,31 @@
+- content_for :sidebar do
+  %h2 Enfermedades
+  %ul#diseases
+    - @diseases.each do |disease|
+      %li
+        = link_to disease.name, refinery.vaccines_disease_path(disease)
+
+- content_for :content do
+  %h1= @disease.name
+  %section
+    %h1 Incidencia
+    %p
+      = raw @disease.incidence_info
+  %section
+    %h1 Distribucion geografica
+    %p
+      = raw @disease.geographical_distribution
+  %section
+    %h1 Grupos de riesgo
+    %p
+      = raw @disease.high_risk_groups
+  %section
+    %h1 Tasa
+    %p
+      = raw @disease.rate_info
+  %section
+    %h2 Vacunas que previenen esta enfermedad
+    %ul#diseases
+      - @disease.vaccines.each do |vaccine|
+        %li
+          = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
