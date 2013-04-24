@@ -9,8 +9,8 @@ describe Subscriber do
 
     let!(:subscriber)  { create(:subscriber) }
     
-    let!(:vaccine_one) { create(:vaccine_with_doses_by_age, first_dose_at: 1) }
-    let!(:vaccine_two) { create(:vaccine_with_doses_by_age, first_dose_at: 2) }
+    let!(:vaccine_one) { create(:vaccine, :with_doses, first_dose_at: 1) }
+    let!(:vaccine_two) { create(:vaccine, :with_doses, first_dose_at: 2) }
 
     it "should calculate next message date with one child" do
       create(:child, :with_vaccinations, :with_subscriptions, parent: subscriber, date_of_birth: Date.new(2012,6,10))

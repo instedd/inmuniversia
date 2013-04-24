@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Notifier do
 
   before(:each) { Timecop.freeze(Time.utc(2013,1,1,12,0,0)) }
-  after(:each)  { Timecop.return }
 
   let(:notifier) { Notifier.new }
 

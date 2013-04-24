@@ -25,6 +25,10 @@ RSpec.configure do |config|
     ActionMailer::Base.deliveries.clear
   end
 
+  config.after(:each) do
+    Timecop.return
+  end
+
   # Ignore tests
   def ignore(*args); end;
 
