@@ -15,7 +15,7 @@ describe ChildrenController do
     end
 
     it "should create vaccinations and subscriptions" do
-      vaccine = create(:vaccine_with_doses_by_age)
+      vaccine = create(:vaccine, :with_doses)
       xhr :post, :create, child: attributes_for(:child)
       
       child = subscriber.reload.children.first

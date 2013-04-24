@@ -21,7 +21,7 @@ describe Subscription do
     before(:each) { Timecop.freeze(Time.local(2013,1,1)) }
     after(:each)  { Timecop.return }
 
-    let!(:vaccine)  { create(:vaccine_with_doses_by_age, dose_count: 3) }
+    let!(:vaccine)  { create(:vaccine, :with_doses, dose_count: 3) }
     let!(:child)    { create(:child, :with_vaccinations, date_of_birth: Date.new(2011, 5, 10)) }      
 
     let(:subscription) { create(:subscription, child: child, vaccine: vaccine) }
