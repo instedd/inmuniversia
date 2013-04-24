@@ -92,7 +92,9 @@ class CalendarPresenter
     end
   end
 
+
   protected
+
 
   def load_vaccines
     ::Vaccine.defaults.map{|v| Vaccine.new(v)}
