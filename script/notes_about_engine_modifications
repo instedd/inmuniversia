@@ -1,18 +1,21 @@
 Notes:
 
+rails d refinery:engine disease --extension vaccines --namespace vaccines
+rails d refinery:engine vaccine
+
 rails generate refinery:engine vaccine name:string general_info:text commercial_name:text doses_info:text recommendations:text side_effects:text more_info:text published:boolean
 
-
-rails g refinery:engine disease name:string incidence_info:text geographical_distribution:text high_risk_groups:text rate_info:text published:boolean --extension vaccines --namespace vaccines
+rails g refinery:engine disease name:string summary:text transmission:text diagnosis:text treatment:text statistics:text published:boolean --extension vaccines --namespace vaccines
 
 
 Adding new fields to the models on the database:
+
 rails g migration AddFieldsToRefineryVaccines general_info:text commercial_name:text doses_info:text recommendations:text side_effects:text more_info:text published:boolean
 
 rails g migration AddFieldsToRefineryVaccinesDiseases incidence_info:text geographical_distribution:text high_risk_groups:text rate_info:text
 
-
 Removing old ones:
+
 rails g migration RemoveFieldsFromRefineryVaccines vaccine_type:string description:text photo_id:integer
 
 rails g migration RemoveFieldsFromRefineryVaccinesDiseases description:text photo_id:integer
