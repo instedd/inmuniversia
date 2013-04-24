@@ -8,21 +8,25 @@
 - content_for :content do
   %h1= @disease.name
   %section
-    %h1 Incidencia
+    %h1 Resumen
     %p
-      = raw @disease.incidence_info
+      = raw @disease.summary
   %section
-    %h1 Distribucion geografica
+    %h1 Transmision
     %p
-      = raw @disease.geographical_distribution
+      = raw @disease.transmission
   %section
-    %h1 Grupos de riesgo
+    %h1 Diagnostico
     %p
-      = raw @disease.high_risk_groups
+      = raw @disease.diagnosis
   %section
-    %h1 Tasa
+    %h1 Tratamiento
     %p
-      = raw @disease.rate_info
+      = raw @disease.treatment
+  %section
+    %h1 Estadisticas
+    %p
+      = raw @disease.statistics
   %section
     %h2 Vacunas que previenen esta enfermedad
     %ul#diseases

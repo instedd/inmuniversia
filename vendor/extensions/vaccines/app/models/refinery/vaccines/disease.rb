@@ -2,12 +2,11 @@ module Refinery
   module Vaccines
     class Disease < Refinery::Core::BaseModel
 
-      attr_accessible :name, :incidence_info, :geographical_distribution, :high_risk_groups, :rate_info, :published, :position
+      attr_accessible :name, :summary, :transmission, :diagnosis, :treatment, :statistics, :published, :position
 
-      acts_as_indexed :fields => [:name, :incidence_info, :geographical_distribution, :high_risk_groups, :rate_info]
+      acts_as_indexed :fields => [:name, :summary, :transmission, :diagnosis, :treatment, :statistics]
 
       validates :name, :presence => true, :uniqueness => true
     end
   end
 end
-Disease

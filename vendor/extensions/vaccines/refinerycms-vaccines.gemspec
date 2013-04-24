@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name              = 'refinerycms-vaccines'
   s.version           = '1.0'
   s.description       = 'Ruby on Rails Vaccines extension for Refinery CMS'
-  s.date              = '2013-04-11'
+  s.date              = '2013-04-24'
   s.summary           = 'Vaccines extension for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.md"]
