@@ -5,6 +5,12 @@ FactoryGirl.define do
     gender "male"
     parent
 
+    trait :with_setup do
+      after(:create) do |child, evaluator|
+        child.setup!
+      end
+    end
+
     trait :with_vaccinations do
       after(:create) do |child, evaluator|
         child.create_vaccinations!

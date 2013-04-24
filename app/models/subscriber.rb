@@ -2,11 +2,13 @@ class Subscriber < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :next_message_at
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :next_message_at, :first_name, :last_name, :zip_code
+
+  validates_presence_of :first_name, :last_name, :zip_code
 
   has_many :children, inverse_of: :parent, foreign_key: :parent_id
   has_many :subscriptions, through: :children
-  
+
   has_many :channels, dependent: :destroy
 
   has_many :email_channels, class_name: "Channel::Email", dependent: :destroy
@@ -19,7 +21,7 @@ class Subscriber < ActiveRecord::Base
   end
 
   def full_name
-    email
+    first_name + last_name
   end
 
   def update_next_message_date!
