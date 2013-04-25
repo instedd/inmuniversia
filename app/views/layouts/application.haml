@@ -7,16 +7,16 @@
   = render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/
   .wrapper
     .header
-      .container
+      .container-fluid
         = render '/refinery/header'
     .content
-      .container
+      .container-fluid
         - if content_for?(:topbar)
-          .row
+          .row-fluid.topbar
             .span12
               = yield(:topbar)
         = yield(:body).presence || yield
     .footer
-      .container
+      .container-fluid
         = render '/refinery/footer'
   = render '/refinery/javascripts'

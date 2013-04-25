@@ -1,8 +1,7 @@
 - content_for :topbar do
-  .row
+  .row-fluid
     .span3
-      %h1
-        = raw @vaccine.name
+      %h1= @vaccine.name
     .span9
       %ul#vaccines
         - @vaccines.each do |vaccine|
@@ -11,39 +10,34 @@
 
 - content_for :sidebar do
   %section
-    %h3 Enfermedad/es que previene
+    %h2 Enfermedad/es que previene
     %hr
     %ul#diseases
       - @vaccine.diseases.each do |disease|
         %li
           = link_to disease.name, refinery.vaccines_disease_path(disease)
   %section
-    %h3 Dosis
+    %h2 Dosis
     %hr
-    %p
-      = raw @vaccine.doses_info
+    = raw @vaccine.doses_info
   %section
-    %h3 Nombre comercial
+    %h2 Nombre comercial
     %hr
-    %p
-      = raw @vaccine.commercial_name
+    = raw @vaccine.commercial_name
 
 - content_for :content do
   %section
     %h2 Información general
-    %p
-      = raw @vaccine.general_info
+    = raw @vaccine.general_info
   %hr
   %section
     %h2 Recomendaciones
-    %p
-      = raw @vaccine.recommendations
+    = raw @vaccine.recommendations
   %hr
   %section
     %h2 Efectos secundarios
-    %p
-      = raw @vaccine.side_effects
+    = raw @vaccine.side_effects
+  %hr
   %section
     %h2 Más información
-    %p
-      = raw @vaccine.more_info
+    = raw @vaccine.more_info
