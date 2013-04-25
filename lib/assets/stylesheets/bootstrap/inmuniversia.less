@@ -11,10 +11,39 @@ ul {
   margin: 0;
   padding: 0;
 }
-
+.container-fluid {
+  padding: 0;
+}
 .header {
   .layout();
   height: 60px;
+
+  .navbar.top {
+
+    .btn.user {
+      color: #a2dfff;
+      text-shadow:none !important;
+      margin-top: -15px !important;
+    }
+
+    .nav.links {
+      float: right;
+      margin: -10px 0 0 0 !important;
+
+      li {
+
+        a {
+          font-size: 12px;
+          line-height: 17px;
+          padding: 5px 10px;
+          color: #a2dfff;
+          text-transform: uppercase;
+          text-shadow:none !important;
+        }
+      }
+    }
+  }
+
 }
 
 .content {
@@ -80,7 +109,7 @@ ul {
     p {
       line-height: 17px;
     }
-    
+
     p:empty {
       margin:0;
     }
@@ -100,4 +129,8 @@ ul {
 
 .footer {
   .layout();
+}
+
+.aright {
+  text-align: right !important;
 }

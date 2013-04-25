@@ -1,4 +1,30 @@
-%h1#logo
-  %a{:href => "Refinery::Core.site_name, refinery.root_path"}
-    %img{:src => "/assets/immuniversia-logo.png"}
-= render(:partial => "/refinery/menu", :locals => { :dom_id => 'menu', :css => 'menu' })                                                
+.navbar.top
+  .container-fluid
+    .row-fluid
+      .span3
+        %a.brand{href: root_path}
+          = image_tag '/assets/immuniversia-logo.png'
+      .span9.aright
+        - if current_subscriber
+          .row-fluid
+            .span12
+              .btn-group.account-settings
+                %a.btn.btn-link.user{"data-toggle" => "dropdown", href: "#"}
+                  = current_subscriber.email
+                %ul.dropdown-menu.black.settings
+                  %li 
+                    %a{href: "#"}Edit Account
+                  %li 
+                    %a{href: "#"}Sign Out
+          .row-fluid
+            .span12
+              %ul.nav.nav-pills.links
+                %li
+                  %a{:href => "#{root_path}"} 
+                    home
+                %li
+                  %a{:href => "#{diseases_path}"}
+                    enfermedades
+                %li
+                  %a{:href => "#{vaccines_path}"}
+                    vacunas
