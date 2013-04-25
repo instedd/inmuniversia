@@ -1,35 +1,39 @@
-- content_for :sidebar do
-  %h2 Enfermedades
-  %ul#diseases
-    - @diseases.each do |disease|
-      %li
-        = link_to disease.name, refinery.vaccines_disease_path(disease)
+- content_for :topbar do
+  .row-fluid
+    .span3
+      %h1= @disease.name
+    .span9
+      %ul#diseases
+      - @diseases.each do |disease|
+        %li
+          = link_to disease.name, refinery.vaccines_disease_path(disease)
 
-- content_for :content do
-  %h1= @disease.name
-  %section
-    %h1 Resumen
-    %p
-      = raw @disease.summary
-  %section
-    %h1 Transmisión
-    %p
-      = raw @disease.transmission
-  %section
-    %h1 Diagnóstico
-    %p
-      = raw @disease.diagnosis
-  %section
-    %h1 Tratamiento
-    %p
-      = raw @disease.treatment
-  %section
-    %h1 Estadísticas
-    %p
-      = raw @disease.statistics
+- content_for :sidebar do
   %section
     %h2 Vacunas que previenen esta enfermedad
+    %hr
     %ul#diseases
       - @disease.vaccines.each do |vaccine|
         %li
           = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
+
+- content_for :content do
+  %section
+    %h1 Resumen
+    = raw @disease.summary
+  %hr 
+  %section
+    %h1 Transmisión
+    = raw @disease.transmission
+  %hr
+  %section
+    %h1 Diagnóstico
+    = raw @disease.diagnosis
+  %hr
+  %section
+    %h1 Tratamiento
+    = raw @disease.treatment
+  %hr
+  %section
+    %h1 Estadísticas
+    = raw @disease.statistics

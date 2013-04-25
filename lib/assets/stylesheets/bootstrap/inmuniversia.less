@@ -2,15 +2,55 @@
 // Inmuniversia classes
 // --------------------------------------------------
 
+.layout {
+  width: 960px;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
+  .layout();
   height: 60px;
 }
-.content .container {
-  background: #f1f0f0;
-  .border-radius(6px);
+
+.content {
+  .layout();
+
+  .container-fluid {
+    background: #f1f0f0;
+    padding: 0 0 20px 0;
+    .border-radius(6px);
+  }
+}
+
+.topbar {
+  padding: 15px 0 0;
+
+  & > .span12 {
+    padding-bottom: 10px;
+  }
+
+  &:after {
+    content:'';
+    display: table;
+    #gradient > .vertical(#f6f6f6, #f1f0f0 );
+    height: 8px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 25px;
+    font-weight: normal;
+    margin-left: 15px;
+  }
 }
 
 .sidebar {
+
   section {
     .well();
     .box-shadow( 0 1px 2px rgba(0,0,0,.3));
@@ -18,11 +58,46 @@
     margin: 10px;
     padding: 10px;
 
+    h2 {
+      font-size: 16px;
+    }
+
+    h3 {
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: normal;
+      color: #03517a;
+      margin: 0;
+    }
+
     hr {
-      margin: 10px -10px;
+      margin: 6px -10px;
       #gradient > .vertical(#f1f0f0, #ffffff );
       height: 6px;
       border: none;
     }
+
+    p {
+      line-height: 17px;
+    }
+    
+    p:empty {
+      margin:0;
+    }
   }
+}
+
+.right-content {
+  margin-top: 15px;
+  padding-right: 30px;
+
+  hr {
+    border-top-color: #d1d0d0;
+    border-bottom: none;
+    margin: 30px 0;
+  }
+}
+
+.footer {
+  .layout();
 }
