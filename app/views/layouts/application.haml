@@ -11,6 +11,10 @@
         = render '/refinery/header'
     .content
       .container
+        - if content_for?(:topbar)
+          .row
+            .span12
+              = yield(:topbar)
         = yield(:body).presence || yield
     .footer
       .container
