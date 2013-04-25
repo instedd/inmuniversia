@@ -21,12 +21,12 @@
     %p
       = raw @vaccine.doses_info
   %section
-    %h3 Mas informacion
+    %h3 Más información
     %hr
     %p
       = raw @vaccine.more_info
   %section
-    %h3 Enfermedades que previene
+    %h3 Enfermedad/es que previene
     %hr
     %ul#diseases
       - @vaccine.diseases.each do |disease|
