@@ -17,7 +17,7 @@ class AgendaPresenter::YearSection < AgendaPresenter::Section
   end
 
   def date
-    Date.new(@year).strftime("%Y")
+    I18n.l(Date.new(@year), format: :year)
   end
 
 end
