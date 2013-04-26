@@ -22,7 +22,7 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
       # puts "Salvado correctamente"
     else
       # Manejar mejor este caso
-      redirect_to subscribers_mobile_configuration_url(:errors => "#{@channel.errors.messages}")
+      redirect_to subscribers_mobile_configuration_url(:errors => "#{@channel.errors.messages[:address][0]}")
     end
 
   end
