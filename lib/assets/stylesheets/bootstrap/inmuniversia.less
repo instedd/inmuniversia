@@ -24,6 +24,14 @@ ul {
       color: #a2dfff;
       text-shadow:none !important;
       margin-top: -15px !important;
+      &:focus, &:active, &:hover {
+        color: @white;
+        outline-offset:0 !important;
+        outline:0;
+        background-position:0 0 !important;
+        text-decoration: none !important;
+        .border-radius(0);
+      }
     }
 
     .nav.links {
@@ -39,6 +47,12 @@ ul {
           color: #a2dfff;
           text-transform: uppercase;
           text-shadow:none !important;
+        }
+
+        &.active a {
+          color: @white;
+          background: none;
+          .box-shadow(none);
         }
       }
     }
@@ -133,4 +147,21 @@ ul {
 
 .aright {
   text-align: right !important;
+}
+
+.static-bar.affix {
+  top: 0;
+  padding: 15px 0 0;
+  width: 960px;
+  background: #f1f0f0;
+  z-index: 2;
+  .box-shadow( 0 0 7px rgba(0,0,0,.5));
+
+  &:after {
+    content:'';
+    display: table;
+    #gradient > .vertical(#f6f6f6, #f1f0f0 );
+    height: 8px;
+    width: 100%;
+  }
 }
