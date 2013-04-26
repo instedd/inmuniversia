@@ -3,10 +3,17 @@
     .span3
       %h1= @disease.name
     .span9
-      %ul#diseases
-      - @diseases.each do |disease|
-        %li
-          = link_to disease.name, refinery.vaccines_disease_path(disease)
+      %ul.nav.nav-pills.info-bar
+        %li 
+          %a{:href => "#resumen", "data-toggle" => "tab"} Resumen
+        %li 
+          %a{:href => "#transmision", "data-toggle" => "tab"} Transmisión
+        %li 
+          %a{:href => "#diagnostico", "data-toggle" => "tab"} Diagnóstico
+        %li 
+          %a{:href => "#tratamiento", "data-toggle" => "tab"} Tratamiento
+        %li 
+          %a{:href => "#estadisticas", "data-toggle" => "tab"} Estadísticas
 
 - content_for :sidebar do
   %section
@@ -19,21 +26,26 @@
 
 - content_for :content do
   %section
+    %a{:name => "resumen"}
     %h1 Resumen
     = raw @disease.summary
   %hr 
   %section
+    %a{:name => "transmision"}
     %h1 Transmisión
     = raw @disease.transmission
   %hr
   %section
+    %a{:name => "diagnostico"}
     %h1 Diagnóstico
     = raw @disease.diagnosis
   %hr
   %section
+    %a{:name => "tratamiento"}
     %h1 Tratamiento
     = raw @disease.treatment
   %hr
   %section
+    %a{:name => "estadisticas"}
     %h1 Estadísticas
     = raw @disease.statistics
