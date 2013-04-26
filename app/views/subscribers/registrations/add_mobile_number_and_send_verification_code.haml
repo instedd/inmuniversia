@@ -1,0 +1,11 @@
+Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mensaje con un código. Por favor, ingresa ese código aquí para completar la configuración de tu teléfono
+%br
+%br
+= form_tag(subscribers_submit_verification_code_path) do
+  = hidden_field_tag :id, @channel.id
+  %div
+    = label_tag :codigo
+    = text_field :verification_code, ""
+  %div= submit_tag "Ok"
+
+= render "side_text"
