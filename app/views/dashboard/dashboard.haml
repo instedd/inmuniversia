@@ -6,6 +6,9 @@
 #new-child-form.collapse.out
   = render_new_child_form
 
+#agenda
+  = render_agenda(current_subscriber)
+
 #calendars
   - @children.each do |child|
     = render_calendar(child)

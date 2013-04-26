@@ -9,6 +9,11 @@ class Vaccination < ActiveRecord::Base
 
   has_many :reminders, dependent: :destroy
 
+  scope :planned, where(status: :planned)
+  scope :taken,   where(status: :taken)
+  scope :past,    where(status: :past)
+  scope :future,  where('status = ? OR status = ?', :planned, :taken)
+
   enumerize :status, in: %w(planned taken past), predicates: true, default: 'planned'
 
   timespanize :planned_age, unit_default: nil
@@ -25,10 +30,6 @@ class Vaccination < ActiveRecord::Base
       vaccination.vaccine ||= vaccination.dose.vaccine
     end
   end
-
-  scope :planned, where(status: :planned)
-  scope :taken,   where(status: :taken)
-  scope :past,    where(status: :past)
 
   def date
     taken_at || planned_date
