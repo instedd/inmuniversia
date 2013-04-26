@@ -42,7 +42,7 @@ class AgendaPresenter
   end
 
   def initialize_current_section
-    Section.new title: "Actuales"
+    Section.new title: "Este mes"
   end
 
   def section_for(vaccination)
