@@ -20,4 +20,8 @@ class AgendaPresenter::YearSection < AgendaPresenter::Section
     I18n.l(Date.new(@year), format: :year)
   end
 
+  def vaccination_date_format
+    @year == @today.year ? :short : :long
+  end
+
 end

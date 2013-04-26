@@ -6,7 +6,7 @@
     - section.vaccinations.each do |vaccination|
       %li
         El
-        = vaccination.date
+        = l(vaccination.date, format: section.vaccination_date_format)
         la dosis
         = vaccination.name
         de

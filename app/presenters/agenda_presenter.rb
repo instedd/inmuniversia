@@ -37,7 +37,7 @@ class AgendaPresenter
   end
 
   def build_past_section
-    Section.new title: "Vencidas",
+    PastSection.new title: "Vencidas",
       vaccinations: VaccinationPresenter.present(@subscriber.vaccinations.past.to_a.sort_by(&:planned_date))
   end
 

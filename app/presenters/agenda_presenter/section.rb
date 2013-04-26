@@ -21,4 +21,8 @@ class AgendaPresenter::Section
     nil
   end
 
+  def vaccination_date_format
+    :short
+  end
+
 end
