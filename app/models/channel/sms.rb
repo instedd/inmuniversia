@@ -1,7 +1,23 @@
 class Channel::Sms < Channel
 
+  validate :address_should_be_a_phone_number
+
   def do_send_reminders(reminders)
     response = nuntium.send_ao reminders.map{|r| message(r)}
+  end
+
+  def address_should_be_a_phone_number
+    errors.add(:address, "Debe ser un numero telefonico valido") if address.match /[^0-9 .-]/
+  end
+
+  def generate_verification_code
+    self.verification_code = rand(999999)
+  end
+
+  def send_verification_code
+    generate_verification_code
+    puts verification_code
+    p "implementar send_verification_code"
   end
 
   protected
