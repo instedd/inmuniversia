@@ -165,3 +165,20 @@ ul {
     width: 100%;
   }
 }
+
+.info-bar {
+  margin-top: 5px;
+
+  li {
+    a {
+      color: @grayDark;
+      padding: 3px 6px;
+      line-height: 14px;
+      .border-radius(3px);
+    }
+    &.active a {
+      background: #636262 !important;
+      color: @white;
+    }
+  }
+}
