@@ -1,0 +1,69 @@
+<%= form_for [refinery, :vaccines_admin, @vaccine] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @vaccine,
+              :include_object_name => true %>
+
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+
+  </div>
+
+  <%= render "shared/multiple_select_for_vaccine" , f: f %>
+
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:general_info, :commercial_name, :doses_info, :recommendations, :side_effects, :more_info].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/vaccines/vaccine", :default => part.to_s.titleize), "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+      <div id='page_part_editors'>
+        <% [:general_info, :commercial_name, :doses_info, :recommendations, :side_effects, :more_info].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='field'>
+    <%= f.label :published -%>
+    <%= f.check_box :published, :checked => @vaccine[:published]  -%>
+
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.vaccines.admin.vaccines.vaccine'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @vaccine.name) %>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
+
+  </div>
+
+
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>

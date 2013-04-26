@@ -1,0 +1,5 @@
+.channel.email
+  %h2 Email
+  = form_for email, remote: true, format: 'html' do |f|
+    = f.text_field :address
+    = f.submit
