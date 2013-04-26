@@ -3,10 +3,15 @@
     .span3
       %h1= @vaccine.name
     .span9
-      %ul#vaccines
-        - @vaccines.each do |vaccine|
-          %li
-            = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
+      %ul.nav.nav-pills.info-bar
+        %li 
+          %a{:href => "#informacion-general", "data-toggle" => "tab"} Información general
+        %li 
+          %a{:href => "#recomendaciones", "data-toggle" => "tab"} Recomendaciones
+        %li 
+          %a{:href => "#efectos-secundarios", "data-toggle" => "tab"} Efectos secundarios
+        %li 
+          %a{:href => "#mas-informacion", "data-toggle" => "tab"} Más información
 
 - content_for :sidebar do
   %section
@@ -27,17 +32,21 @@
 
 - content_for :content do
   %section
+    %a{:name => "informacion-general"}
     %h2 Información general
     = raw @vaccine.general_info
   %hr
   %section
+    %a{:name => "recomendaciones"}
     %h2 Recomendaciones
     = raw @vaccine.recommendations
   %hr
   %section
+    %a{:name => "efectos-secundarios"}
     %h2 Efectos secundarios
     = raw @vaccine.side_effects
   %hr
   %section
+    %a{:name => "mas-informacion"}
     %h2 Más información
     = raw @vaccine.more_info
