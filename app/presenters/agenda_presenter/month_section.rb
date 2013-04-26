@@ -13,6 +13,7 @@ class AgendaPresenter::MonthSection < AgendaPresenter::Section
   end
 
   def date
-    Date.new(@year, @month).strftime("%B %Y")
+    I18n.l(Date.new(@year, @month), format: :month_year).capitalize
   end
+
 end
