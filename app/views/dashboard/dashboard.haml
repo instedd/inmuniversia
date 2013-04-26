@@ -6,17 +6,26 @@
 #new-child-form.collapse.out
   = render_new_child_form
 
-#agenda
-  = render_agenda(current_subscriber)
+%hr
 
-#calendars
-  - @children.each do |child|
-    = render_calendar(child)
+%ul#dashboard-tabs.nav.nav-tabs
+  %li.active= link_to 'Calendarios', '#calendars', 'data-toggle' => 'tab'
+  %li= link_to 'Agenda', '#agenda', 'data-toggle' => 'tab'
 
-%br/
+#dashboard-tab-content.tab-content
+  
+  #calendars.tab-pane.active.in
+    - @children.each do |child|
+      = render_calendar(child)
+  
+  #agenda.tab-pane
+    = render_agenda(current_subscriber)
+
+
 %hr/
 
-%h1 Channels
+%h1 Canales
+%br/
 #channels
   = render_channels(current_subscriber, :email)
 
