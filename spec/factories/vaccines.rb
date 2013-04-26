@@ -14,6 +14,17 @@ FactoryGirl.define do
         end
       end
     end
+
+    trait :with_monthly_doses do
+      ignore { dose_count 3 }
+      ignore { first_dose_at 1 }
+      
+      after(:create) do |vaccine, evaluator|
+        evaluator.dose_count.times do |i|
+          create(:dose_by_age, age_value: (i + evaluator.first_dose_at), age_unit: 'month', vaccine: vaccine)
+        end
+      end
+    end
   
   end
 end

@@ -18,12 +18,6 @@
           .row-fluid
             .span12
               %ul.nav.nav-pills.links
-                %li
-                  %a{:href => "#{root_path}"} 
-                    home
-                %li
-                  %a{:href => "#{diseases_path}"}
-                    enfermedades
-                %li
-                  %a{:href => "#{vaccines_path}"}
-                    vacunas
+                = nav_link "inicio", current_subscriber ? dashboard_path : root_path, 'dashboard', 'home'
+                = nav_link "enfermedades", diseases_path, 'diseases'
+                = nav_link "vacunas", vaccines_path, 'vaccines'
