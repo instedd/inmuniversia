@@ -7,7 +7,7 @@ class Channel::Sms < Channel
   end
 
   def address_should_be_a_phone_number
-    errors.add(:address, "Debe ser un numero telefonico valido") if address.match /[^0-9 .-]/
+    errors.add(:address, "Debe ingresar un numero telefonico valido") if address.match /[^0-9 .-]/
   end
 
   def generate_verification_code
@@ -16,8 +16,7 @@ class Channel::Sms < Channel
 
   def send_verification_code
     generate_verification_code
-    puts verification_code
-    p "implementar send_verification_code"
+    p "Implementar send_verification_code. El codigo es:  #{verification_code}"
   end
 
   protected
