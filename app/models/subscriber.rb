@@ -8,6 +8,7 @@ class Subscriber < ActiveRecord::Base
 
   has_many :children, inverse_of: :parent, foreign_key: :parent_id
   has_many :subscriptions, through: :children
+  has_many :vaccinations, through: :children
 
   has_many :channels, dependent: :destroy
 
