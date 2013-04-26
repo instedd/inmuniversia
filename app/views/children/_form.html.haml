@@ -1,0 +1,11 @@
+%h3 Nuevo hijo
+
+= form_for child, builder: BootstrapFormBuilder, remote: true, html: {class: 'form-inline '} do |f|
+  
+  = f.text_field :name, placeholder: "Nombre"
+  = f.text_field :date_of_birth, class: 'datepicker', placeholder: "Fecha de nacimiento"
+  = f.select :gender, Child.gender.options, include_blank: "Sexo"
+  
+  = f.actions do
+    = f.submit 'Agregar hijo', class: 'btn btn-primary'
+    = link_to "Cancelar", '#', id: 'cancel-add-new-child', class: 'btn'

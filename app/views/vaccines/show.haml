@@ -1,0 +1,43 @@
+- content_for :topbar do
+  .row-fluid.static-bar{"data-offset-top" => "65", "data-spy" => "affix"}
+    .span3
+      %h1= @vaccine.name
+    .span9
+      %ul#vaccines
+        - @vaccines.each do |vaccine|
+          %li
+            = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
+
+- content_for :sidebar do
+  %section
+    %h2 Enfermedad/es que previene
+    %hr
+    %ul#diseases
+      - @vaccine.diseases.each do |disease|
+        %li
+          = link_to disease.name, refinery.vaccines_disease_path(disease)
+  %section
+    %h2 Dosis
+    %hr
+    = raw @vaccine.doses_info
+  %section
+    %h2 Nombre comercial
+    %hr
+    = raw @vaccine.commercial_name
+
+- content_for :content do
+  %section
+    %h2 Información general
+    = raw @vaccine.general_info
+  %hr
+  %section
+    %h2 Recomendaciones
+    = raw @vaccine.recommendations
+  %hr
+  %section
+    %h2 Efectos secundarios
+    = raw @vaccine.side_effects
+  %hr
+  %section
+    %h2 Más información
+    = raw @vaccine.more_info

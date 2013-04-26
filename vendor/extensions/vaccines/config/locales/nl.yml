@@ -1,0 +1,68 @@
+nl:
+  refinery:
+    plugins:
+      diseases:
+        title: Diseases
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        diseases:
+          actions:
+            create_new: Maak een nieuwe Disease
+            reorder: Wijzig de volgorde van de Diseases
+            reorder_done: Klaar met het wijzingen van de volgorde van de Diseases
+          records:
+            title: Diseases
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Diseases. Druk op 'Maak een nieuwe Disease'
+              om de eerste aan te maken.
+          disease:
+            view_live_html: Bekijk deze disease op de website <br/><em>(opent een
+              nieuw venster)</em>
+            edit: Bewerk deze disease
+            delete: Verwijder deze disease voor eeuwig
+        vaccines:
+          actions:
+            create_new: Maak een nieuwe Vaccine
+            reorder: Wijzig de volgorde van de Vaccines
+            reorder_done: Klaar met het wijzingen van de volgorde van de Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Vaccines. Druk op 'Maak een nieuwe Vaccine'
+              om de eerste aan te maken.
+          vaccine:
+            view_live_html: Bekijk deze vaccine op de website <br/><em>(opent een
+              nieuw venster)</em>
+            edit: Bewerk deze vaccine
+            delete: Verwijder deze vaccine voor eeuwig
+      diseases:
+        show:
+          other: Andere Diseases
+      vaccines:
+        show:
+          other: Andere Vaccines
+  activerecord:
+    attributes:
+      refinery/vaccines/disease:
+        name: Name
+        summary: Summary
+        transmission: Transmission
+        diagnosis: Diagnosis
+        treatment: Treatment
+        statistics: Statistics
+        published: Published
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+      refinery/vaccines/vaccine:
+        name: Name
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published
