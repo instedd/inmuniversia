@@ -15,24 +15,24 @@
             %a{:href => "#more_info"} Más información
 
 - content_for :sidebar do
-  %section
+  %section.white
     %h2 Enfermedad/es que previene
     %hr
     %ul#diseases
       - @vaccine.diseases.each do |disease|
         %li
           = link_to disease.name, refinery.vaccines_disease_path(disease)
-  %section
+  %section.white
     %h2 Dosis
     %hr
     = raw @vaccine.doses_info
-  %section
+  %section.white
     %h2 Nombre comercial
     %hr
     = raw @vaccine.commercial_name
 
 - content_for :content do
-  .public-content
+  .public-contents
     = section("Información general", :general_info, @vaccine)
     = section("Recomendaciones", :recommendations, @vaccine)
     = section("Efectos secundarios", :side_effects, @vaccine)
