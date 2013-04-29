@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Channel::Sms < Channel
 
   validate :address_should_be_a_phone_number
@@ -15,8 +17,10 @@ class Channel::Sms < Channel
   end
 
   def send_verification_code
-    generate_verification_code
-    p "Implementar send_verification_code. El codigo es:  #{verification_code}"
+    generate_verification_code.tap do |code|
+      puts "Verification code is: #{code}" if Rails.env.development?
+      nuntium.send_ao message("Su código de verificación en Inmuniversia es: #{code}")
+    end
   end
 
   protected
@@ -31,8 +35,9 @@ class Channel::Sms < Channel
     return Nuntium.new(n.url, n.account, n.application, n.password)
   end
 
-  def message(reminder)
-    {from: "sms://#{Settings.nuntium.sms_from}", to: "sms://#{normalized_address}", body: body_for(reminder)}
+  def message(reminder_or_text)
+    body = reminder_or_text.is_a?(String) ? reminder_or_text : body_for(reminder_or_text)
+    {from: "sms://#{Settings.nuntium.sms_from}", to: "sms://#{normalized_address}", body: body}
   end
 
   def body_for(reminder)
