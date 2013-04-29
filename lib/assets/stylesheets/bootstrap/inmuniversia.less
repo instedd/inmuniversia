@@ -95,11 +95,6 @@ ul {
 .sidebar {
 
   section {
-    .well();
-    .box-shadow( 0 1px 2px rgba(0,0,0,.3));
-    background: @white;
-    margin: 10px;
-    padding: 10px;
 
     h2 {
       font-size: 16px;
@@ -131,7 +126,6 @@ ul {
 }
 
 .right-content {
-  margin-top: 15px;
   padding-right: 30px;
 
   hr {
@@ -139,10 +133,48 @@ ul {
     border-bottom: none;
     margin: 30px 0;
   }
+
+   section {
+
+    &:first-child h1 {
+      margin-top:30px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    hr {
+      margin: 10px -10px;
+    }
+  }
 }
 
 .footer {
   .layout();
+}
+
+
+section {
+
+    &.white {
+      .well();
+      background: @white;
+      margin: 10px;
+      padding: 10px;
+      .box-shadow( 0 1px 2px rgba(0,0,0,.3));
+    }
+
+    &.trans {
+      background: none;
+      margin: 10px;
+      padding: 10px;
+      .box-shadow( 0 1px 2px rgba(0,0,0,.3));
+
+      input[type=text] {
+        background: none;
+      }
+    }
 }
 
 .aright {
@@ -183,7 +215,6 @@ ul {
   }
 }
 
-
 .alphabet-list {
 
   section {
@@ -195,5 +226,22 @@ ul {
 
   li {
     padding: 0 0 10px 0;
+  }
+}
+.tab-content {
+  overflow: visible;
+}
+
+.dashboard-tabs {
+  text-align: right;
+  padding-right: 20px;
+
+  a {
+    color: @grayDark;
+
+    &:hover {
+      color:@black;
+      text-decoration:none;
+    }
   }
 }
