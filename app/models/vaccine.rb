@@ -1,0 +1,1 @@
+Vaccine = Refinery::Vaccines::Vaccine

@@ -1,0 +1,26 @@
+- content_for :topbar do
+  .row-fluid
+    .span3
+      %h1 Mi Cuenta
+    .span9
+      #add-new-child
+        = link_to 'Agregar hijo', '#'
+      #new-child-form.collapse.out
+        = render_new_child_form
+
+      %ul#dashboard-tabs.nav.nav-tabs.pull-right
+        %li.active= link_to 'Calendarios', '#calendars', 'data-toggle' => 'tab'
+        %li= link_to 'Agenda', '#agenda', 'data-toggle' => 'tab'
+
+- content_for :sidebar do
+  %section
+    = render_channels(current_subscriber, :email)
+
+- content_for :content do
+  #dashboard-tab-content.tab-content
+    #calendars.tab-pane.active.in
+      - @children.each do |child|
+        = render_calendar(child)
+    
+    #agenda.tab-pane
+      = render_agenda(current_subscriber)

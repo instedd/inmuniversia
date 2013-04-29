@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @child.name
+%p
+  %b Date of birth:
+  = @child.date_of_birth
+%p
+  %b Gender:
+  = @child.gender
+
+= link_to 'Edit', edit_child_path(@child)
+\|
+= link_to 'Back', children_path

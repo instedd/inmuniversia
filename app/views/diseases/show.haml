@@ -1,0 +1,34 @@
+- content_for :topbar do
+  .row-fluid.static-bar{"data-offset-top" => "65", "data-spy" => "affix"}
+    .span3
+      %h1= @disease.name
+    .span9
+      #sections-bar
+        %ul.nav.nav-pills.info-bar
+          %li 
+            %a{:href => "#summary"} Resumen
+          %li 
+            %a{:href => "#transmission"} Transmisión
+          %li 
+            %a{:href => "#diagnosis"} Diagnóstico
+          %li 
+            %a{:href => "#treatment"} Tratamiento
+          %li 
+            %a{:href => "#statistics"} Estadísticas
+
+- content_for :sidebar do
+  %section
+    %h2 Vacunas que previenen esta enfermedad
+    %hr
+    %ul#diseases
+      - @disease.vaccines.each do |vaccine|
+        %li
+          = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
+
+- content_for :content do
+  .public-content
+    = section("Resumen",      :summary,      @disease)
+    = section("Transmisión",  :transmission, @disease)
+    = section("Diagnóstico",  :diagnosis,    @disease)
+    = section("Tratamiento",  :treatment,    @disease)
+    = section("Estadísticas", :statistics,   @disease)
