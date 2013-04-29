@@ -2,7 +2,7 @@
 = render '/refinery/html_tag'
 - site_bar = render('/refinery/site_bar', :head => true)
 = render '/refinery/head'
-%body
+= body_tag do
   = site_bar # This is the only section we do need to keep
   = render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/
   .wrapper

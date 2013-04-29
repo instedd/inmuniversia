@@ -3,6 +3,7 @@ class VaccinesController < ApplicationController
   before_filter :load_vaccines
 
   layout 'sidebar', only: :show
+  set_body_class 'public-content'
 
   def index
   end

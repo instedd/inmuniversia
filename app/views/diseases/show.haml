@@ -3,17 +3,18 @@
     .span3
       %h1= @disease.name
     .span9
-      %ul.nav.nav-pills.info-bar
-        %li 
-          %a{:href => "#resumen", "data-toggle" => "tab"} Resumen
-        %li 
-          %a{:href => "#transmision", "data-toggle" => "tab"} Transmisión
-        %li 
-          %a{:href => "#diagnostico", "data-toggle" => "tab"} Diagnóstico
-        %li 
-          %a{:href => "#tratamiento", "data-toggle" => "tab"} Tratamiento
-        %li 
-          %a{:href => "#estadisticas", "data-toggle" => "tab"} Estadísticas
+      #sections-bar
+        %ul.nav.nav-pills.info-bar
+          %li 
+            %a{:href => "#summary"} Resumen
+          %li 
+            %a{:href => "#transmission"} Transmisión
+          %li 
+            %a{:href => "#diagnosis"} Diagnóstico
+          %li 
+            %a{:href => "#treatment"} Tratamiento
+          %li 
+            %a{:href => "#statistics"} Estadísticas
 
 - content_for :sidebar do
   %section
@@ -25,27 +26,9 @@
           = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
 
 - content_for :content do
-  %section
-    %a{:name => "resumen"}
-    %h1 Resumen
-    = raw @disease.summary
-  %hr 
-  %section
-    %a{:name => "transmision"}
-    %h1 Transmisión
-    = raw @disease.transmission
-  %hr
-  %section
-    %a{:name => "diagnostico"}
-    %h1 Diagnóstico
-    = raw @disease.diagnosis
-  %hr
-  %section
-    %a{:name => "tratamiento"}
-    %h1 Tratamiento
-    = raw @disease.treatment
-  %hr
-  %section
-    %a{:name => "estadisticas"}
-    %h1 Estadísticas
-    = raw @disease.statistics
+  .public-content
+    = section("Resumen",      :summary,      @disease)
+    = section("Transmisión",  :transmission, @disease)
+    = section("Diagnóstico",  :diagnosis,    @disease)
+    = section("Tratamiento",  :treatment,    @disease)
+    = section("Estadísticas", :statistics,   @disease)
