@@ -22,6 +22,9 @@ Inmuniversia::Application.routes.draw do
 
   resources :channel_emails, only: [:create, :update, :destroy]
 
+  # Update preferences for a subscriber
+  put '/settings/preferences' => 'settings#update_preferences', as: 'preferences'
+
   # Home page for logged in subscribers
   get '/dashboard' => 'dashboard#index', as: 'dashboard'
 
