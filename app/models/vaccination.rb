@@ -14,7 +14,7 @@ class Vaccination < ActiveRecord::Base
   scope :past,    where(status: :past)
   scope :future,  where('status = ? OR status = ?', :planned, :taken)
 
-  enumerize :status, in: %w(planned taken past), predicates: true, default: 'planned'
+  enumerize :status, in: %w(planned taken past cancelled), predicates: true, default: 'planned'
 
   timespanize :planned_age, unit_default: nil
 
