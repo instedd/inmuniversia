@@ -1,0 +1,12 @@
+= "Bienvenido! Ya tenes tu cuenta en Inmuniversia. Te enviamos un email a #{@email} para que confirmes tu dirección."
+
+Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o registrar vacunaciones de tus hijos en Inmuniversia, ingresá el número aquí:
+
+= form_for(@channel, :url => subscribers_add_mobile_number_and_send_verification_code_path) do |f|
+  - if @errors
+    = @errors
+  %div
+    = f.text_field :address
+  %div= f.submit "Ok"
+
+= render "side_text"

@@ -1,0 +1,68 @@
+es:
+  refinery:
+    plugins:
+      diseases:
+        title: Diseases
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        diseases:
+          actions:
+            create_new: Crear nuevo disease
+            reorder: Reordenar diseases
+            reorder_done: Reordenación de diseases completada
+          records:
+            title: Diseases
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay diseases todavía. Pulsa en "Crear nuevo Disease"
+              para crear tu primer disease.
+          disease:
+            view_live_html: Ver este disease como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este disease
+            delete: Borrar este disease para siempre
+        vaccines:
+          actions:
+            create_new: Crear nuevo vaccine
+            reorder: Reordenar vaccines
+            reorder_done: Reordenación de vaccines completada
+          records:
+            title: Vaccines
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay vaccines todavía. Pulsa en "Crear nuevo Vaccine"
+              para crear tu primer vaccine.
+          vaccine:
+            view_live_html: Ver este vaccine como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este vaccine
+            delete: Borrar este vaccine para siempre
+      diseases:
+        show:
+          other: Otros diseases
+      vaccines:
+        show:
+          other: Otros vaccines
+  activerecord:
+    attributes:
+      refinery/vaccines/disease:
+        name: Name
+        summary: Summary
+        transmission: Transmission
+        diagnosis: Diagnosis
+        treatment: Treatment
+        statistics: Statistics
+        published: Published
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+      refinery/vaccines/vaccine:
+        name: Name
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published

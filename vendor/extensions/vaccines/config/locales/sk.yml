@@ -1,0 +1,66 @@
+sk:
+  refinery:
+    plugins:
+      diseases:
+        title: Diseases
+      vaccines:
+        title: Vaccines
+    vaccines:
+      admin:
+        diseases:
+          actions:
+            create_new: Pridať Disease
+            reorder: Preusporiadať Diseases
+            reorder_done: Koniec radenia Diseases
+          records:
+            title: Diseases
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Diseases. Kliknite na "Pridať Disease"
+              pre pridanie prvého disease.
+          disease:
+            view_live_html: Zobraziť náhľad disease<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť disease
+            delete: Zmazať disease
+        vaccines:
+          actions:
+            create_new: Pridať Vaccine
+            reorder: Preusporiadať Vaccines
+            reorder_done: Koniec radenia Vaccines
+          records:
+            title: Vaccines
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Vaccines. Kliknite na "Pridať Vaccine"
+              pre pridanie prvého vaccine.
+          vaccine:
+            view_live_html: Zobraziť náhľad vaccine<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť vaccine
+            delete: Zmazať vaccine
+      diseases:
+        show:
+          other: Daľšie Diseases
+      vaccines:
+        show:
+          other: Daľšie Vaccines
+  activerecord:
+    attributes:
+      refinery/vaccines/disease:
+        name: Name
+        summary: Summary
+        transmission: Transmission
+        diagnosis: Diagnosis
+        treatment: Treatment
+        statistics: Statistics
+        published: Published
+        incidence_info: Incidence Info
+        geographical_distribution: Geographical Distribution
+        high_risk_groups: High Risk Groups
+        rate_info: Rate Info
+      refinery/vaccines/vaccine:
+        name: Name
+        general_info: General Info
+        commercial_name: Commercial Name
+        doses_info: Doses Info
+        recommendations: Recommendations
+        side_effects: Side Effects
+        more_info: More Info
+        published: Published

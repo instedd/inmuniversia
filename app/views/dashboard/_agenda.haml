@@ -1,0 +1,19 @@
+- agenda.sections.each do |section|
+  %section.white
+    %h2= section.title
+    %hr
+    //%span= section.date
+    
+    %ul
+      - section.vaccinations.each do |vaccination|
+        %li
+          El
+          = l(vaccination.date, format: section.vaccination_date_format)
+          la dosis
+          = vaccination.name
+          de
+          = vaccination.vaccine_name
+          para
+          = vaccination.child_name
+          \:
+          = vaccination.status
