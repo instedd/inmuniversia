@@ -1,5 +1,9 @@
 class VaccinationPresenter
-  delegate :id, :date, :status, to: :@vaccination
+  delegate :id, :status, to: :@vaccination
+
+  def date
+    Date.new(@vaccination.date.year, @vaccination.date.month, @vaccination.date.day)
+  end
 
   def child_name
     @vaccination.child.name

@@ -14,11 +14,11 @@ $('.dashboard-tabs button').on 'shown', (evt) ->
 
 
 # Update vaccination status on dropdown click
-$('body.dashboard').on 'click', '.vaccination-status .dropdown-menu li a', (evt)->
+$('body.dashboard').on 'click', '.vaccination-status .dropdown-menu li a', (evt) ->
   evt.preventDefault()
   
-  dropdown = $(@).closest('.vaccination-status').loading(true, 200)
   entry = $(@).closest('.agenda-entry')
+  dropdown = $(@).closest('.vaccination-status').loading(true, 200)
   
   $.ajax
     url: vaccination_path(id: entry.data('vaccination-id'))
@@ -29,6 +29,26 @@ $('body.dashboard').on 'click', '.vaccination-status .dropdown-menu li a', (evt)
       render: 'agenda'
       date_format: entry.data('date-format')
     success: (content) =>
-      entry.html(content)
+      entry.html(content).setupComponents()
     error: =>
       dropdown.loading(false)
+
+
+# Handle date picker date change
+$('body.dashboard').on 'changeDate', 'a.ux-datepicker', (evt) ->
+  $(@).datepicker('hide')
+  $(@).loading(true, 200)
+  entry = $(@).closest('.agenda-entry')
+  
+  $.ajax
+    url: vaccination_path(id: entry.data('vaccination-id'))
+    type: 'PUT'
+    dataType: 'html'
+    data: 
+      vaccination: { taken_at: evt.date } 
+      render: 'agenda'
+      date_format: entry.data('date-format')
+    success: (content) =>
+      entry.html(content).setupComponents()
+    error: =>
+      $(@).loading(false)
