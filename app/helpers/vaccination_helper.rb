@@ -9,4 +9,8 @@ module VaccinationHelper
     render 'vaccinations/agenda_entry', vaccination: vaccination, date_format: section.vaccination_date_format
   end
 
+  def vaccination_status_icon(status)
+    content_tag :i, '', class: "st-#{status}"
+  end
+
 end
