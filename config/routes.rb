@@ -22,6 +22,8 @@ Inmuniversia::Application.routes.draw do
 
   resources :channel_emails, only: [:create, :update, :destroy]
 
+  resources :vaccinations, only: :update
+
   # Update preferences for a subscriber
   put '/settings/preferences' => 'settings#update_preferences', as: 'preferences'
 

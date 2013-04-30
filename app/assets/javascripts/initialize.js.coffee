@@ -1,0 +1,1 @@
+jQuery.extend(window, Routes)

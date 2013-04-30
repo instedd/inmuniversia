@@ -5,8 +5,4 @@
     
     %ul
       - section.vaccinations.each do |vaccination|
-        %li
-          = render_vaccination_status(vaccination)
-          = "#{vaccination.name} de #{vaccination.vaccine_name} a #{vaccination.child_name}"
-          = l(vaccination.date, format: section.vaccination_date_format) if vaccination.status.taken?
-          
+        %li= render_agenda_entry(vaccination, section: section)

@@ -1,6 +1,7 @@
 class DashboardController < AuthenticatedController
 
   layout 'sidebar'
+  set_body_class 'dashboard'
   
   def index
     @children = current_subscriber.children

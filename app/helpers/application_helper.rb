@@ -5,7 +5,7 @@ module ApplicationHelper
       when 'public-content'
         {'data-spy' => 'scroll', 'data-target' => '#sections-bar', 'data-offset' => 120}
       else
-        Hash.new 
+        {'class' => @body_class}
       end
     
     content_tag :body, attrs do
