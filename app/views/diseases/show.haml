@@ -26,7 +26,7 @@
           = link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine)
 
 - content_for :content do
-  .public-content
+  .public-content.bullets
     = section("Resumen",      :summary,      @disease)
     = section("Transmisión",  :transmission, @disease)
     = section("Diagnóstico",  :diagnosis,    @disease)

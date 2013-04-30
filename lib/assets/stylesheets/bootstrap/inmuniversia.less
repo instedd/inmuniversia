@@ -137,7 +137,7 @@ ul {
    section {
 
     &:first-child h1 {
-      margin-top:30px;
+      margin-top:15px;
     }
 
     h2 {
@@ -156,19 +156,17 @@ ul {
 
 
 section {
+    margin: 10px 0 10px 10px;
+    padding: 10px;
 
     &.white {
       .well();
       background: @white;
-      margin: 10px;
-      padding: 10px;
       .box-shadow( 0 1px 2px rgba(0,0,0,.3));
     }
 
     &.trans {
       background: none;
-      margin: 10px;
-      padding: 10px;
       .box-shadow( 0 1px 2px rgba(0,0,0,.3));
 
       input[type=text] {
@@ -245,3 +243,154 @@ section {
     }
   }
 }
+
+.public-contents.bullets {
+  li {
+    list-style: disc;
+    list-style-position: inside;
+  }
+}
+
+
+
+/*table {
+  .table();
+  .table-bordered();
+  .table-condensed();
+  .box-shadow( 0 1px 5px rgba(0,0,0,.15));
+  thead {};
+  background:@white;
+  margin:10px 0;
+}*/
+
+.table {
+  .table-bordered();
+  .table-condensed();
+  .box-shadow( 0 1px 5px rgba(0,0,0,.15));
+  background:@white;
+  margin: 10px;
+  tr {
+
+    th {
+      border-left-width: 0px;
+      line-height: 2.2em;
+      padding-bottom: .2em;
+      position: relative;
+      z-index: 1;
+      .box-shadow( 0 6px 9px rgba(0,0,0,.1));
+
+      &:first-child {
+        border-left-width: 1px;
+      }
+
+      select {
+        margin-bottom: 0px;
+      }
+
+      h3, h3 small {
+        color: #4ca300;
+      }
+    }
+
+    td {
+      border-left-width: 0px;
+      border-top-width: 0px;
+      border-bottom: 1px solid @grayLighter;
+      line-height: 1.2em;
+      height: 2.2em;
+      vertical-align: middle;
+
+      &:first-child {
+        border-left-width: 1px;
+      }
+      
+      &.disease {
+        font-size: 14px;
+        color: #03517A;
+        text-align: right;
+        width: 28%;
+
+        span {
+          font-size: 75%;
+          color: @grayLight;
+          display: block;
+        }
+      }
+      i {
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 15px;
+        vertical-align: text-top;
+        background-image: url("../ic-statuses.png");
+        background-position: 0 20px;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+      }
+      &.taken i {
+        background-position: 0  0;
+      }   
+      &.planned i {
+        background-position: -20px 0;
+      }   
+      &.past i {
+        background-position: -40px 0;
+      }   
+      &.cancelled i {
+        background-position: -60px 0;
+      }   
+    }
+    
+    &:hover {
+      td {
+        background: #f3f3f3;
+      }
+    }
+  }
+  
+  tfoot {
+    font-size: 12px;
+    
+    tr {
+
+      td {
+        height: 1em;
+        padding: 2px 5px;
+        color: #a3a3a3; 
+        text-align: center;
+        line-height: 0.8em;
+        border-bottom: none;
+
+      }
+
+      &.blue td {
+        color: #03517A;
+      }
+
+      &:hover td {
+        background: inherit;
+      }
+    } 
+  }
+}
+
+
+//----------Sprites----------
+@iconSpritePath-Inmuniversia:     "../ic-statuses.png";
+
+[class^="st-"],
+[class*=" st-"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 15px;
+  vertical-align: text-top;
+  background-image: url("@{iconSpritePath-Inmuniversia}");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+
+.st-taken               { background-position: 0      0; }
+.st-planned             { background-position: -20px  0; }
+.st-past                { background-position: -40px  0; }
+.st-cancelled           { background-position: -60px  0; }

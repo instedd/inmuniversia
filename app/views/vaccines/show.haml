@@ -32,7 +32,7 @@
     = raw @vaccine.commercial_name
 
 - content_for :content do
-  .public-contents
+  .public-contents.bullets
     = section("Información general", :general_info, @vaccine)
     = section("Recomendaciones", :recommendations, @vaccine)
     = section("Efectos secundarios", :side_effects, @vaccine)

@@ -1,29 +1,34 @@
-%h2= calendar.child.name
-%span= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
-%table.table.table-bordered
+%table.table
   %thead
     %tr
-      %th
-      - calendar.timespans.each do |timespan|
-        %th= timespan.age_description
-    %tr
-      %th
-      - calendar.timespans.each do |timespan|
-        %th= timespan.year
-    %tr
-      %th
-      - calendar.timespans.each do |timespan|
-        %th= timespan.month_name
+      %th(colspan="6")
+        %h3
+          = calendar.child.name
+          %small= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
+
   %tbody
     - calendar.vaccines.each do |vaccine|
       %tr
-        %th
+        %td.disease
           = vaccine.name
-          = vaccine.diseases_list
+          %span
+            = vaccine.diseases_list
         - calendar.vaccinations_for(vaccine).each do |vaccination|
-          %td
-            - if vaccination
-              = vaccination.name
-              = vaccination.status
+          %td{class: (vaccination.status if vaccination)}
+            %i
+
+  %tfoot
+    %tr.blue
+      %td
+      - calendar.timespans.each do |timespan|
+        %td= timespan.month_name
+    %tr.blue
+      %td
+      - calendar.timespans.each do |timespan|
+        %td= timespan.year
+    %tr
+      %td
+      - calendar.timespans.each do |timespan|
+        %td= timespan.age_description
 
 
