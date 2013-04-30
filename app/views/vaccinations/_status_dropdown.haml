@@ -1,5 +1,8 @@
-.dropdown.vaccination-status
-  = link_to vaccination.status.text, '#', class: "dropdown-toggle vaccination-#{vaccination.status}", 'data-toggle' => 'dropdown'
+.dropdown.vaccination-status.inline
+  = link_to '#', class: "dropdown-toggle", 'data-toggle' => 'dropdown' do
+    = vaccination_status_icon(vaccination.status)
   %ul.dropdown-menu{role: 'menu'}
     - Vaccination.status.options.each do |label, value|
-      %li= link_to label, '#', 'class' => "vaccination-#{vaccination.status}", 'data-vaccination-status' => value
+      %li
+        = vaccination_status_icon(value)
+        = link_to label, '#', 'data-vaccination-status' => value
