@@ -6,18 +6,7 @@
     %ul
       - section.vaccinations.each do |vaccination|
         %li
-          El
-          = l(vaccination.date, format: section.vaccination_date_format)
-          la dosis
-          = vaccination.name
-          de
-          = vaccination.vaccine_name
-          para
-          = vaccination.child_name
-          \:
-          .dropdown
-            = link_to vaccination.status.text, '#', class: "dropdown-toggle vaccination-#{vaccination.status}", 'data-toggle' => 'dropdown'
-            %ul.dropdown-menu{role: 'menu'}
-              - Vaccination.status.options.each do |label, value|
-                %li= link_to label, '#', 'class' => "vaccination-#{vaccination.status}",'data-vaccination-status' => value
-
+          = render_vaccination_status(vaccination)
+          = "#{vaccination.name} de #{vaccination.vaccine_name} a #{vaccination.child_name}"
+          = l(vaccination.date, format: section.vaccination_date_format) if vaccination.status.taken?
+          
