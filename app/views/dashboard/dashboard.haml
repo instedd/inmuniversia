@@ -11,18 +11,18 @@
         = render_new_child_form
     .span4.dashboard-tabs
       .btn-group{'data-toggle' => 'buttons-radio'}
-        %button.active.btn= link_to 'Calendario', '#calendars', 'data-toggle' => 'tab'
-        %button.btn= link_to 'Agenda', '#agenda', 'data-toggle' => 'tab'
-
+        = tab_button 'Calendario', 'calendars', active: @active_tab == 'calendars'
+        = tab_button 'Agenda', 'agenda', active: @active_tab == 'agenda'
+        
 - content_for :sidebar do
   %section.trans
     = render_channels(current_subscriber, :email)
 
 - content_for :content do
   #dashboard-tab-content.tab-content
-    #calendars.tab-pane.active.in
+    = tab_pane id: 'calendars', active: @active_tab == 'calendars' do
       - @children.each do |child|
         = render_calendar(child)
     
-    #agenda.tab-pane
+    = tab_pane id: 'agenda', active: @active_tab == 'agenda' do
       = render_agenda(current_subscriber)
