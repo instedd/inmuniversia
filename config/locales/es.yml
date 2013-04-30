@@ -199,3 +199,10 @@ es:
   activerecord:
     errors:
       <<: *errors
+  enumerize:
+    vaccination:
+      status:
+        planned: "Planeada"
+        taken: "Aplicada"
+        past: "Vencida"
+        cancelled: "Cancelada"
