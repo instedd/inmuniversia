@@ -4,6 +4,8 @@ class Subscriber < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :next_message_at, :first_name, :last_name, :zip_code
 
+  serialize :preferences, Hash
+
   validates_presence_of :first_name, :last_name, :zip_code
 
   has_many :children, inverse_of: :parent, foreign_key: :parent_id
