@@ -11,8 +11,9 @@
       %tr
         %td.disease
           = vaccine.name
-          %span
-            = vaccine.diseases_list
+          - unless vaccine.diseases_list.blank?
+            %span
+              = vaccine.diseases_list
         - calendar.vaccinations_for(vaccine).each do |vaccination|
           %td{class: (vaccination.status if vaccination)}
             %i
