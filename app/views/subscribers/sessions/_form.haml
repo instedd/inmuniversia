@@ -1,15 +1,21 @@
-%h2 Login
+%legend Login
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    = f.email_field :email
-  %div
-    = f.label :password
-    = f.password_field :password
+  .control-group
+    .controls
+      = f.label 'usuario'
+      = f.email_field :email
+  .control-group
+    .controls
+      = f.label 'contraseña'
+      = f.password_field :password
   - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Sign in"
+    .control-group
+      .controls.inline
+        %label.checkbox
+          = f.check_box :remember_me
+          Remember me
+  .control-group
+    .controls
+      = f.submit "Ingresar", :class => 'btn btn-link'
 = render "devise/links"
