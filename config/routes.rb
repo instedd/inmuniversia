@@ -5,7 +5,8 @@ Inmuniversia::Application.routes.draw do
 
   # Application users
   devise_for :subscribers, controllers: {
-    registrations: 'subscribers/registrations'
+    registrations: 'subscribers/registrations',
+    sessions: 'subscribers/sessions'
   }
 
   devise_scope :subscriber do

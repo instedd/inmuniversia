@@ -6,4 +6,13 @@ class ApplicationController < ActionController::Base
       @body_class = klazz
     end
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Subscriber)
+      dashboard_path
+    else
+      refinery.admin_dashboard_path
+    end
+  end
+
 end
