@@ -4,5 +4,6 @@
   %ul.dropdown-menu{role: 'menu'}
     - Vaccination.status.options.each do |label, value|
       %li
-        = vaccination_status_icon(value)
-        = link_to label, '#', 'data-vaccination-status' => value
+        %a{:href => "#", "data-vaccination-status" => value }
+          = vaccination_status_icon(value)
+          = value
