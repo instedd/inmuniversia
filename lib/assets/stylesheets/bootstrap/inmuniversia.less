@@ -295,7 +295,7 @@ section {
     td {
       border-left-width: 0px;
       border-top-width: 0px;
-      border-bottom: 1px solid @grayLighter;
+      border-bottom: 1px solid #DDDDDD;
       line-height: 1.2em;
       height: 2.2em;
       vertical-align: middle;
@@ -314,6 +314,8 @@ section {
           font-size: 75%;
           color: @grayLight;
           display: block;
+
+          &:empty {display:none;}
         }
       }
       i {
@@ -371,6 +373,20 @@ section {
         background: inherit;
       }
     } 
+  }
+  .planned-div {
+    border: 3px solid #999999;
+    padding: 6px;
+    margin: 0 12%;
+    .border-radius(25px);
+  }
+  .selected {
+    background: #A2D0E8;
+    border-bottom-color: #8CB4C9;
+
+    &:empty {
+      width:5px;
+    }
   }
 }
 
