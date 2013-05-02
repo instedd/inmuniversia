@@ -18,6 +18,6 @@
         .row-fluid
           .span12
             %ul.nav.links
-              = nav_link current_subscriber ? "inicio" : "home", current_subscriber ? dashboard_path : root_path, 'dashboard', 'home'
+              = nav_link "inicio", current_subscriber ? dashboard_path : root_path, 'dashboard', 'home'
               = nav_link "enfermedades", diseases_path, 'diseases'
               = nav_link "vacunas", vaccines_path, 'vaccines'
