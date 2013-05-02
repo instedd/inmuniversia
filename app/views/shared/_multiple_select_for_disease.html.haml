@@ -1,0 +1,3 @@
+.field
+  = f.label :vaccines
+  = f.collection_select( :vaccine_ids, Refinery::Vaccines::Vaccine.all, :id, :name, {:selected => @disease.vaccine_ids, :include_blank => true}, {:multiple => true} )
