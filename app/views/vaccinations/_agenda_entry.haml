@@ -1,0 +1,6 @@
+.agenda-entry{'data-vaccination-id' => vaccination.id, 'data-date-format' => date_format}
+  = render_vaccination_status(vaccination)
+  = "#{vaccination.name} de #{vaccination.vaccine_name} a #{vaccination.child_name}"
+  - if vaccination.status.taken?
+    aplicada el 
+    = link_to l(vaccination.date, format: date_format), '#', class: 'ux-datepicker' 

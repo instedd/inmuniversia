@@ -1,0 +1,23 @@
+.navbar.top
+  .container-fluid
+    .row-fluid
+      .span3
+        %a.brand{href: root_path}
+          = image_tag '/assets/immuniversia-logo.png'
+      .span9.aright
+        .row-fluid
+          .span12
+            - if current_subscriber
+              .btn-group.account-settings
+                %a.btn.btn-link.user{"data-toggle" => "dropdown", href: "#"}
+                  = current_subscriber.email
+                %ul.dropdown-menu.black.settings
+                  %li 
+                    %a{href: "#"}Edit Account
+                  %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+        .row-fluid
+          .span12
+            %ul.nav.links
+              = nav_link current_subscriber ? "inicio" : "home", current_subscriber ? dashboard_path : root_path, 'dashboard', 'home'
+              = nav_link "enfermedades", diseases_path, 'diseases'
+              = nav_link "vacunas", vaccines_path, 'vaccines'

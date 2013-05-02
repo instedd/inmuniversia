@@ -1,0 +1,39 @@
+- content_for :topbar do
+  .row-fluid.static-bar{"data-offset-top" => "65", "data-spy" => "affix"}
+    .span3
+      %h1= @vaccine.name
+    .span9
+      #sections-bar
+        %ul.nav.nav-pills.info-bar
+          %li 
+            %a{:href => "#general_info"} Información general
+          %li 
+            %a{:href => "#recommendations"} Recomendaciones
+          %li 
+            %a{:href => "#side_effects"} Efectos secundarios
+          %li 
+            %a{:href => "#more_info"} Más información
+
+- content_for :sidebar do
+  %section.white
+    %h2 Enfermedad/es que previene
+    %hr
+    %ul#diseases
+      - @vaccine.diseases.each do |disease|
+        %li
+          = link_to disease.name, refinery.vaccines_disease_path(disease)
+  %section.white
+    %h2 Dosis
+    %hr
+    = raw @vaccine.doses_info
+  %section.white
+    %h2 Nombre comercial
+    %hr
+    = raw @vaccine.commercial_name
+
+- content_for :content do
+  .public-contents.bullets
+    = section("Información general", :general_info, @vaccine)
+    = section("Recomendaciones", :recommendations, @vaccine)
+    = section("Efectos secundarios", :side_effects, @vaccine)
+    = section("Más información", :more_info, @vaccine)
