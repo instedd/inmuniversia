@@ -1,7 +1,9 @@
 //
 // Inmuniversia classes
 // --------------------------------------------------
-
+body {
+  background: url("../back.png") repeat-x #0f618c;
+}
 .layout {
   width: 960px;
   margin: 0 auto;
@@ -21,7 +23,7 @@ ul {
   .navbar.top {
 
     .btn.user {
-      color: #a2dfff;
+      color: #dcff9c;
       text-shadow:none !important;
       margin-top: -15px !important;
       &:focus, &:active, &:hover {
@@ -43,15 +45,18 @@ ul {
         a {
           font-size: 12px;
           line-height: 17px;
-          padding: 5px 10px;
-          color: #a2dfff;
+          padding: 0px;
+          margin: 5px 10px 0;
+          color: #dcff9c;
           text-transform: uppercase;
           text-shadow:none !important;
+          .border-radius(none);
         }
 
         &.active a {
           color: @white;
           background: none;
+          border-top: 3px solid @white;
           .box-shadow(none);
         }
       }
