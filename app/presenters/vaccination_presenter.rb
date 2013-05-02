@@ -17,6 +17,10 @@ class VaccinationPresenter
     @vaccination.dose.name
   end
 
+  def full_description
+    "#{name} de #{vaccine_name} a #{child_name}"
+  end
+
   def self.present(vaccinations)
     vaccinations.map{|v| self.new(v)}
   end

@@ -1,10 +1,12 @@
 jQuery.fn.setupComponents = () ->
-  # Datepicker in inputs
+  for fun in jQuery.componentsSetup
+    fun.call(@)
+
+jQuery.registerComponentsSetup () ->
   $('input.ux-datepicker', @).datepicker(language: 'es', format: 'dd/mm/yyyy')
-  
-  # Datepicker in labels
   $('a.ux-datepicker', @).datepicker(language: 'es', format: 'dd/mm/yyyy')
-
-
+  
 $ ->
   $(document).setupComponents()
+
+

@@ -8,13 +8,19 @@ module CalendarHelper
     content_tag :td, text, opts, &block
   end
 
-  def calendar_vaccination_td(*args, &block)
+  def calendar_vaccination_td(*args)
     opts = args.extract_options!
     opts[:class] ||= ''
     opts[:class] << ' selected' if opts[:selected]
     opts[:class] << ' empty' if opts[:empty]
     opts[:class] << ' ' << opts[:vaccination].status.to_s if opts[:vaccination]
-    content_tag *([:td] + args + [opts]), &block
+    opts[:id] = "calendar-vaccination-#{opts[:vaccination].id}" if opts[:vaccination]
+
+    content_tag *([:td] + args + [opts]) do
+      if opts[:vaccination]
+        content_tag :i, "", class: 'calendar-vaccination', id: "calendar-vaccination-#{opts[:vaccination].id}"
+      end
+    end
   end
 
 end
