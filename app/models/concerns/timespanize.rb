@@ -7,10 +7,13 @@ module Concerns::Timespanize
   def timespanize(field_name, opts={})
     value_field =   opts.fetch(:value, "#{field_name}_value")
     unit_field =    opts.fetch(:unit, "#{field_name}_unit")
+    
     unit_values =   opts.fetch(:unit_values, [:year, :month, :week])
     unit_default =  opts.fetch(:unit_default, :year)
+    
     end_method =    opts.fetch(:end, "#{field_name}_end")
     desc_method =   opts.fetch(:description, "#{field_name}_description")
+    includes_method = opts.fetch(:includes, "#{field_name}_includes?")
 
     enumerize unit_field, in: unit_values, default: unit_default
 
@@ -28,6 +31,10 @@ module Concerns::Timespanize
     define_method(desc_method) do
       value = send(field_name)
       value.nil? ? "" : value.inspect
+    end
+
+    define_method(includes_method) do |value|
+      send(field_name) <= value && send(end_method) >= value
     end
   end
 

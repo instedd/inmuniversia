@@ -5,7 +5,7 @@ describe CalendarPresenter do
   let(:child)     { create(:child, :with_setup, date_of_birth: Date.new(2012,6,15)) }
   let(:presenter) { CalendarPresenter.new(child) }  
 
-  before(:each) { Timecop.freeze(Time.utc(2013,1,1,12,0,0)) }
+  before(:each) { Timecop.freeze(Time.utc(2013,6,10,12,0,0)) }
 
   context "with single vaccine" do
     let!(:vaccine) { create(:vaccine, :with_doses) }
@@ -17,6 +17,7 @@ describe CalendarPresenter do
       presenter.timespans.tap do |t0,t1,t2|
         t0.year.should eq(2013)
         t0.month.should eq(6)
+        t0.should be_current
         
         t1.year.should eq(2014)
         t1.month.should eq(6)
@@ -24,6 +25,20 @@ describe CalendarPresenter do
         t2.year.should eq(2015)
         t2.month.should eq(6)
       end
+    end
+
+    it "should generate empty timespan for current date if not included in existing timespans" do
+      Timecop.freeze(Time.utc(2013,8,10))
+
+      presenter.should have(4).timespans
+      
+      presenter.timespans[1].tap do |current|
+        current.year.should eq(2013)
+        current.month.should eq(8)
+        current.should be_current
+        current.should be_empty
+      end
+
     end
 
     it "should generate vaccine row headers" do

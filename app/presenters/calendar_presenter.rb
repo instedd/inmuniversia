@@ -15,6 +15,10 @@ class CalendarPresenter
     @vaccinations[vaccine] ||= load_vaccination_slots(vaccine)
   end
 
+  def vaccinations_with_timespans_for(vaccine)
+    vaccinations_for(vaccine).zip(timespans)
+  end
+
   protected
 
   def load_vaccines
@@ -29,6 +33,7 @@ class CalendarPresenter
       timespan = Timespan.new(vaccination.planned_age_value, vaccination.planned_age_unit, child.date_of_birth)
       timespans << timespan unless timespans.include?(timespan)
     end
+    timespans << CurrentTimespan.new unless timespans.any?(&:current?)
     return timespans.sort
   end
 

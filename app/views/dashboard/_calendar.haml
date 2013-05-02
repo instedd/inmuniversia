@@ -14,22 +14,22 @@
           - unless vaccine.diseases_list.blank?
             %span
               = vaccine.diseases_list
-        - calendar.vaccinations_for(vaccine).each do |vaccination|
-          %td{class: (vaccination.status if vaccination)}
+        - calendar.vaccinations_with_timespans_for(vaccine).each do |vaccination, timespan|
+          = calendar_vaccination_td selected: timespan.current?, vaccination: vaccination, empty: timespan.empty? do
             %i
 
   %tfoot
     %tr.blue
       %td
       - calendar.timespans.each do |timespan|
-        %td= timespan.month_name
+        = calendar_timespan_td timespan, :month_name
     %tr.blue
       %td
       - calendar.timespans.each do |timespan|
-        %td= timespan.year
+        = calendar_timespan_td timespan, :year
     %tr
       %td
       - calendar.timespans.each do |timespan|
-        %td= timespan.age_description
+        = calendar_timespan_td timespan, :age_description
 
 

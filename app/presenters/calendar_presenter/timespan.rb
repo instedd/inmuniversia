@@ -19,7 +19,7 @@ class CalendarPresenter::Timespan
   end
 
   def <=>(other)
-    [self.age, self.age_end] <=> [other.age, other.age_end]
+    [self.year, self.month] <=> [other.year, other.month]
   end
 
   def ==(other)
@@ -36,6 +36,15 @@ class CalendarPresenter::Timespan
 
   def month_name
     Date.new(year, month).strftime("%B")
+  end
+
+  def current?
+    today = Date.today
+    [year, month] == [today.year, today.month]
+  end
+
+  def empty?
+    false
   end
 
 end
