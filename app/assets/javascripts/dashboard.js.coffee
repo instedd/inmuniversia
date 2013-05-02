@@ -34,7 +34,7 @@ $('body.dashboard').on 'click', '.vaccination-status .dropdown-menu li a', (evt)
       dropdown.loading(false)
 
 
-# Handle date picker date change
+# Handle date picker date change in agenda
 $('body.dashboard').on 'changeDate', 'a.ux-datepicker', (evt) ->
   $(@).datepicker('hide')
   $(@).loading(true, 200)
