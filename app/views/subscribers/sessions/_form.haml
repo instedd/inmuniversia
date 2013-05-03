@@ -1,14 +1,15 @@
-%legend Login
+%legend Ingresar
+%hr.shadow
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   .control-group
     .controls
       = f.label 'usuario'
-      = f.email_field :email
+      = f.email_field :email, :class => 'span12'
   .control-group
     .controls
       = f.label 'contraseña'
-      = f.password_field :password
+      = f.password_field :password, :class => 'span12'
   - if devise_mapping.rememberable?
     .control-group
       .controls.inline
