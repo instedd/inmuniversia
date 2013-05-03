@@ -1,6 +1,15 @@
 //
-// Inmuniversia classes
+// Inmuniversia
 // --------------------------------------------------
+@font-face {
+    font-family: 'DINMediumAlternate';
+    src: url('../dinma___0.eot');
+    src: url('../dinma___0.eot') format('embedded-opentype'),
+         url('../dinma___0.woff') format('woff'),
+         url('../dinma___0.ttf') format('truetype'),
+         url('../dinma___0.svg#DINMediumAlternate') format('svg');
+}
+
 body {
   background: url("../back.png") repeat-x #0f618c;
 }
@@ -164,9 +173,100 @@ ul {
 //--------------HOME--------
 //--------------------------
 
-.main-img {
-  background:url("../home-main1.jpg")no-repeat;
-  height: 323px; 
+.home {
+  padding: 15px;
+
+  .login {
+
+    .main-img {
+      background:url("../home-main1.jpg")no-repeat;
+      height: 323px;
+      overflow: hidden;
+      .border-radius(5px);
+    }
+
+    .login-form {
+
+      .well-white {
+
+        legend {
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 26px;
+          color: #4ca300;
+          border-bottom: none;
+          margin-bottom: 2px;
+        }
+      }
+
+    }
+  }
+
+  .section1 {
+    background: url("../bell.png") no-repeat 30% 25% ;
+    margin: 20px auto 0;
+    min-height: 300px;
+
+    h1 {
+      font-family: 'DINMediumAlternate';
+      font-size: 28px;
+      line-height: 32px;
+      font-weight: normal;
+      color: #0f618c;
+      margin: 80px 0 24px 25px;
+
+      & + p {
+        margin: 0 15px 0 25px;
+      }
+    } 
+
+    h4 {
+      font-family: 'DINMediumAlternate';
+      font-weight: normal;
+      color: @gray;
+
+      small {
+        font-family: @sansFontFamily;
+        font-size: 13px;
+        color: @gray;
+      }
+    } 
+  }
+  .section2 {
+
+    h1 {
+      font-family: 'DINMediumAlternate';
+      font-size: 28px;
+      line-height: 32px;
+      font-weight: normal;
+      color: #4ca300;
+      margin: 24px 0 24px 10px;
+
+      & + p {
+        margin: 0 15px 0 10px;
+      }
+    } 
+  }
+  .section3 {
+    text-align: center;
+    margin-top: 10px;
+
+    .image { 
+      height: 120px;
+      line-height: 120px;
+
+    }
+
+    h3 {
+      font-family: 'DINMediumAlternate';
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: normal;
+      color: @gray;
+      text-transform: uppercase;
+      margin: 0;
+    } 
+  }
 }
 
 
@@ -183,6 +283,7 @@ section {
       .well();
       background: @white;
       .box-shadow( 0 1px 2px rgba(0,0,0,.3));
+      padding: 10px;
     }
 
     &.trans {
@@ -271,8 +372,23 @@ section {
   }
 }
 
+.well-white {
+  .well();
+  background: @white;
+  padding: 10px;
+  .box-shadow( 0 1px 2px rgba(0,0,0,.3));
+}
+
+hr.shadow {
+  margin: 6px -10px;
+  #gradient > .vertical(#e5e6ec, #ffffff );
+  height: 6px;
+  border: none;
+}
 
 
+//--------------Tables--------
+//-----------------------------
 .table {
   .table-bordered();
   .table-condensed();
