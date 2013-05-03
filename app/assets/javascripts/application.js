@@ -16,4 +16,6 @@
 //= require bootstrap-datepicker
 //= require js-routes
 //= require initialize
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require_tree .
