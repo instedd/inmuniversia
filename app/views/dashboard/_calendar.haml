@@ -16,7 +16,6 @@
               = vaccine.diseases_list
         - calendar.vaccinations_with_timespans_for(vaccine).each do |vaccination, timespan|
           = calendar_vaccination_td selected: timespan.current?, vaccination: vaccination, empty: timespan.empty?
-          = render 'vaccinations/calendar_popover', vaccination: vaccination if vaccination
 
   %tfoot
     %tr.blue

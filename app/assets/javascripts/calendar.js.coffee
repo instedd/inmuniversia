@@ -9,5 +9,4 @@ $('body.dashboard').popover
   selector: ".calendar-vaccination"
   content: () ->
     registerOpenPopover(@)
-    id = "##{$(@).attr('id')}-popover"
-    $(id).html()
+    HandlebarsTemplates['calendar/popover']($(@).data())
