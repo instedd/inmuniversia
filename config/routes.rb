@@ -31,7 +31,15 @@ Inmuniversia::Application.routes.draw do
   # Home page for logged in subscribers
   get '/dashboard' => 'dashboard#index', as: 'dashboard'
 
-  root :to => "home#index"
+  # Initial home page
+  get '/home' => 'home#index', as: 'home'
+
+  # Root pages
+  authenticated :subscriber do
+    root to: "dashboard#index"
+  end
+
+  root to: "home#index"
 
   mount Refinery::Core::Engine, :at => '/'
 
