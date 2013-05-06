@@ -7,4 +7,6 @@ Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o regi
     = f.text_field :address
   %div= f.submit "Ok"
 
+= button_to "Completar después", dashboard_path, {:method => :get}
+
 = render "side_text"
