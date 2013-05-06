@@ -1,0 +1,8 @@
+.channel.email
+  %h2 
+    %i.icon-envelope 
+    Email
+  %hr
+  = form_for email, remote: true, format: 'html' do |f|
+    = f.text_field :address, class: 'span12'
+    = f.submit class: 'btn'

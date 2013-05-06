@@ -1,0 +1,40 @@
+%legend Ingresar
+%hr.shadow
+
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  .control-group
+    .controls
+      = f.label 'usuario'
+      = f.email_field :email, :class => 'span12'
+  .control-group
+    .controls
+      = f.label 'contraseña'
+      = f.password_field :password, :class => 'span12'
+  - if devise_mapping.rememberable?
+    .control-group
+      .controls.inline
+        %label.checkbox
+          = f.check_box :remember_me
+          Remember me
+  .control-group
+    .controls.inline
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      = f.submit "Ingresar", :class => 'btn-link'
+      %a.pull-right.btn.btn-link{:href => "#"}
+        Olvidé mi contraseña
+  %hr
+  .control-group
+    .controls
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      %a{:href => "#"}
+        %b Crear una cuenta
+  %hr
+  .control-group
+    .controls
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      %a{:href => "#"}
+        %b Ya te registraste via SMS?
+= render "devise/links"
