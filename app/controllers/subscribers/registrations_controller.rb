@@ -7,8 +7,6 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
   # end
 
   def mobile_configuration
-    @errors = params[:errors]
-    flash[:notice] = @errors
     @email = current_subscriber.email
     @channel = Channel::Sms.new
   end
@@ -21,8 +19,8 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     if @channel.save
       # puts "Salvado correctamente"
     else
-      # Manejar mejor este caso
-      redirect_to subscribers_mobile_configuration_url(:errors => "#{@channel.errors.messages[:address][0]}")
+      flash[:notice] = @channel.errors.messages[:address][0]
+      redirect_to subscribers_mobile_configuration_url()
     end
 
   end
