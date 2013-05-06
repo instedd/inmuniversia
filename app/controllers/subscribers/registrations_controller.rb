@@ -7,22 +7,34 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
   # end
 
   def mobile_configuration
-    @errors = params[:errors]
-    flash[:notice] = @errors
     @email = current_subscriber.email
     @channel = Channel::Sms.new
   end
 
-  def add_mobile_number_and_send_verification_code
-    @channel = current_subscriber.sms_channels.new(:address => params[:channel_sms][:address])
+  def add_mobile_number_and_send_verification_code channel=nil
+    @error
+    @resend = false
+    @error = false
+    if channel
+      @channel = channel
+      @error = true
+    else
+      if params[:channel_sms_resend]
+        @channel = Channel.find(params[:channel_sms_resend])
+        @resend = true
+      else
+        @channel = current_subscriber.sms_channels.new(:address => params[:channel_sms][:address])
+      end
+    end
 
     @channel.send_verification_code
 
     if @channel.save
       # puts "Salvado correctamente"
+
     else
-      # Manejar mejor este caso
-      redirect_to subscribers_mobile_configuration_url(:errors => "#{@channel.errors.messages[:address][0]}")
+      flash[:notice] = @channel.errors.messages[:address][0]
+      redirect_to subscribers_mobile_configuration_url()
     end
 
   end
@@ -34,9 +46,11 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
       @channel = Channel.find(params[:id])
 
       if (@channel.verification_code == params[:verification_code][0])
-        render "mobile_number_success"
+        flash[:notice] = "El celular ha sido agregado correctamente"
+        redirect_to dashboard_path
       else
-        render "mobile_number_error"
+        @error = true
+        render "add_mobile_number_and_send_verification_code"
       end
     end
   end
