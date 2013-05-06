@@ -17,6 +17,24 @@
           = f.check_box :remember_me
           Remember me
   .control-group
+    .controls.inline
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      = f.submit "Ingresar", :class => 'btn-link'
+      %a.pull-right.btn.btn-link{:href => "#"}
+        Olvidé mi contraseña
+  %hr
+  .control-group
     .controls
-      = f.submit "Ingresar", :class => 'btn btn-link'
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      %a{:href => "#"}
+        %b Crear una cuenta
+  %hr
+  .control-group
+    .controls
+      %a.btn.btn-mini{:href => "#"}
+        %i.icon-chevron-right
+      %a{:href => "#"}
+        %b Ya te registraste via SMS?
 = render "devise/links"
