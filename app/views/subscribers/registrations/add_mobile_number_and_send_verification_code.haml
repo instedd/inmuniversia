@@ -1,4 +1,9 @@
-Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mensaje con un código. Por favor, ingresa ese código aquí para completar la configuración de tu teléfono
+- if @error
+  El código ingresado no coincide. Por favor inténtelo de nuevo.
+- elsif @resend
+  Te hemos enviado un nuevo código a tu número de teléfono. Por favor, ingresa ese código aquí para completar la configuración del mismo.
+- else
+  Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mensaje con un código. Por favor, ingresa ese código aquí para completar la configuración de tu teléfono
 %br
 %br
 = form_tag(subscribers_submit_verification_code_path) do
@@ -8,4 +13,5 @@ Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mens
     = text_field :verification_code, ""
   %div= submit_tag "Ok"
 
+= button_to "No recibi el SMS", subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel)
 = render "side_text"
