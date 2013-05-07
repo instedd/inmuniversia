@@ -15,26 +15,25 @@
       .controls.inline
         %label.checkbox
           = f.check_box :remember_me
-          Remember me
+          No cerrar sesión
   .control-group
     .controls.inline
       %a.btn.btn-mini{:href => "#"}
         %i.icon-chevron-right
       = f.submit "Ingresar", :class => 'btn-link'
-      %a.pull-right.btn.btn-link{:href => "#"}
-        Olvidé mi contraseña
+      = link_to "Olvidé mi contraseña", new_subscriber_password_path, class: "pull-right btn btn-link"
   %hr
   .control-group
     .controls
-      %a.btn.btn-mini{:href => "#"}
+      %a.btn.btn-mini{:href => new_subscriber_registration_path}
         %i.icon-chevron-right
-      %a{:href => "#"}
+      %a{:href => new_subscriber_registration_path}
         %b Crear una cuenta
-  %hr
-  .control-group
-    .controls
-      %a.btn.btn-mini{:href => "#"}
-        %i.icon-chevron-right
-      %a{:href => "#"}
-        %b Ya te registraste via SMS?
+  / %hr
+  / .control-group
+  /   .controls
+  /     %a.btn.btn-mini{:href => "#"}
+  /       %i.icon-chevron-right
+  /     %a{:href => "#"}
+  /       %b Ya te registraste via SMS?
 = render "devise/links"
