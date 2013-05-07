@@ -1,0 +1,8 @@
+%p Hola #{@reminder.subscriber_name},
+
+%p Te recordamos que ya corresponde la aplicación de la #{@reminder.dose_name} a #{@reminder.child_name}.
+
+%p Para más información, visita nuestro sitio:
+
+%p
+  = link_to 'Inmuniversia', Settings.hosts.local

@@ -1,0 +1,4 @@
+%h3
+  {{name}}
+%p
+  {{name}} de {{vaccine_name}} a {{child_name}} el {{date_string}}
