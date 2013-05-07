@@ -18,7 +18,8 @@ gem 'therubyracer'
 gem 'less-rails', "~> 2.3.3"
 gem 'bootstrap-datepicker-rails'
 gem 'dynamic_form'
-gem "js-routes"
+gem 'js-routes'
+gem 'gon'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'

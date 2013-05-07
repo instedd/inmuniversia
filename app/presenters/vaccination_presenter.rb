@@ -1,5 +1,6 @@
-class VaccinationPresenter
-  delegate :id, :status, to: :@vaccination
+class VaccinationPresenter < Presenter
+  delegate :id, :status, :status_text, to: :@vaccination
+  display :id, :date, :date_string, :date_short, :child_name, :vaccine_name, :name, :status, :status_icon, :status_text
 
   def date
     Date.new(@vaccination.date.year, @vaccination.date.month, @vaccination.date.day)
@@ -7,6 +8,10 @@ class VaccinationPresenter
 
   def date_string
     I18n.l(date, format: :long)
+  end
+
+  def date_short
+    I18n.l(date, format: :default)
   end
 
   def child_name
@@ -25,19 +30,8 @@ class VaccinationPresenter
     "#{name} de #{vaccine_name} a #{child_name}"
   end
 
-  def to_hash
-    {date: date, date_string: date_string, child_name: child_name, vaccine_name: vaccine_name, name: name, status: status, id: id}
-  end
-
-  # TODO: Move this method to a parent Presenter class as necessary
-  def to_data_hash
-    Hash[to_hash.map do |key,value|
-      ["data-#{key}", value]
-    end]
-  end
-
-  def self.present(vaccinations)
-    vaccinations.map{|v| self.new(v)}
+  def status_icon
+    "st-#{status}"
   end
 
   def initialize(vaccination)

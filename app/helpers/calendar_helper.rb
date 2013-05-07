@@ -15,16 +15,17 @@ module CalendarHelper
     opts[:class] ||= ''
     opts[:class] << ' selected' if opts.delete(:selected)
     opts[:class] << ' empty' if opts.delete(:empty)
-
-    if vaccination
-      opts[:class] << ' ' << vaccination.status.to_s
-      opts[:id] = "calendar-vaccination-#{vaccination.id}"
-    end
-
+    
+    opts[:id] = "calendar-vaccination-#{vaccination.id}" if vaccination
+    
     content_tag *([:td] + args + [opts]) do
-      if vaccination
-        content_tag :i, "", vaccination.to_data_hash.merge(class: 'calendar-vaccination')
-      end
+      calendar_vaccination_entry(vaccination) if vaccination
+    end
+  end
+
+  def calendar_vaccination_entry(vaccination)
+    content_tag :div, class: "calendar-entry #{vaccination.status.to_s}" do
+      content_tag :i, "", vaccination.to_data_hash.merge(class: 'calendar-vaccination')
     end
   end
 

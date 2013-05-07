@@ -1,3 +1,5 @@
+@gon ||= {}
+
 jQuery.extend(window, Routes)
 
 jQuery.registerComponentsSetup = (callback) ->

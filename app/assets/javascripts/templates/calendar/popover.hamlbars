@@ -1,4 +1,37 @@
+%button{type: 'button', class: 'close ux-close-popover'} &times;
+
 %h3
   {{name}}
 %p
-  {{name}} de {{vaccine_name}} a {{child_name}} el {{date_string}}
+  {{name}} de {{vaccine_name}} a {{child_name}}
+  {{#ifTaken}}
+  aplicada el {{date_string}}
+  {{/ifTaken}}
+
+#popover-edit-handle.collapse.in
+  %a{href: '#popover-edit', 'data-toggle' => 'collapse'}
+    Editar
+
+#popover-edit.collapse
+  %form{id: 'calendar_form', format: 'html', action: '{{form_action}}', method: 'PUT', 'data-remote' => 'true', 'accept-charset' => 'UTF-8'}
+    %input{type: 'hidden', value: 'calendar', name: 'render'}
+
+    %p
+      Estado:
+      {{#each options}}
+      %li
+        %a{:href => "#", :class => 'vaccination-status-option {{selected}}', "data-vaccination-status" => '{{value}}'}
+          %i{class: '{{status_icon}}'}
+          {{label}}
+      {{/each}}
+
+      %input{type: 'hidden', id: 'vaccination_status', value: '{{status}}', name: 'vaccination[status]'}
+
+    %p.taken-at
+      Aplicada el:
+      %input{type: 'text', class: 'ux-datepicker', name: 'vaccination[taken_at]', value: '{{date_short}}'}
+
+    %p
+      %input{type: 'submit', value: 'Salvar', class: 'btn btn-primary', 'data-disable-with' => 'Salvando...'}
+      %a{href: '#popover-edit', class: 'btn btn-link', id: 'popover-cancel', 'data-toggle' => 'collapse'}
+        Cancelar
