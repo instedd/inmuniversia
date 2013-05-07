@@ -18,7 +18,7 @@
           No cerrar sesión
   .control-group
     .controls.inline
-      %a.btn.btn-mini{:href => "#"}
+      %a.btn.btn-mini{:href => "#", :id => 'sign_up_button'}
         %i.icon-chevron-right
       = f.submit "Ingresar", :class => 'btn-link'
       = link_to "Olvidé mi contraseña", new_subscriber_password_path, class: "pull-right btn btn-link"
