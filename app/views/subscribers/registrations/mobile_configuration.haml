@@ -10,3 +10,7 @@ Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o regi
 = button_to "Completar después", dashboard_path, {:method => :get}
 
 = render "side_text"
+:javascript
+  window.onload = function() {
+    $("#channel_sms_address").mask("pppppppppppp?pppppp");
+  };
