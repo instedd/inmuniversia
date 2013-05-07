@@ -6,6 +6,7 @@
   = raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present?
   = raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present?
   = csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend
+  = include_gon
   = yield :meta
   = stylesheet_link_tag "application", "formatting", "theme"
   = stylesheet_link_tag "home" if home_page?

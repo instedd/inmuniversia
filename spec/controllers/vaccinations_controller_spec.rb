@@ -10,13 +10,17 @@ describe VaccinationsController do
 
   before(:each) {sign_in subscriber}
 
-  it "should update vaccination status from agenda" do
-    vaccination.status.should eq('planned')
-    
-    xhr :put, :update, id: vaccination.id, vaccination: {status: 'taken'}, render: 'agenda'
-    
-    response.should be_successful
-    vaccination.reload.status.should eq('taken')
+  %w(agenda calendar).each do |section|
+
+    it "should update vaccination status from #{section}" do
+      vaccination.status.should eq('planned')
+      
+      xhr :put, :update, id: vaccination.id, vaccination: {status: 'taken'}, render: section
+      
+      response.should be_successful
+      vaccination.reload.status.should eq('taken')
+    end
+
   end
 
 end
