@@ -533,6 +533,10 @@ hr.shadow {
     &:hover {
       td {
         background: #f3f3f3;
+
+        &.selected {
+          background: #8bbbd4;
+        }
       }
     }
   }
@@ -556,8 +560,12 @@ hr.shadow {
         color: #03517A;
       }
 
-      &:hover td {
+      &:hover td  {
         background: inherit;
+
+        &.selected {
+          background: #A2D0E8;
+        }
       }
     } 
   }
@@ -573,6 +581,7 @@ hr.shadow {
 
     &:empty {
       width:5px;
+      padding: 0;
     }
   }
 
