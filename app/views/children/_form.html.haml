@@ -7,5 +7,5 @@
   = f.select :gender, Child.gender.options, include_blank: "Sexo"
   
   = f.actions do
-    = f.submit 'Agregar hijo', class: 'btn btn-primary'
+    = f.submit 'Agregar hijo', class: 'btn btn-primary', 'data-disable-with' => "Agregando..."
     = link_to "Cancelar", '#', id: 'cancel-add-new-child', class: 'btn'

@@ -1,7 +1,9 @@
 <% if @child.valid? %>
   $('#calendars').prepend('<%= j(render_calendar(@child)) %>');
+  $('#agenda').html('<%= j(render_agenda(current_subscriber)) %>');
   $('#new-child-form').collapse('hide').html('<%= j(render_new_child_form) %>').setupComponents();
   $('#add-new-child').show();
+  $.notice("<%= @child.name %> ha sido registrado");
 <% else %>
   $('#new-child-form').html('<%= j(render_new_child_form(@child)) %>').setupComponents();
 <% end %>
