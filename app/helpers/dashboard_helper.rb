@@ -1,7 +1,7 @@
 module DashboardHelper
 
-  def render_calendar(child)
-    render 'dashboard/calendar', calendar: CalendarPresenter.new(child)
+  def render_calendar(child, opts={})
+    render 'dashboard/calendar', calendar: CalendarPresenter.new(child), new: opts[:new]
   end
 
   def render_agenda(subscriber)
