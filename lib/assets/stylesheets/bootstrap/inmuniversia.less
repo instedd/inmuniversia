@@ -524,6 +524,7 @@ span.loading {
         background-position: 0 20px;
         background-repeat: no-repeat;
         margin: 0 auto;
+        cursor: pointer;
       }
       &>.taken i {
         background-position: 0  0;
@@ -536,6 +537,20 @@ span.loading {
       }   
       &>.cancelled i {
         background-position: -60px 0;
+      }
+      .popover {
+        i {
+          display: inline-block !important;
+        }
+        a {
+          &.selected {
+            font-weight: bold;
+            background: none !important;
+          }
+          &:hover {
+            text-decoration: none !important;
+          }
+        }
       }   
     }
     
@@ -619,10 +634,12 @@ span.loading {
   background-repeat: no-repeat;
 }
 
-.st-taken               { background-position: 0      0; }
-.st-planned             { background-position: -20px  0; }
-.st-past                { background-position: -40px  0; }
-.st-cancelled           { background-position: -60px  0; }
+.st-taken               { background-position: 0      0 !important; }
+.st-planned             { background-position: -20px  0 !important; }
+.st-past                { background-position: -40px  0 !important; }
+.st-cancelled           { background-position: -60px  0 !important; }
+
+
 
 
 
