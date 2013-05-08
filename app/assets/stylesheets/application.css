@@ -13,8 +13,3 @@
  *= require bootstrap-datepicker
  *= require_tree .
  */
-
-
-#calendar_form .selected {
-  color: red !important;
-}
