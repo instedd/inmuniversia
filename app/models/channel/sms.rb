@@ -13,7 +13,7 @@ class Channel::Sms < Channel
   end
 
   def generate_verification_code
-    self.verification_code = rand(999999)
+    self.verification_code ||= rand(999999)
   end
 
   def send_verification_code
