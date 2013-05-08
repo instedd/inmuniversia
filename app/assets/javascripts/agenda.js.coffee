@@ -20,7 +20,7 @@ $('body.dashboard #agenda').on 'click', '.vaccination-status .dropdown-menu li a
 
 
 # Handle date picker date change in agenda
-$('body.dashboard #agenda').on 'changeDate', 'a.ux-datepicker', (evt) ->
+$('body.dashboard #agenda').on 'changeDate', 'a.ux-datepicker-past', (evt) ->
   $(@).datepicker('hide')
   $(@).loading(true, 2000)
   entry = $(@).closest('.agenda-entry')

@@ -29,7 +29,7 @@
 
     %p.taken-at
       Aplicada el:
-      %input{type: 'text', class: 'ux-datepicker', name: 'vaccination[taken_at]', value: '{{date_short}}'}
+      %input{type: 'text', class: 'ux-datepicker-past', name: 'vaccination[taken_at]', value: '{{date_short}}'}
 
     %p
       %input{type: 'submit', value: 'Salvar', class: 'btn btn-primary', 'data-disable-with' => 'Salvando...'}

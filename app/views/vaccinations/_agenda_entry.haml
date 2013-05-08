@@ -4,4 +4,4 @@
     = vaccination.full_description
     - if vaccination.status.taken?
       aplicada el 
-      = link_to l(vaccination.date, format: date_format), '#', class: 'ux-datepicker' 
+      = link_to l(vaccination.date, format: date_format), '#', class: 'ux-datepicker-past' 
