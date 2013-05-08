@@ -3,7 +3,7 @@
 = form_for child, builder: BootstrapFormBuilder, remote: true, html: {class: 'form-inline '} do |f|
   
   = f.text_field :name, placeholder: "Nombre", required: true
-  = f.text_field :date_of_birth, class: 'ux-datepicker', placeholder: "Fecha de nacimiento", required: true
+  = f.text_field :date_of_birth, class: 'ux-datepicker-past', placeholder: "Fecha de nacimiento", required: true
   = f.select :gender, Child.gender.options, include_blank: "Sexo"
   
   = f.actions do

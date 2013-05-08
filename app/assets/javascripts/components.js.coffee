@@ -3,8 +3,8 @@ jQuery.fn.setupComponents = () ->
     fun.call(@)
 
 jQuery.registerComponentsSetup () ->
-  $('input.ux-datepicker', @).datepicker(language: 'es', format: 'dd/mm/yyyy', autoclose: true)
-  $('a.ux-datepicker', @).datepicker(language: 'es', format: 'dd/mm/yyyy')
+  $('input.ux-datepicker-past', @).datepicker(language: 'es', format: 'dd/mm/yyyy', autoclose: true, endDate: new Date())
+  $('a.ux-datepicker-past', @).datepicker(language: 'es', format: 'dd/mm/yyyy', endDate: new Date())
   
 $ ->
   $(document).setupComponents()
