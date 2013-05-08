@@ -1,0 +1,8 @@
+%p Hola #{@reminder.subscriber_name},
+
+%p Te recordamos que a partir del #{@reminder.dose_date.to_formatted_s(:long)} corresponde la aplicación de la #{@reminder.dose_name} a #{@reminder.child_name}.
+
+%p Para más información, visita nuestro sitio:
+
+%p
+  = link_to 'Inmuniversia', Settings.hosts.local

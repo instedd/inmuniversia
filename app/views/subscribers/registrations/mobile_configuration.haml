@@ -1,0 +1,16 @@
+Bienvenido! Ya tenes tu cuenta en Inmuniversia.
+
+Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o registrar vacunaciones de tus hijos en Inmuniversia, ingresá el número aquí:
+
+= form_for(@channel, :url => subscribers_add_mobile_number_and_send_verification_code_path) do |f|
+  %div
+    = f.text_field :address
+  %div= f.submit "Ok"
+
+= button_to "Completar después", dashboard_path, {:method => :get}
+
+= render "side_text"
+:javascript
+  window.onload = function() {
+    $("#channel_sms_address").mask("pppppp?pppppppppppp");
+  };
