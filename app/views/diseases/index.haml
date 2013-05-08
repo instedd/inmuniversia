@@ -1,0 +1,16 @@
+- diseases_hash = @diseases.group_by{|v| v.name[0]}
+
+- content_for :topbar do
+  %h1 Enfermedades
+
+- content_for :body do
+  .row-fluid
+    .span12
+      %ul.alphabet-list
+        - diseases_hash.keys.sort.each do |starting_letter|
+          %section
+            %h3
+              = starting_letter
+            - diseases_hash[starting_letter].each do |disease|
+              %li
+                = link_to disease.name, refinery.vaccines_disease_path(disease)
