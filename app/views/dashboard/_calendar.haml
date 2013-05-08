@@ -7,7 +7,7 @@
           %small= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
 
   %tbody
-    - calendar.vaccines.each do |vaccine|
+    - calendar.active_vaccines.each do |vaccine|
       %tr
         %td.disease
           = vaccine.name

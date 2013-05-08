@@ -11,6 +11,9 @@ class Subscription < ActiveRecord::Base
 
   validates :vaccine_id, presence: true, uniqueness: {scope: :child_id}
 
+  scope :active,   where(status: 'active')
+  scope :disabled, where(status: 'disabled')
+
   def subscriber
     child.parent
   end

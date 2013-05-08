@@ -67,4 +67,29 @@ describe CalendarPresenter do
 
   end
 
+
+  context "with multiple vaccines" do
+
+    context "on disabled notifications" do
+
+      let!(:vaccine_subscribed)     { create(:vaccine, :with_doses) }
+      
+      let!(:vaccine_not_subscribed) do 
+        create(:vaccine, :with_doses, first_dose_at: 5).tap do |v| 
+          child.subscriptions.where(vaccine_id: v.id).first.update_column(:status, 'disabled') && child.reload
+        end
+      end
+
+      it "should not return vaccines with subscription disabled" do
+        presenter.should have(1).active_vaccines
+      end
+
+      it "should not render timespans for vaccines with subscription disabled" do
+        presenter.should have(3).timespans
+      end
+
+    end
+
+  end
+
 end
