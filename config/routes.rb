@@ -19,11 +19,11 @@ Inmuniversia::Application.routes.draw do
   resources :diseases, only: [:show, :index], path: '/vaccines/diseases'
   resources :vaccines, only: [:show, :index]
 
-  resources :children, only: :create
-
-  resources :channel_emails, only: [:create, :update, :destroy]
-
-  resources :vaccinations, only: :update
+  # Application resources
+  resources :children,        only: :create
+  resources :channel_emails,  only: [:create, :update, :destroy]
+  resources :vaccinations,    only: :update
+  resources :calendars,       only: :update
 
   # Update preferences for a subscriber
   put '/settings/preferences' => 'settings#update_preferences', as: 'preferences'

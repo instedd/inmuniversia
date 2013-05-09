@@ -1,8 +1,6 @@
 class CalendarPresenter
 
-  attr_accessor :child
-  attr_accessor :vaccines
-  attr_accessor :timespans
+  attr_accessor :child, :vaccines, :timespans, :subscriptions
 
   def initialize(child)
     @child = child
@@ -27,6 +25,10 @@ class CalendarPresenter
 
   def vaccines
     @vaccines
+  end
+
+  def form
+    CalendarForm.new(self)
   end
 
   protected
