@@ -103,6 +103,7 @@ ul {
   h1 {
     font-size: 25px;
     font-weight: normal;
+    color: #4ca300;
     margin-left: 15px;
   }
 }
@@ -331,6 +332,119 @@ ul {
 }
 
 
+//--------REGISTRATIOM--------
+//----------------------------
+
+.registration {
+  padding: 15px;
+  
+  .registration-steps {
+    .well-white();
+    min-height: 390px;
+
+    .btn-link {
+      color: @grayDark;
+
+      &:hover {
+        color:@black;
+        text-decoration: none;
+      }
+    }
+  }
+
+  input[type="text"], input[type="password"], input[type="email"] {
+    margin-bottom: 0px !important;
+  }
+
+  .steps {
+    .well();
+    background: #d8d8d8;
+    font-size: 12px;
+    line-height: 15px;
+    color: #adadad;
+    text-align: center;
+    padding: 10px 5px 0;
+
+    .active {
+      color: #03517a;
+    }
+
+    .line {
+      background: @white;
+      height: 4px;
+      width: 70%;
+      margin: 10px auto;
+      position: relative;
+      overflow: visible;
+
+      .step {
+        background: @white;
+        padding: 7px;
+        position: absolute;
+        top: -5px;
+        .border-radius(25px);
+
+        &.active {
+          background: #03517a;
+        }
+
+        &.s1 {
+          left: -5px;
+        }
+        &.s2 {
+          left: 50%;
+          margin-left: -5px;
+        }
+        &.s3 {
+          right: -5px;
+        }
+      }
+
+      .inner {
+        background: #03517a;
+        height: 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &.f1 {
+          width: 0px;
+        }
+
+        &.f2 {
+          width: 50%;
+        } 
+
+        &.f3 {
+          width: 100%;
+        }                  
+      }
+    }
+  }
+
+  h3 {
+    font-family: 'DINMediumAlternate';
+    font-size: 21px;
+    line-height: 25px;
+    font-weight: normal;
+    color: @grayDark;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    color: @grayDark;
+
+    &.blue {
+      color: #03517a;
+    }
+  }
+  .phone div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -6px;
+  }
+}
 
 
 //--------------Classes--------
@@ -638,8 +752,6 @@ span.loading {
 .st-planned             { background-position: -20px  0 !important; }
 .st-past                { background-position: -40px  0 !important; }
 .st-cancelled           { background-position: -60px  0 !important; }
-
-
 
 
 
