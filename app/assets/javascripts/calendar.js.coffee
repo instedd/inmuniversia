@@ -64,3 +64,11 @@ $('body.dashboard #calendars')
     error: ->
       # TODO: Handle error
   false
+
+# Toggle to calendar edit
+.on 'click', '.configure-calendar', () ->
+  $(@).closest('.calendar').hide().next('.calendar-edit').show()
+
+# Toggle to calendar view
+.on 'click', '.cancel-configure-calendar', () ->
+  $(@).closest('.calendar-edit').hide().prev('.calendar').show()
