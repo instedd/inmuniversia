@@ -1,0 +1,69 @@
+<% content_for :body_content_title do %>
+  <%= @vaccine.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @vaccine.name %>
+    </p>
+  </section>
+  <section>
+    <h1>General Info</h1>
+    <p>
+      <%=raw @vaccine.general_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Commercial Name</h1>
+    <p>
+      <%=raw @vaccine.commercial_name %>
+    </p>
+  </section>
+  <section>
+    <h1>Doses Info</h1>
+    <p>
+      <%=raw @vaccine.doses_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Recommendations</h1>
+    <p>
+      <%=raw @vaccine.recommendations %>
+    </p>
+  </section>
+  <section>
+    <h1>Side Effects</h1>
+    <p>
+      <%=raw @vaccine.side_effects %>
+    </p>
+  </section>
+  <section>
+    <h1>More Info</h1>
+    <p>
+      <%=raw @vaccine.more_info %>
+    </p>
+  </section>
+  <section>
+    <h1>Published</h1>
+    <p>
+      <%=raw @vaccine.published %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="vaccines">
+      <% @vaccines.each do |vaccine| %>
+        <li>
+          <%= link_to vaccine.name, refinery.vaccines_vaccine_path(vaccine) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

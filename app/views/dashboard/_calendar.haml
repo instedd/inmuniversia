@@ -1,0 +1,34 @@
+%table.table.calendar{class: ('new-calendar' if new)}
+  %thead
+    %tr
+      %th(colspan="100")
+        %h3
+          = calendar.child.name
+          %small= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
+
+  %tbody
+    - calendar.active_vaccines.each do |vaccine|
+      %tr
+        %td.disease
+          = vaccine.name
+          - unless vaccine.diseases_list.blank?
+            %span
+              = vaccine.diseases_list
+        - calendar.vaccinations_with_timespans_for(vaccine).each do |vaccination, timespan|
+          = calendar_vaccination_td selected: timespan.current?, vaccination: vaccination, empty: timespan.empty?
+
+  %tfoot
+    %tr.blue
+      %td
+      - calendar.timespans.each do |timespan|
+        = calendar_timespan_td timespan, :month_name
+    %tr.blue
+      %td
+      - calendar.timespans.each do |timespan|
+        = calendar_timespan_td timespan, :year
+    %tr
+      %td
+      - calendar.timespans.each do |timespan|
+        = calendar_timespan_td timespan, :age_description
+
+

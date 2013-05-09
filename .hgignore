@@ -1,0 +1,21 @@
+syntax: glob
+.bundle
+*.log
+*.sqlite3
+*.tmp*~
+*.orig
+*.pid
+*.rdb
+.DS_Store
+tmp/*
+spec/reports/*
+spec/integration/screenshots/*
+spec/fixtures/certs/*
+public/assets
+public/applications
+coverage/*
+coverage.data
+data/*
+acceptance/screenshots/*.png
+config/settings.local.yml
+config/settings/*.local.yml
