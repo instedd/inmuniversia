@@ -26,6 +26,9 @@ Inmuniversia::Application.routes.draw do
   resources :vaccinations,    only: :update
   resources :calendars,       only: :update
 
+  resources :comments, :only => [:create, :destroy]
+  put '/comments/load_form' => 'comments#load_form'
+
   # Update preferences for a subscriber
   put '/settings/preferences' => 'settings#update_preferences', as: 'preferences'
 

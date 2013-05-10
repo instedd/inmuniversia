@@ -1,0 +1,10 @@
+%hr
+%div.comment{ :id => "comment-#{comment.id}", :style => "padding-left: #{comment.parent.nil? ? '' : '30px'}"}
+  / Unicamente si hay un subscriber o user logueado, mostrar esto
+  = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close'
+  %p= comment.body
+  = comment.parent.nil?
+  %h4
+    = "- #{comment.subscriber.first_name.capitalize} de Palermo"
+    %small= comment.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
+  = link_to "Comentar", "#", :onclick => "commentReport(event,#{comment.id},#{comment.commentable_id});"

@@ -20,6 +20,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'dynamic_form'
 gem 'js-routes'
 gem 'gon'
+gem 'acts_as_commentable_with_threading'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'

@@ -10,6 +10,9 @@ class VaccinesController < ApplicationController
 
   def show
     @vaccine = @vaccines.find(params[:id])
+    @new_comment = Comment.build_from(@vaccine, current_subscriber, "")
+    @comments = sorted_comments
+    # @comments_form = render :partial=>"comments/form"
   end
 
   protected
@@ -22,4 +25,17 @@ class VaccinesController < ApplicationController
     end
   end
 
+  def sorted_comments
+    if !@vaccine.comment_threads.empty?
+      comment_groups = @vaccine.comment_threads.group_by {|c| c.parent_id}
+      comments = []
+      comment_groups[nil].each do |comment|
+        comments << comment
+        unless comment_groups[comment.id].nil?
+          comments = comments + comment_groups[comment.id]
+        end
+      end
+      comments
+    end
+  end
 end
