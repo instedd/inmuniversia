@@ -24,7 +24,7 @@ class Subscriber < ActiveRecord::Base
   end
 
   def full_name
-    first_name + last_name
+    ([first_name, last_name].compact.presence || [email]).join(" ")
   end
 
   def update_next_message_date!
