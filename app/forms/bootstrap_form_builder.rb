@@ -2,7 +2,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   delegate :content_tag, :tag, :safe_join, to: :@template
 
-  OverridenControls = %w[text_field text_area password_field collection_select select]
+  OverridenControls = %w[email_field text_field text_area password_field collection_select select]
 
   OverridenControls.each do |method_name|
     define_method(method_name) do |name, *args|
@@ -11,7 +11,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
       klazz = "control-group"
       klazz << " error" if has_errors
-      
+
       error_msg =   has_errors ? content_tag(:span, error_message_on(name), class: 'help-inline') : ""
       label_tag =   options[:label] ? label(name, options[:label], class: "control-label") : ""
       control_tag = content_tag(:div, class: 'control') { super(name, *args << options) }

@@ -50,7 +50,7 @@ es:
       already_confirmed: ya fue confirmada, por favor intenta iniciar sesión
       confirmation_period_expired: necesita confirmarse dentro de %{period}, por favor solicita una nueva
       expired: ha expirado, por favor solicita una nueva
-      not_found: no se encontró
+      not_found: no fue encontrado en el sistema
       not_locked: no estaba bloqueada
       not_saved:
         one: ! 'Un error ocurrió al tratar de guardar %{resource}:'
