@@ -1,0 +1,9 @@
+- content_for :body do
+  .row-fluid
+    .span3.sidebar
+      %aside
+        = yield(:sidebar)
+    .span9.right-content
+      = content_for?(:content) ? yield(:content) : yield
+
+= render template: 'layouts/application'

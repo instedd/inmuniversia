@@ -1,0 +1,28 @@
+- content_for :topbar do
+  .row-fluid
+    .span3
+      %h1 Mi Cuenta
+    .span5
+      #add-new-child
+        %a.btn.btn-mini{:href => "#"}
+          %i.icon-plus
+        = link_to 'Agregar hijo', '#'
+      #new-child-form.collapse.out
+        = render_new_child_form
+    .span4.dashboard-tabs
+      .btn-group{'data-toggle' => 'buttons-radio'}
+        = tab_button 'Calendario', 'calendars', active: @active_tab == 'calendars'
+        = tab_button 'Agenda', 'agenda', active: @active_tab == 'agenda'
+        
+- content_for :sidebar do
+  %section.trans
+    = render_channels(current_subscriber, :email)
+
+- content_for :content do
+  #dashboard-tab-content.tab-content
+    = tab_pane id: 'calendars', active: @active_tab == 'calendars' do
+      - @children.each do |child|
+        = render_calendar(child)
+    
+    = tab_pane id: 'agenda', active: @active_tab == 'agenda' do
+      = render_agenda(current_subscriber)

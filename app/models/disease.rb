@@ -1,0 +1,1 @@
+Disease = Refinery::Vaccines::Disease
