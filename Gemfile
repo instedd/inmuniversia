@@ -24,17 +24,6 @@ gem 'gon'
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
 
-# Refinery
-gem 'refinerycms-core'
-gem 'refinerycms-settings'
-gem 'refinerycms-dashboard'
-gem 'refinerycms-images'
-gem 'refinerycms-pages'
-gem 'refinerycms-resources'
-
-# Custom engines
-gem 'refinerycms-vaccines', :path => 'vendor/extensions'
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -48,9 +37,10 @@ group :development do
   gem 'rvm-capistrano'
   gem 'thin'
   gem 'html2haml'
-  gem "better_errors"
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'pry-debugger'
 end
 
 group :development, :test do
@@ -62,3 +52,14 @@ group :test do
   gem 'ci_reporter'
   gem 'cover_me'
 end
+
+# Refinery
+gem 'refinerycms-core'
+gem 'refinerycms-settings'
+gem 'refinerycms-dashboard'
+gem 'refinerycms-images'
+gem 'refinerycms-pages'
+gem 'refinerycms-resources'
+
+# Custom engines
+gem 'refinerycms-vaccines', :path => 'vendor/extensions'
