@@ -12,9 +12,8 @@
                 %a.btn.btn-link.user{"data-toggle" => "dropdown", href: "#"}
                   = current_subscriber.email
                 %ul.dropdown-menu.black.settings
-                  %li 
-                    %a{href: "#"}Edit Account
-                  %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+                  %li= link_to 'Editar mi cuenta', '#' 
+                  %li= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
         .row-fluid
           .span12
             %ul.nav.links
