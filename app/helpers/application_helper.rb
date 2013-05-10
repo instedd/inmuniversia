@@ -32,15 +32,23 @@ module ApplicationHelper
   end
 
   def tab_button(text, target, opts={})
-    active = opts.delete(:active)
     opts[:href] = "##{target}"
-    opts[:'data-toggle'] = "tab"
     opts[:'data-tab-name'] = target
-    opts[:class] ||= "" 
-    opts[:class] << ' active' if active
-    opts[:class] << ' btn'
+    opts[:'data-toggle'] = "tab"
     
+    opts[:class] ||= "" 
+    opts[:class] << ' active' if opts.delete(:active)
+    opts[:class] << ' btn'
+
     content_tag :button, text, opts
+  end
+
+  def nodisplay_if(condition)
+    if condition
+      {class: 'nodisplay'}
+    else
+      {}
+    end
   end
 
 end
