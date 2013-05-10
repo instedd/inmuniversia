@@ -34,9 +34,10 @@
                 = f.text_field :address, :class => "span10"
                 = f.submit "Ok", :class => "btn btn-small btn-primary"
             .control-group
-              .controls.phone
-                %i.icon-share-alt
-                = button_to "Configurar mi teléfono luego", dashboard_path, {:method => :get, :class => "btn-link"}
+              .controls
+                = link_to dashboard_path, class: "btn-link" do
+                  %i.icon-share-alt
+                  Configurar mi teléfono luego
       .span8
         = render "side_text"
         :javascript
