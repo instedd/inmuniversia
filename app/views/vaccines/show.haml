@@ -5,13 +5,13 @@
     .span9
       #sections-bar
         %ul.nav.nav-pills.info-bar
-          %li 
+          %li
             %a{:href => "#general_info"} Información general
-          %li 
+          %li
             %a{:href => "#recommendations"} Recomendaciones
-          %li 
+          %li
             %a{:href => "#side_effects"} Efectos secundarios
-          %li 
+          %li
             %a{:href => "#more_info"} Más información
 
 - content_for :sidebar do
@@ -37,3 +37,8 @@
     = section("Recomendaciones", :recommendations, @vaccine)
     = section("Efectos secundarios", :side_effects, @vaccine)
     = section("Más información", :more_info, @vaccine)
+    .comments
+      %h1
+        Reportes de Usuarios
+      = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+      = render :partial => 'comments/form', :locals => { :comment => @new_comment }
