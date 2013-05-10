@@ -1,0 +1,46 @@
+- content_for :topbar do
+  %h1 Crear una cuenta
+
+- content_for :body do
+  .registration
+    .row-fluid
+      .span4
+        .registration-steps
+          .steps
+            .row-fluid
+              .span4.active Datos Personales
+              .span4.active 
+                Teléfono
+                %br 
+                móvil
+              .span4 Confirmar teléfono
+            .row-fluid
+              .span12
+                .line
+                  .step.s1.active
+                  .step.s2.active
+                  .step.s3
+                  .inner.f2
+          %p 
+            Bienvenido! Ya tenes tu cuenta en Inmuniversia. Te enviamos un email a 
+            %b= current_subscriber.email
+            para que confirmes tu direccion.
+
+          %p.blue Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o registrar vacunaciones de tus hijos en Inmuniversia, ingresá el número aquí:
+
+          = form_for(@channel, :url => subscribers_add_mobile_number_and_send_verification_code_path) do |f|
+            .control-group
+              .controls
+                = f.text_field :address, :class => "span10"
+                = f.submit "Ok", :class => "btn btn-small btn-primary"
+            .control-group
+              .controls
+                = link_to dashboard_path, class: "btn-link" do
+                  %i.icon-share-alt
+                  Configurar mi teléfono luego
+      .span8
+        = render "side_text"
+        :javascript
+          window.onload = function() {
+            $("#channel_sms_address").mask("pppppp?pppppppppppp");
+          };
