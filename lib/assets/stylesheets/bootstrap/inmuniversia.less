@@ -55,18 +55,17 @@ ul {
           font-size: 12px;
           line-height: 17px;
           padding: 0px;
-          margin: 8px 10px 0;
-          color: #dcff9c;
+          margin: 8px 10px 3px;
+          color: @white;
           text-transform: uppercase;
           text-shadow:none !important;
           .border-radius(none);
         }
 
         &.active a {
-          color: @white;
           background: none;
-          margin-top: 5px;
-          border-top: 3px solid @white;
+          margin-bottom: 0;
+          border-bottom: 3px solid @white;
           .box-shadow(none);
         }
       }
@@ -438,11 +437,6 @@ ul {
     &.blue {
       color: #03517a;
     }
-  }
-  .phone div {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: -6px;
   }
 }
 
