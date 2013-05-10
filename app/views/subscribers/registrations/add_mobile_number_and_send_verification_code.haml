@@ -21,7 +21,7 @@
                   .step.s2.active
                   .step.s3.active
                   .inner.f3
-          %p 
+          %p.blue 
             - if @error
               El código ingresado no coincide. Por favor inténtelo de nuevo.
             - elsif @resend
@@ -36,16 +36,21 @@
               Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mensaje con un código. Por favor, ingresa ese código aquí para completar la configuración de tu teléfono
             %br
             %br
-            = form_tag(subscribers_submit_verification_code_path) do
-              = hidden_field_tag :id, @channel.id
-              .control-group
-                .controls
-                  = label_tag :codigo
-                  = text_field :verification_code, ""
-                  = submit_tag "Ok", :class => "btn btn-small btn-primary"
-
-            = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn btn-secondary", method: 'POST' do
-              %span No me llegó el código
-            = button_to "Volver atrás y cambiar el Número", subscribers_mobile_configuration_path()
+          = form_tag(subscribers_submit_verification_code_path) do
+            = hidden_field_tag :id, @channel.id
+            .control-group
+              .controls
+                = label_tag :codigo
+                = text_field :verification_code, ""
+                = submit_tag "Ok", :class => "btn btn-small btn-primary"
+          .control-group
+            .controls
+              = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
+                %i.icon-refresh
+                No recibí el código
+              %br
+              = link_to subscribers_mobile_configuration_path(), class: "btn-link" do
+                %i.icon-pencil
+                Cambiar el Número
       .span8
         = render "side_text"
