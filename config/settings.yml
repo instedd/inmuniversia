@@ -10,6 +10,7 @@ time:
   delayed_job_scale_factor: 1
 
 nuntium:
+  enabled: true
   url: nuntium.instedd.org
   account:
   application:

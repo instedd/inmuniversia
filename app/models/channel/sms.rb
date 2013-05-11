@@ -25,12 +25,19 @@ class Channel::Sms < Channel
 
   protected
 
+  class NuntiumStub
+    def send_ao(message_or_messages)
+      puts "Sending via Nuntium: #{Array.wrap(message_or_messages).map(&:inspect).join('\n')}"
+    end
+  end
+
   def normalized_address
     address.gsub(/[^0-9]/, '')
   end
 
   def nuntium
     n = Settings.nuntium
+    return NuntiumStub.new if not n.enabled
     raise "Nuntium config not set, aborting SMS messages." if n.url.blank? || n.account.blank? || n.application.blank? || n.password.blank?
     return Nuntium.new(n.url, n.account, n.application, n.password)
   end
