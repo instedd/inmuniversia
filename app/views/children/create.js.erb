@@ -13,7 +13,7 @@
   $('#new-child-form').collapse('hide').html('<%= j(render_new_child_form) %>').setupComponents();
   $('#add-new-child').show();
 
-  $.notice("<%= @child.name %> ha sido registrado");
+  $.notice("<%= @child.name %> ha sido registrado", 3000);
 
 <% else %>
 

@@ -8,8 +8,9 @@
   .wrapper
     .header
       .container-fluid
-        = render '/refinery/header'
+        = render '/shared/header'
     .content
+      = render '/shared/alerts'
       .container-fluid
         - if content_for?(:topbar)
           .row-fluid.topbar
