@@ -1,0 +1,3 @@
+.alert.fade.in{class: '{{class}}'}
+  {{text}}
+  %button.close{'type' => 'button', 'data-dismiss' => 'alert'} &times;
