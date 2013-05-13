@@ -12,7 +12,6 @@ class VaccinesController < ApplicationController
     @vaccine = @vaccines.find(params[:id])
     @new_comment = Comment.build_from(@vaccine, current_subscriber, "")
     @comments = sorted_comments
-    # @comments_form = render :partial=>"comments/form"
   end
 
   protected
@@ -30,10 +29,13 @@ class VaccinesController < ApplicationController
       comment_groups = @vaccine.comment_threads.group_by {|c| c.parent_id}
       comments = []
       comment_groups[nil].each do |comment|
-        comments << comment
+        comment_hash ={}
+        comment_hash[:father] = comment
+        comment_hash[:children] = []
         unless comment_groups[comment.id].nil?
-          comments = comments + comment_groups[comment.id]
+          comment_hash[:children] = comment_groups[comment.id]
         end
+        comments << comment_hash
       end
       comments
     end
