@@ -33,7 +33,7 @@ window.commentReport = (event, comment_id, commentable_id) ->
     dataType: 'html'
     success: (content) =>
       $("#comment-link-#{comment_id}").hide()
-      $(content).insertAfter($("#comment-#{comment_id}"))
+      $(content).hide().insertAfter($("#comment-#{comment_id}")).show('slow')
       loadBeforeAndAfterFunctionsFor(comment_id)
     error: =>
   false
