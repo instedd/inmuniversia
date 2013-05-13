@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
   end
 
   def load_form
-    # @comment = Comment.find(params[:id])
     vaccine = Vaccine.find(params[:commentable_id])
     @comment = Comment.build_from(vaccine, current_subscriber, "")
     @comment.parent_id = params[:id]
