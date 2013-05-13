@@ -42,4 +42,8 @@
         Reportes de Usuarios
       = render :partial => 'comments/comment_with_children', :collection => @comments, :as => :comment_hash
       %hr
-      = render :partial => 'comments/form', :locals => { :comment => @new_comment } if current_subscriber
+      .accordion-heading
+        %a.accordion-toggle{:href => "#collapse",:data => {'toggle' => 'collapse'} }
+          Reportar un caso
+      #collapse.accordion-body.collapse
+        = render :partial => 'comments/form', :locals => { :comment => @new_comment } if current_subscriber
