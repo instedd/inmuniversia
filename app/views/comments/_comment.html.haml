@@ -1,10 +1,18 @@
 %hr
-%div.comment{ :id => "comment-#{comment.id}", :style => "padding-left: #{comment.parent.nil? ? '' : '30px'}"}
+- comment = comment_hash[:father]
+%div.comment{ :id => "comment-#{comment.id}"}
   / Unicamente si hay un subscriber o user logueado, mostrar esto
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close'
   %p= comment.body
-  = comment.parent.nil?
   %h4
     = "- #{comment.subscriber.first_name.capitalize} de Palermo"
     %small= comment.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
-  = link_to "Comentar", "#", :id => "comment-link-#{comment.id}", :onclick => "commentReport(event,#{comment.id},#{comment.commentable_id});" if comment.parent.nil?
+  = link_to "Comentar", "#", :id => "comment-link-#{comment.id}", :onclick => "commentReport(event,#{comment.id},#{comment.commentable_id});"
+  - comment_hash[:children].each do |child|
+    %div.comment{ :id => "comment-#{child.id}", :style => "padding-left: 30px;"}
+      / Unicamente si hay un subscriber o user logueado, mostrar esto
+      = link_to "×", comment_path(child), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close'
+      %p= child.body
+      %h4
+        = "- #{child.subscriber.first_name.capitalize} de Palermo"
+        %small= child.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
