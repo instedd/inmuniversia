@@ -855,3 +855,50 @@ span.loading {
   .animated();
   .bounceInDown();
 }
+
+#alerts {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top:0;
+  left: 0;
+  z-index: 1500;
+
+  .alert {
+    .animated();
+    .bounceInDown();
+    text-align: left;
+    display: inline-block;
+    padding: 5px 30px 5px 15px;
+    border: none;
+    white-space: nowrap;
+    .border-radius(0 0 5px 5px);
+    .box-shadow( 0 1px 2px rgba(0,0,0,.3));
+
+    .close {
+      right: 0;
+      opacity: .85;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+
+    &.alert-info {
+      background: #f1f0f0;
+      color: #afdb55;
+      .close {
+        color: #afdb55 !important;
+      }
+    }
+
+    &.alert-error {
+      background: #ff8400;
+      color: @white;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      .close {
+        color: @white !important;
+        text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      }
+    }
+  }
+}
