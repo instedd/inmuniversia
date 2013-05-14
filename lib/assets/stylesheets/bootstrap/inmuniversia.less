@@ -32,7 +32,7 @@ ul {
   .navbar.top {
 
     .btn.user {
-      color: #dcff9c;
+      color: @white;
       text-shadow:none !important;
       margin-top: -15px !important;
       &:focus, &:active, &:hover {
@@ -608,6 +608,7 @@ span.loading {
 
       h3, h3 small {
         color: #4ca300;
+        padding-left: 10px;
       }
     }
 
@@ -700,6 +701,10 @@ span.loading {
         text-align: center;
         line-height: 0.8em;
         border-bottom: none;
+
+        &.selected {
+          color: #02426F !important;
+        }
 
       }
 

@@ -3,7 +3,7 @@ $('body.dashboard #agenda').on 'click', '.vaccination-status .dropdown-menu li a
   evt.preventDefault()
   
   entry = $(@).closest('.agenda-entry')
-  dropdown = $(@).closest('.vaccination-status').loading(true, 2000)
+  dropdown = $(@).closest('.vaccination-status').loading(true, 1000)
   
   $.ajax
     url: vaccination_path(id: entry.data('vaccination-id'))
@@ -22,7 +22,7 @@ $('body.dashboard #agenda').on 'click', '.vaccination-status .dropdown-menu li a
 # Handle date picker date change in agenda
 $('body.dashboard #agenda').on 'changeDate', 'a.ux-datepicker-past', (evt) ->
   $(@).datepicker('hide')
-  $(@).loading(true, 2000)
+  $(@).loading(true, 1000)
   entry = $(@).closest('.agenda-entry')
   
   $.ajax
