@@ -9,9 +9,9 @@
           .steps
             .row-fluid
               .span4.active Datos Personales
-              .span4.active 
+              .span4.active
                 Teléfono
-                %br 
+                %br
                 móvil
               .span4 Confirmar teléfono
             .row-fluid
@@ -21,8 +21,8 @@
                   .step.s2.active
                   .step.s3
                   .inner.f2
-          %p 
-            Bienvenido! Ya tenes tu cuenta en Inmuniversia. Te enviamos un email a 
+          %p
+            Bienvenido! Ya tenes tu cuenta en Inmuniversia. Te enviamos un email a
             %b= current_subscriber.email
             para que confirmes tu direccion.
 
@@ -42,5 +42,5 @@
         = render "side_text"
         :javascript
           window.onload = function() {
-            $("#channel_sms_address").mask("pppppp?pppppppppppp");
+            $("#channel_sms_address").mask("pppppppppppppppppp?", {placeholder:" "});
           };
