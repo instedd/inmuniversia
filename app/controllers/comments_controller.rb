@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: :destroy
+  before_filter :authenticate_subscriber!, only: :create
   def create
     @comment_hash = params[:comment]
     @obj = @comment_hash[:commentable_type].constantize.find(@comment_hash[:commentable_id])
     # Not implemented: check to see whether the user has permission to create a comment on this object
     @comment = Comment.build_from(@obj, current_subscriber, @comment_hash[:body])
     if @comment.save
-      if @comment_hash[:parent_id] != ""
+      if @comment_hash[:parent_id] != "" && !@comment_hash[:parent_id].nil?
         @comment.move_to_child_of(Comment.find(@comment_hash[:parent_id]))
       end
       render :partial => "comments/comment", :locals => { :comment => @comment }, :layout => false, :status => :created
@@ -16,7 +18,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    #chequear que haya un usuario de refinery logueado para poder borrar
     @comment = Comment.find(params[:id])
     if @comment.destroy
       render :json => @comment, :status => :ok

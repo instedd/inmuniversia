@@ -45,5 +45,5 @@
       .accordion-heading
         %a.accordion-toggle{:href => "#collapse",:data => {'toggle' => 'collapse'} }
           Reportar un caso
-      #collapse.accordion-body.collapse
+      #collapse.accordion-body.collapse.in
         = render :partial => 'comments/form', :locals => { :comment => @new_comment } if current_subscriber
