@@ -9,9 +9,9 @@
           .steps
             .row-fluid
               .span4.active Datos Personales
-              .span4.active 
+              .span4.active
                 Teléfono
-                %br 
+                %br
                 móvil
               .span4.active Confirmar teléfono
             .row-fluid
@@ -21,7 +21,7 @@
                   .step.s2.active
                   .step.s3.active
                   .inner.f3
-          %p.blue 
+          %p.blue
             - if @error
               El código ingresado no coincide. Por favor inténtelo de nuevo.
             - elsif @resend
@@ -45,10 +45,11 @@
                 = submit_tag "Ok", :class => "btn btn-small btn-primary"
           .control-group
             .controls
-              = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
-                %i.icon-refresh
-                No recibí el código
-              %br
+              - unless @resend
+                = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
+                  %i.icon-refresh
+                  No recibí el código
+                %br
               = link_to subscribers_mobile_configuration_path(), class: "btn-link" do
                 %i.icon-pencil
                 Cambiar el Número
