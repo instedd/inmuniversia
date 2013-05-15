@@ -5,3 +5,6 @@
   %h5
     = "- #{comment.subscriber.first_name.capitalize} de #{comment.subscriber.zip_code}"
     %small= comment.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
+  = link_to "Comentar", "#", :id => "comment-link-#{comment.id}", :onclick => "commentReport(event,#{comment.id},#{comment.commentable_id});" if (current_user || current_subscriber) && comment.parent_id.nil?
+- if comment.parent_id.nil?
+  %hr

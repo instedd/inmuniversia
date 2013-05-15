@@ -10,7 +10,7 @@ jQuery ->
         .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('')
-      $(xhr.responseText).hide().insertBefore($(this)).show('slow')
+      $(xhr.responseText).hide().insertAfter($(this).parent().siblings('hr').last()).show('slow')
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).find('textarea')
         .removeClass('uneditable-input')
