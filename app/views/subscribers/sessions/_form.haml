@@ -1,0 +1,60 @@
+#login-form.collapse{class: ('in' if current_action == :login)}
+  %legend Ingresar
+  %hr.shadow
+
+  = form_for login_resource, :builder => BootstrapFormBuilder, :as => resource_name, :url => session_path(resource_name) do |f|
+    
+    = f.email_field :email, :class => 'span12', :label => 'Email', required: true
+    = f.password_field :password, :class => 'span12', :label => 'Contraseña', required: true
+
+    - if devise_mapping.rememberable?
+      .control-group
+        .controls.inline
+          %label.checkbox
+            = f.check_box :remember_me
+            No cerrar sesión
+
+    .control-group
+      .controls.inline
+        %a.btn.btn-mini{:href => "#", :id => 'sign_up_button'}
+          %i.icon-chevron-right
+        = f.submit "Ingresar", :class => 'btn-link'
+        = link_to "Olvidé mi contraseña", '#', class: "pull-right btn btn-link", id: 'show_forgot_pass'
+
+    %hr
+
+    .control-group
+      .controls
+        %a.btn.btn-mini{:href => new_subscriber_registration_path}
+          %i.icon-chevron-right
+        %a{:href => new_subscriber_registration_path}
+          %b Crear una cuenta
+
+    / %hr
+    / .control-group
+    /   .controls
+    /     %a.btn.btn-mini{:href => "#"}
+    /       %i.icon-chevron-right
+    /     %a{:href => "#"}
+    /       %b Ya te registraste via SMS?
+  = render "devise/links"
+
+#forgot-pass-form.collapse{class: ('in' if current_action == :forgot_password)}
+  %legend Olvidaste tu contraseña?
+  %hr.shadow
+
+  %span Si olvidaste tu constraseña, ingresa aquí tu dirección de correo electrónico y te enviaremos un email con instrucciones acerca de cómo recuperar tu contraseña.
+
+  = form_for forgot_password_resource, :builder => BootstrapFormBuilder, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => "forgot_subscriber_pass" } do |f|
+
+    = f.email_field :email, class: 'span12', label: 'Email', required: true
+
+    .control-group
+      .controls.inline
+        %a.btn.btn-mini{:href => "#", :id => 'forgot_pass_button'}
+          %i.icon-chevron-right
+        = f.submit "Enviar email con instrucciones", :class => 'btn-link'
+
+    .control-group
+      .controls.inline
+        = link_to "Volver", '#', :class => 'btn-link', :id => 'cancel_forgot_pass'

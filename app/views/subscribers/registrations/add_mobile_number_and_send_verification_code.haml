@@ -1,0 +1,57 @@
+- content_for :topbar do
+  %h1 Crear una cuenta
+
+- content_for :body do
+  .registration
+    .row-fluid
+      .span4
+        .registration-steps
+          .steps
+            .row-fluid
+              .span4.active Datos Personales
+              .span4.active
+                Teléfono
+                %br
+                móvil
+              .span4.active Confirmar teléfono
+            .row-fluid
+              .span12
+                .line
+                  .step.s1.active
+                  .step.s2.active
+                  .step.s3.active
+                  .inner.f3
+          %p.blue
+            - if @error
+              El código ingresado no coincide. Por favor inténtelo de nuevo.
+            - elsif @resend
+              = "Te reenviamos el código al numero #{@channel.address}. Cuando lo recibas, por favor ingresalo aqui para completar la configuracion de tu teléfono."
+              %br
+              %br
+              Si aun no recibiste el código, podés
+              = link_to "volver al paso anterior", subscribers_mobile_configuration_path
+              e ingresar otro número, o
+              = link_to "completar esta configuracion más tarde", dashboard_path
+            - else
+              Para confirmar que ese sea tu numero de teléfono, te acabamos de enviar un mensaje con un código. Por favor, ingresa ese código aquí para completar la configuración de tu teléfono
+            %br
+            %br
+          = form_tag(subscribers_submit_verification_code_path) do
+            = hidden_field_tag :id, @channel.id
+            .control-group
+              .controls
+                = label_tag :codigo
+                = text_field :verification_code, ""
+                = submit_tag "Ok", :class => "btn btn-small btn-primary"
+          .control-group
+            .controls
+              - unless @resend
+                = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
+                  %i.icon-refresh
+                  No recibí el código
+                %br
+              = link_to subscribers_mobile_configuration_path(), class: "btn-link" do
+                %i.icon-pencil
+                Cambiar el Número
+      .span8
+        = render "side_text"

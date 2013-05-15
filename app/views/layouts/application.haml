@@ -1,0 +1,23 @@
+!!!
+= render '/refinery/html_tag'
+- site_bar = render('/refinery/site_bar', :head => true)
+= render '/refinery/head'
+= body_tag do
+  = site_bar # This is the only section we do need to keep
+  = render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/
+  .wrapper
+    .header
+      .container-fluid
+        = render '/shared/header'
+    .content
+      = render '/shared/alerts'
+      .container-fluid
+        - if content_for?(:topbar)
+          .row-fluid.topbar
+            .span12
+              = yield(:topbar)
+        = yield(:body).presence || yield
+    .footer
+      .container-fluid
+        = render '/refinery/footer'
+  = render '/refinery/javascripts'

@@ -1,0 +1,61 @@
+.home
+  .row-fluid.login
+    .span8.main-img
+      .textA
+        %h1 Prevención y Conciencia
+        %p Toda la información que precisás acerca de las enfermedades inmunoprevenibles y sus respectivas vacunas.
+      %a{:href => vaccines_path}
+        .textB
+          %h4 
+            Informate / 
+            %small Accedé libremente a toda la información que necesitás acerca de las vacunas y las  enfermedades que éstas previenen.
+    .span4.login-form
+      .well-white#login-form-container
+        = render_login_form
+  .row-fluid.section1
+    .span8
+      %h1 RECORDATORIOS DE VACUNACIÓN
+      %p Ingresando tu número de celular, Inmuniversia podrá enviarte recordatorios vía SMSrespecto de cupando recibir tus hijos lasiguiente aplicación, para que no se te pase ninguna fecha del calendario de vacunación.
+    .span4
+      .row-fluid
+        .span12
+          = image_tag '/assets/ic-home-01.png'
+          %h4
+            CARGA DE VACUNACIONES / 
+            %small
+              Al registrarte podrás enviar información vía SMS a Inmuniversia acerca de qué vacunas ya han recibido tus hijos y en qué fecha y consultar toda la información en la web.
+      %br
+      .row-fluid
+        .span12
+          = image_tag '/assets/ic-home-02.png'
+          %h4
+            CANALES DE COMUNICACIÓN / 
+            %small
+              Inmuniversia puede enviarte recordatorios de vacunación a distintos teléfonos o direcciones de e-mail.
+  
+  .row-fluid.section2
+    .span12.well-white
+      .row-fluid
+        .span8
+          %h1 
+            CALENDARIO DE
+            %br VACUNACIÓN ONLINE
+          %p Ingresando el nombre y fecha de nacimiento de tus hijos, Inmuniversia generará un calendario de vacunación online para cada uno de ellos, que podrás consultar y editar vía web en cualquier momento, para saber cuáles son las próximas vacunas a aplicar e informarte acerca de las enfermedades que previenen. 
+        .span4
+          = image_tag '/assets/ic-home-03.png'
+  
+  .row-fluid.section3
+    .span4
+      .image= image_tag '/assets/ic-home-04.png'
+      %h3 Madres y Padres
+      %p Informate de manera clara y sencilla acerca de las enfermedades inmunoprevenibles, sus respectivas vacunas, el calendario de vacunación oficial y los lugares donde se aplican, como así también de sus posibles efectos adversos. Recibí recordatorios vía SMS, email o llamados telefónicos con los vencimientos de cada vacuna y de las dosis subsiguientes.
+       
+    .span4
+      .image= image_tag '/assets/ic-home-05.png'
+      %h3 Pediatras
+      %p Suministrales a tus pacientes toda la información necesaria sobre las enfermedades inmunoprevenibles y confeccionales en minutos un calendario a medida que permitirá que reciban recordatorios via mensajes de texto, email o llamados teléfonicos.
+       
+    .span4
+      .image= image_tag '/assets/ic-home-06.png'
+      %h3 Centros de Vacunación
+      %p Inmuniversia les permite a los centros de vacunación recordarles a sus pacientes las fechas en las que deben recibir vacunas/dosis y, al mismo tiempo, mantener sus bases de datos actualizadas, facilitando así un eguimiento detallado de cada uno de los casos.

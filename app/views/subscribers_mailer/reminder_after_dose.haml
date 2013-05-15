@@ -1,0 +1,8 @@
+%p Hola #{@reminder.subscriber_name},
+
+%p Te informamos que ya deberías haberle aplicado la #{@reminder.dose_name} a #{@reminder.child_name}.
+
+%p Por favor, ingresá a la web de Inmuniversia e indicá si la vacuna fue aplicada:
+
+%p
+  = link_to 'Inmuniversia', Settings.hosts.local
