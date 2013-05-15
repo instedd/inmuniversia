@@ -1,0 +1,26 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: Inmuniversia_development
+  pool: 35
+  username: root
+  password:
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: Inmuniversia_test
+  pool: 35
+  username: root
+  password:
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: Inmuniversia
+  pool: 35
+  username: root
+  password:

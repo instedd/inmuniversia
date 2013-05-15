@@ -1,0 +1,8 @@
+.comment-form{:id => "comment_form_#{comment.parent_id}"}
+  = form_for comment, builder: BootstrapFormBuilder, :remote => true do |f|
+    = f.text_area :body, :label => false, :class => 'span12', :rows => 5
+    = f.hidden_field :parent_id, :value => comment.parent_id
+    = f.hidden_field :commentable_id, :value => comment.commentable_id
+    = f.hidden_field :commentable_type, :value => comment.commentable_type
+    = f.button 'Comentar', :class => "btn btn-primary", :disable_with => "Agregando..."
+    = link_to "Cancelar", '#', id: 'cancel-add-new-child', :onclick => "cancelAddComment(event,#{comment.parent_id})", class: 'btn btn-link' unless comment.parent_id.nil?
