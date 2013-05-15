@@ -1,0 +1,8 @@
+- agenda.sections.each do |section|
+  %section.white
+    %h2= section.title
+    %hr
+    
+    %ul
+      - section.vaccinations.each do |vaccination|
+        %li= render_agenda_entry(vaccination, section: section)
