@@ -4,7 +4,7 @@
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close' if current_user
   %p.quoted= comment.body
   %h5
-    = "- #{comment.subscriber.first_name.capitalize} de #{comment.subscriber.zip_code}"
+    = "- #{comment.subscriber.first_name.capitalize}"
     %small= comment.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
   - comment_hash[:children].each do |child|
     = render :partial => 'comments/comment', :locals => { :comment => child }
