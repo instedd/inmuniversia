@@ -1,5 +1,5 @@
 - content_for :topbar do
-  %h1 Change your password
+  %h1 Cambiar Password
 
 - content_for :body do
   .registration
@@ -10,13 +10,13 @@
           = f.hidden_field :reset_password_token
           .control-group
             .controls
-              = f.label :password, "New password"
+              = f.label :password, "Nuevo password"
               = f.password_field :password, class: 'span12'
           .control-group
             .controls
-              = f.label :password_confirmation, "Confirm new password"
+              = f.label :password_confirmation, "Confirmar nuevo password"
               = f.password_field :password_confirmation, class: 'span12'
           .control-group
-            .controls          
-              = f.submit "Change my password", class: 'btn btn-primary'
+            .controls
+              = f.submit "Cambiar mi password", class: 'btn btn-primary'
           = render "links"
