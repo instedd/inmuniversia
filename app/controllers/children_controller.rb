@@ -4,6 +4,7 @@ class ChildrenController < AuthenticatedController
 
   def create
     @child = current_subscriber.children.new(params[:child])
+    @active_tab = current_subscriber.preferences.fetch('dashboard.active_tab', 'calendars')
     @child.setup! if @child.save
   end
 
