@@ -1,12 +1,12 @@
-%hr
 - comment = comment_hash[:father]
 %div.comment{ :id => "comment-#{comment.id}"}
   / Unicamente si hay un subscriber o user logueado, mostrar esto
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close' if current_user
-  %p= comment.body
-  %h4
+  %p.quoted= comment.body
+  %h5
     = "- #{comment.subscriber.first_name.capitalize} de #{comment.subscriber.zip_code}"
     %small= comment.updated_at.strftime("el %d/%m/%Y a las %H:%M:%S")
   - comment_hash[:children].each do |child|
     = render :partial => 'comments/comment', :locals => { :comment => child }
   = link_to "Comentar", "#", :id => "comment-link-#{comment.id}", :onclick => "commentReport(event,#{comment.id},#{comment.commentable_id});" if current_user || current_subscriber
+%hr
