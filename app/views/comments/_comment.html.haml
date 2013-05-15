@@ -1,4 +1,4 @@
-%div.comment{ :id => "comment-#{comment.id}", :class => "reply"}
+%div.comment{ :id => "comment-#{comment.id}", :class => (comment.parent_id.nil? ? '' : "reply")}
   / Unicamente si hay un subscriber o user logueado, mostrar esto
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Esta seguro que desea remover este comentario?", :disable_with => "×", :class => 'close' if current_user
   %p= comment.body
