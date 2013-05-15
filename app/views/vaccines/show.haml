@@ -38,10 +38,10 @@
     = section("Efectos secundarios", :side_effects, @vaccine)
     = section("Más información", :more_info, @vaccine)
     .comments
-      %h1
-        Reportes de Usuarios
+      %h4
+        Reportes de usuarios
+      %hr.shadow
       = render :partial => 'comments/comment_with_children', :collection => @comments, :as => :comment_hash
-      %hr
       .accordion-heading
         %a.accordion-toggle{:href => "#collapse",:data => {'toggle' => 'collapse'} }
           Reportar un caso
