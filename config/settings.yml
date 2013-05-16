@@ -16,3 +16,5 @@ nuntium:
   application:
   password:
   sms_from: 0
+  incoming_username: Juancito
+  incoming_password: '123456'

@@ -9,7 +9,7 @@ class Channel::Sms < Channel
   end
 
   def address_should_be_a_phone_number
-    errors.add(:address, "Debe ingresar un numero telefonico valido") if address.match /[^0-9 .-]/
+    errors.add(:address, "Debe ingresar un numero telefonico valido") if !address.nil? && (address.match /[^0-9 .-]/)
   end
 
   def generate_verification_code
@@ -21,6 +21,10 @@ class Channel::Sms < Channel
       puts "Verification code is: #{code}" if Rails.env.development?
       nuntium.send_ao message("Su código de verificación en Inmuniversia es: #{code}")
     end
+  end
+
+  def send_message message
+    nuntium.send_ao message(message)
   end
 
   protected
