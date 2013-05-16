@@ -13,6 +13,8 @@
             %a{:href => "#side_effects"} Efectos secundarios
           %li
             %a{:href => "#more_info"} Más información
+          %li
+            %a{:href => "#user_reports"} Reportes de usuarios
 
 - content_for :sidebar do
   %section.white
@@ -37,7 +39,7 @@
     = section("Recomendaciones", :recommendations, @vaccine)
     = section("Efectos secundarios", :side_effects, @vaccine)
     = section("Más información", :more_info, @vaccine)
-    .comments
+    #user_reports.comments
       %h4
         Reportes de usuarios
       %hr.shadow
