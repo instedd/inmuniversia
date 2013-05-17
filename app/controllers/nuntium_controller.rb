@@ -11,11 +11,10 @@ class NuntiumController < ApplicationController
   def receive_at
     # data = Command.process params.except(:action, :controller)
     #sacar esto a una clase apropiada
-    if params[:number] && (params[:body].downcase.match /^alta/i)
-      channel = Channel::Sms.create!(:address => params[:number])
-      channel.send_message("Bienvenido a Inmuniversia")
-      # render text: "Bienvenido a Inmuniversia", content_type: 'text/plain'
-      head :ok
+    if params[:from] && (params[:body].downcase.match /^alta/i)
+      channel = Channel::Sms.create!(:address => params[:from])
+      # channel.send_message("Bienvenido a Inmuniversia")
+      render text: "Bienvenido a Inmuniversia", content_type: 'text/plain'
     else
       head :ok
     end
