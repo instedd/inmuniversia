@@ -1,0 +1,6 @@
+#alerts
+  - [[notice, 'alert-info'], [alert, 'alert-error']].each do |text, klazz|
+    - unless text.blank?
+      .alert.flash-alert.fade.in{class: klazz}
+        = text
+        %button.close{'type' => 'button', 'data-dismiss' => 'alert'} &times;
