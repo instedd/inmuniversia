@@ -8,7 +8,7 @@
           = f.text_field :child_date_of_birth, value: l(calendar_form.child_date_of_birth, format: :default), required: true, class: 'ux-datepicker-past'
         .span4
           = f.actions do
-            %button.btn.btn-mini.pull-right(type="input")
+            %button.btn.btn-mini.pull-right(type="submit")
               %i.icon-ok
       .vaccines
         - calendar_form.vaccines.each do |vaccine|
