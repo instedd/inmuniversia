@@ -8,9 +8,8 @@
           = f.text_field :child_date_of_birth, value: l(calendar_form.child_date_of_birth, format: :default), required: true, class: 'ux-datepicker-past'
         .span4
           = f.actions do
-            = f.submit 'ok', class: 'btn btn-medium pull-right'
-            //= link_to 'Cancelar', '#', class: 'cancel-configure-calendar btn'
-
+            %button.btn.btn-mini.pull-right(type="input")
+              %i.icon-ok
       .vaccines
         - calendar_form.vaccines.each do |vaccine|
           .row-fluid
