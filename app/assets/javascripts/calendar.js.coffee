@@ -44,7 +44,7 @@ $('body.dashboard #calendars')
 .on 'click', '#calendar_form .vaccination-status-option', () ->
   $('#calendar_form .vaccination-status-option').removeClass('selected')
   $(@).addClass('selected')
-  
+
   value = $(@).data('vaccination-status')
   $('#vaccination_status').val(value)
   $('#popover-edit .taken-at').toggle(value == 'taken')
@@ -68,6 +68,7 @@ $('body.dashboard #calendars')
 # Toggle to calendar edit
 .on 'click', '.configure-calendar', () ->
   $(@).closest('.calendar').hide().next('.calendar-edit').show()
+  false
 
 # Toggle to calendar view
 .on 'click', '.cancel-configure-calendar', () ->

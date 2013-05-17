@@ -1,5 +1,7 @@
 <% if @form.valid? %>
-  $("#calendar-<%= @form.child_id %>").replaceWith('<%= j(render_calendar(@child)) %>').setupComponents();
+  $("#calendar-<%= @form.child_id %>").replaceWith('<%= j(render_calendar(@child)) %>');
+  $("#calendar-<%= @form.child_id %>").setupComponents();
 <% else %>
-  $("#calendar-<%= @form.child_id %> .calendar-edit").replaceWith('<%= j(render('dashboard/calendar_form', calendar_form: @form)) %>').setupComponents();
+  $("#calendar-<%= @form.child_id %> .calendar-edit").replaceWith('<%= j(render('dashboard/calendar_form', calendar_form: @form)) %>');
+  $("#calendar-<%= @form.child_id %> .calendar-edit").setupComponents();
 <% end %>

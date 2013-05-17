@@ -4,9 +4,8 @@
   $('#dashboard-tab-content').show();
   $('.dashboard-tabs button').removeAttr('disabled');
 
-  $('#calendars').prepend('<%= j(render_calendar(@child, new: true)) %>');
-  $('#agenda').html('<%= j(render_agenda(current_subscriber)) %>');
-  $('#new-child-form').collapse('hide').html('<%= j(render_new_child_form) %>').setupComponents();
+  $('#calendars').prepend('<%= j(render_calendar(@child, new: true)) %>').setupComponents();
+  $('#agenda').html('<%= j(render_agenda(current_subscriber)) %>').setupComponents();
 
   window.setTimeout(function(){$('#calendars .new-calendar:first').removeClass('new-calendar');}, 2000);
 
