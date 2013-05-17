@@ -1,6 +1,7 @@
 class NuntiumController < ApplicationController
 
   before_filter :authenticate
+  skip_before_filter :verify_authenticity_token
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
@@ -11,8 +12,9 @@ class NuntiumController < ApplicationController
   def receive_at
     # data = Command.process params.except(:action, :controller)
     #sacar esto a una clase apropiada
+    # p params[:from]
     if params[:from] && (params[:body].downcase.match /^alta/i)
-      channel = Channel::Sms.create!(:address => params[:from])
+      subscriber = Subscriber.create_sms_subscriber(params[:from])
       # channel.send_message("Bienvenido a Inmuniversia")
       render text: "Bienvenido a Inmuniversia", content_type: 'text/plain'
     else

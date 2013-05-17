@@ -38,7 +38,7 @@ Inmuniversia::Application.routes.draw do
   # Initial home page
   get '/home' => 'home#index', as: 'home'
 
-  match '/nuntium/receive_at' => 'nuntium#receive_at'
+  post '/nuntium/receive_at' => 'nuntium#receive_at'
 
   # Root pages
   authenticated :subscriber do
