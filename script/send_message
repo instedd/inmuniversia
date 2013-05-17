@@ -3,16 +3,20 @@
 require 'yaml'
 require 'rails_config'
 
-SETTINGS_FILE = File.expand_path('../../config/settings.yml', __FILE__)
-raise Exception, "#{SETTINGS_FILE} configuration file is missing" unless FileTest.exists?(SETTINGS_FILE) 
+SETTINGS_FILES = [
+  File.expand_path('../../config/settings.yml', __FILE__),
+  File.expand_path('../../config/settings.local.yml', __FILE__),
+  File.expand_path('../../config/settings/development.yml', __FILE__),
+  File.expand_path('../../config/settings/development.local.yml', __FILE__)
+]
 
-RailsConfig.load_and_set_settings(SETTINGS_FILE)
+RailsConfig.load_and_set_settings(*SETTINGS_FILES)
 config = Settings.nuntium
 
 auth = "-u #{config['incoming_username']}:#{config['incoming_password']}" if config['incoming_username'] && config['incoming_password']
 
-from = ARGV[1] || "sms://12345"
+from = ARGV[1] || "sms://123456"
 to   = ARGV[2] || "sms://#{config.sms_from}"
 
-puts `curl -X POST #{auth} http://#{Settings.hosts.local}/nuntium/receive_at -F body=#{ARGV[0]} -F from=#{from} -F to=#{to} 2>/dev/null`
+puts `curl -X POST #{auth} http://#{Settings.hosts.local}/nuntium/receive_at -F body="#{ARGV[0]}" -F from=#{from} -F to=#{to} `
 

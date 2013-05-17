@@ -12,6 +12,11 @@ class Channel::Sms < Channel
     errors.add(:address, "Debe ingresar un numero telefonico valido") if !address.nil? && (address.match /[^0-9 .-]/)
   end
 
+  def address= value
+    value = value[/\d+/] if value.match /^sms:\/\//i
+    write_attribute(:address, value)
+  end
+
   def generate_verification_code
     self.verification_code ||= rand(999999)
   end
