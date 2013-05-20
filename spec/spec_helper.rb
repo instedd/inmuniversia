@@ -16,6 +16,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include MailHelpers
   config.include DelayedJobHelpers
+  config.include NuntiumHelpers
 
   config.before(:all) do
     User.new(email: 'admin@example.com', password: 'ChangeMe').create_first if User.count == 0
