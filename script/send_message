@@ -15,7 +15,8 @@ config = Settings.nuntium
 
 auth = "-u #{config['incoming_username']}:#{config['incoming_password']}" if config['incoming_username'] && config['incoming_password']
 
-from = ARGV[1] || "sms://123456"
+phone_number = rand(9999999999)
+from = ARGV[1] || "sms://#{phone_number}"
 to   = ARGV[2] || "sms://#{config.sms_from}"
 
 puts `curl -X POST #{auth} http://#{Settings.hosts.local}/nuntium/receive_at -F body="#{ARGV[0]}" -F from=#{from} -F to=#{to} `
