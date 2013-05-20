@@ -32,17 +32,6 @@ describe Subscribers::RegistrationsController do
         post :create, {:subscriber => invalid_attributes2}
       end.to change(Subscriber, :count).by(0)
     end
-
-    #get a http://localhost:3000/subscribers/sign_up should be success
-    # it "should list all diseases if user is logged in" do
-    #   sign_in create(:refinery_user)
-    #   get :index
-    #   response.should be_success
-    #   assigns(:diseases).should match_array(published_diseases + unpublished_diseases)
-    # end
-
-    #post de sign up valido e invalido. success (user creado, redirect y warden.authenticated?(:user).should be_true)
-    # y fail (sin usuario nuevo, should have content bla, y que anden los datos que meti antes (:assigns subscriber should match bla))
   end
 
   context "mobile_configuration" do
