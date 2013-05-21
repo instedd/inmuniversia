@@ -14,7 +14,16 @@ class Channel::Sms < Channel
 
   def address= value
     value = value[/\d+/] if value.match /^sms:\/\//i
+    value.strip!
     write_attribute(:address, value)
+  end
+
+  def address
+    if self.read_attribute(:address).strip != self.read_attribute(:address)
+      write_attribute(:address, self.read_attribute(:address).strip)
+      self.save
+    end
+    self.read_attribute(:address)
   end
 
   def generate_verification_code

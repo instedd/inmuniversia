@@ -14,6 +14,11 @@ Inmuniversia::Application.routes.draw do
     get '/subscribers/mobile_configuration' => 'subscribers/registrations#mobile_configuration'
     post '/subscribers/add_mobile_number_and_send_verification_code' => 'subscribers/registrations#add_mobile_number_and_send_verification_code'
     post '/subscribers/submit_verification_code' => 'subscribers/registrations#submit_verification_code'
+    get '/subscribers/subscriber_from_mobile' => 'subscribers/registrations#subscriber_from_mobile'
+    post '/subscribers/find_subscriber_and_send_verification_code' => 'subscribers/registrations#find_subscriber_and_send_verification_code'
+    post '/subscribers/submit_verification_code_and_fulfill_user_data' => 'subscribers/registrations#submit_verification_code_and_fulfill_user_data'
+    put '/subscribers/update_sms_user' => 'subscribers/registrations#update_sms_user'
+
   end
 
   # Hide vaccine and disease resources from refinery and handle them manually
