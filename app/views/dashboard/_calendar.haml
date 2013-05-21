@@ -8,7 +8,8 @@
               = calendar.child.name
               %small= "Nacido el #{l(calendar.child.date_of_birth, format: :long)}"
           .pull-right
-            = link_to 'Configurar', '#', class: 'configure-calendar'
+            = link_to '#', class: 'configure-calendar' do
+              %i.ics-cog
           .clearfix
 
     %tbody

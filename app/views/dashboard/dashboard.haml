@@ -4,8 +4,9 @@
       %h1 Mi Cuenta
     .span5
       #add-new-child
-        %a.btn.btn-mini{:href => "#"}
-          %i.icon-plus
+        %a.btn-link.blue{:href => "#"}
+          %span.btn-square
+            %i.ics-plus
         = link_to 'Registrar hijo', '#'
       #new-child-form.collapse.out
         = render_new_child_form
