@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517193334) do
+ActiveRecord::Schema.define(:version => 20130520195049) do
 
   create_table "channels", :force => true do |t|
     t.string   "type"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130517193334) do
     t.datetime "updated_at",            :null => false
   end
 
+  add_index "channels", ["address"], :name => "index_channels_on_address", :unique => true
   add_index "channels", ["subscriber_id"], :name => "index_channels_on_subscriber_id"
 
   create_table "children", :force => true do |t|
