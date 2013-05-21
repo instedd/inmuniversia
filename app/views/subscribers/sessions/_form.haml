@@ -3,7 +3,7 @@
   %hr.shadow
 
   = form_for login_resource, :builder => BootstrapFormBuilder, :as => resource_name, :url => session_path(resource_name) do |f|
-    
+
     = f.email_field :email, :class => 'span12', :label => 'Email', required: true
     = f.password_field :password, :class => 'span12', :label => 'Contraseña', required: true
 
@@ -30,13 +30,13 @@
         %a{:href => new_subscriber_registration_path}
           %b Crear una cuenta
 
-    / %hr
-    / .control-group
-    /   .controls
-    /     %a.btn.btn-mini{:href => "#"}
-    /       %i.icon-chevron-right
-    /     %a{:href => "#"}
-    /       %b Ya te registraste via SMS?
+    %hr
+    .control-group
+      .controls
+        %a.btn.btn-mini{:href => "#"}
+          %i.icon-chevron-right
+        %a{:href => subscribers_subscriber_from_mobile_path}
+          %b Ya te registraste via SMS?
   = render "devise/links"
 
 #forgot-pass-form.collapse{class: ('in' if current_action == :forgot_password)}
