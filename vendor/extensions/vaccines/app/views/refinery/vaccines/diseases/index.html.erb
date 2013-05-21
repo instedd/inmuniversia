@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="diseases">
+    <% @diseases.each do |disease| %>
+      <li>
+        <%= link_to disease.name, refinery.vaccines_disease_path(disease) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

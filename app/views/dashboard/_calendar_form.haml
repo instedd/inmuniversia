@@ -1,0 +1,32 @@
+.calendar-edit.nodisplay
+  .well-white.edit-vaccines
+    = form_for calendar_form, builder: BootstrapFormBuilder, remote: true do |f|
+      .row-fluid
+        .span4
+          = f.text_field :child_name, required: true, class: 'child'
+        .span4
+          = f.text_field :child_date_of_birth, value: l(calendar_form.child_date_of_birth, format: :default), required: true, class: 'ux-datepicker-past calendar'
+        .span4
+      .vaccines
+        - calendar_form.vaccines.each do |vaccine|
+          .row-fluid
+            .span4.vaccine-name
+              = vaccine.name
+              - unless vaccine.diseases_list.blank?
+                %span= vaccine.diseases_list
+            .span8
+              = f.fields_for :vaccines, vaccine do |fv|
+                = fv.hidden_field :subscription_id
+                .switch.switch{"data-off-label" => "", "data-on-label" => ""}
+                  = fv.check_box :enabled
+      %br
+      .row-fluid
+        .span12
+          = f.actions do
+            %button.btn-link.blue(type="submit")
+              %span.btn-square
+                %i.ics-ok
+              Guardar
+            = link_to "Cancelar", '#', class: 'btn btn-link'
+            = link_to "Desuscribir hijo", '#', class: 'btn btn-link pull-right'
+

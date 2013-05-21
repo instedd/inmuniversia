@@ -1,0 +1,9 @@
+email:
+  delivery_method: test
+
+nuntium:
+  url: nuntium.instedd.org
+  account: test
+  application: test
+  password: test
+  sms_from: 999
