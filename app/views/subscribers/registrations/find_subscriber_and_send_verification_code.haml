@@ -33,11 +33,11 @@
             .controls
               - unless @resend
                 = link_to subscribers_find_subscriber_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
-                  %i.icon-refresh
+                  %i.ics-refresh
                   No recibí el código
                 %br
               = link_to subscribers_subscriber_from_mobile_path(), class: "btn-link" do
-                %i.icon-pencil
+                %i.ics-pencil
                 Cambiar el Número
       .span8
         = render "side_text"
