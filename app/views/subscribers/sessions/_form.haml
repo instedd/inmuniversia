@@ -16,25 +16,28 @@
 
     .control-group
       .controls.inline
-        %a.btn.btn-mini{:href => "#", :id => 'sign_up_button'}
-          %i.icon-chevron-right
-        = f.submit "Ingresar", :class => 'btn-link'
+        %a.btn-link.blue{:href => "#", :id => 'sign_up_button'}
+          %span.btn-square
+            %i.ics-aright
+        = f.submit "Ingresar", :class => 'btn-link blue'
         = link_to "Olvidé mi contraseña", '#', class: "pull-right btn btn-link", id: 'show_forgot_pass'
 
     %hr
 
     .control-group
       .controls
-        %a.btn.btn-mini{:href => new_subscriber_registration_path}
-          %i.icon-chevron-right
+        %a.btn-link.blue{:href => new_subscriber_registration_path}
+          %span.btn-square
+            %i.ics-aright
         %a{:href => new_subscriber_registration_path}
           %b Crear una cuenta
 
     %hr
     .control-group
       .controls
-        %a.btn.btn-mini{:href => "#"}
-          %i.icon-chevron-right
+        %a.btn-link.blue{:href => "#"}
+          %span.btn-square
+            %i.ics-aright
         %a{:href => subscribers_subscriber_from_mobile_path}
           %b Ya te registraste via SMS?
   = render "devise/links"
