@@ -1,0 +1,43 @@
+- content_for :topbar do
+  %h1 Crear una cuenta
+
+- content_for :body do
+  .registration
+    .row-fluid
+      .span4
+        .registration-steps
+          .steps
+            .row-fluid
+              .span4.active
+                Teléfono
+                %br
+                móvil
+              .span4.active Confirmar teléfono
+              .span4 Completar datos
+            .row-fluid
+              .span12
+                .line
+                  .step.s1.active
+                  .step.s2.active
+                  .step.s3
+                  .inner.f2
+          = render "verification_code_header", resend: @resend, error: @error, channel:@channel
+          = form_tag(subscribers_submit_verification_code_and_fulfill_user_data_path) do
+            = hidden_field_tag :id, @channel.id
+            .control-group
+              .controls
+                = label_tag :codigo
+                = text_field :verification_code, ""
+                = submit_tag "Ok", :class => "btn btn-small btn-primary"
+          .control-group
+            .controls
+              - unless @resend
+                = link_to subscribers_find_subscriber_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
+                  %i.ics-refresh
+                  No recibí el código
+                %br
+              = link_to subscribers_subscriber_from_mobile_path(), class: "btn-link" do
+                %i.ics-pencil
+                Cambiar el Número
+      .span8
+        = render "side_text"

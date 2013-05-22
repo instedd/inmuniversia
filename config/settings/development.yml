@@ -1,0 +1,9 @@
+hosts:
+  local: 127.0.0.1:3000
+
+time:
+  global_scale_factor: 1
+  delayed_job_scale_factor: 1
+
+nuntium:
+  enabled: false

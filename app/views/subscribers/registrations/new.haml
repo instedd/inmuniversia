@@ -1,0 +1,58 @@
+- content_for :topbar do
+  %h1 Crear una cuenta
+
+- content_for :body do
+  .registration
+    .row-fluid
+      .span4
+        .registration-steps
+          .steps
+            .row-fluid
+              .span4.active Datos Personales
+              .span4 
+                Teléfono
+                %br 
+                móvil
+              .span4 Confirmar teléfono
+            .row-fluid
+              .span12
+                .line
+                  .step.s1.active
+                  .step.s2
+                  .step.s3
+                  .inner.f1
+          %p Ingrese los siguientes datos para  crear su nueva cuenta en Inmuniversia
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            .control-group
+              .controls
+                .row-fluid
+                  .span6
+                    = f.label :nombre
+                    = f.text_field :first_name, :class => 'span12'
+                  .span6
+                    = f.label :apellido
+                    = f.text_field :last_name, :class => 'span12'
+            .control-group
+              .controls
+                = f.label :email
+                = f.email_field :email, :class => 'span12'
+            .control-group
+              .controls
+                = f.label :codigo_postal, "Código postal"
+                = f.text_field :zip_code, :class => 'span12'
+            .control-group
+              .controls
+                = f.label :password, "Contraseña"
+                = f.password_field :password, :class => 'span12'
+            .control-group
+              .controls
+                = f.label :confirmacion_del_password, "Confirmar contraseña"
+                = f.password_field :password_confirmation, :class => 'span12'
+            .control-group
+              .controls
+                = f.submit "Siguiente", :class => 'btn btn-primary'
+
+      .span8
+        = render "links"
+        = render "side_text"

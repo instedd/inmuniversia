@@ -1,0 +1,99 @@
+/* ============================================================
+ * bootstrapSwitch v1.2 by Larentis Mattia @spiritualGuru
+ * http://www.larentis.eu/switch/
+ * ============================================================
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * ============================================================ */
+.has-switch {
+  .border-radius(25px);
+  background-color: #BCBCBC;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #9C9C9C;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  line-height: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  width: 40px;
+
+  &.deactivate {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: default !important;
+    
+    label, span {
+      cursor: default !important;
+    }
+  }
+  
+  & > div {
+    display: inline-block;
+    width: 70px;
+    position: relative;
+    white-space: nowrap;
+    top: 0;
+    &.switch-animate {
+      .transition(0.5s left);
+    }
+    &.switch-off {
+      left: -50%;
+    }
+    &.switch-on {
+      left: 0%;
+    }
+  }
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  span {
+    .box-sizing(border-box);
+    .border-radius(25px);
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: 8px;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+
+    &.switch-left {
+      .box-shadow( 0 1px 2px rgba(0,0,0,.4) inset);
+      background-color: #4CA300;
+      margin: 0 7px 0 4px;
+      border-bottom: 1px solid @white;
+    }
+
+    &.switch-middle {
+      .box-shadow( 2px 5px 3px rgba(0,0,0,0.11) inset);
+      background-color: @white;
+      border:4px solid @white;
+      margin: 0 7px 0 0;
+    }
+
+    &.switch-right {
+      .box-shadow( 0 1px 2px rgba(0,0,0,.4) inset);
+      background-color: #BCBCBC;
+      border-bottom: 1px solid @white;
+      
+      &:hover,
+      &:focus,
+      &:active,
+      &.active,
+      &.disabled,
+      &[disabled] {
+        background-color: #aaaaaa;
+        *background-color: #aaaaaa;
+        background-color: #aaaaaa \9;
+      }
+    }
+  }
+}
+
