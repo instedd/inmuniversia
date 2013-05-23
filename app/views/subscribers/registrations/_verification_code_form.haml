@@ -1,0 +1,8 @@
+= form_tag(path) do
+  = hidden_field_tag :id, channel.id
+  = hidden_field_tag :old_sms_subscriber_id, old_sms_subscriber_id
+  .control-group
+    .controls
+      = label_tag :codigo
+      = text_field :verification_code, ""
+      = submit_tag "Ok", :class => "btn btn-small btn-primary"

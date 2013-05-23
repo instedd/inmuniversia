@@ -8,14 +8,7 @@
         .registration-steps
           = render "sign_up_steps", :step => 3
           = render "verification_code_header", resend: @resend, error: @error, channel:@channel
-          = form_tag(subscribers_submit_verification_code_path) do
-            = hidden_field_tag :id, @channel.id
-            = hidden_field_tag :old_sms_subscriber_id, @old_sms_subscriber_id
-            .control-group
-              .controls
-                = label_tag :codigo
-                = text_field :verification_code, ""
-                = submit_tag "Ok", :class => "btn btn-small btn-primary"
+          = render "verification_code_form", :path => subscribers_submit_verification_code_path, :channel => @channel, :old_sms_subscriber_id => @old_sms_subscriber_id
           .control-group
             .controls
               - unless @resend
