@@ -11,6 +11,7 @@
               .btn-group.account-settings
                 %a.btn.btn-link.user{"data-toggle" => "dropdown", href: "#"}
                   = current_subscriber.email
+                  %span.caret
                 %ul.dropdown-menu.black.settings
                   %li= link_to 'Editar mi cuenta', '#' 
                   %li= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
