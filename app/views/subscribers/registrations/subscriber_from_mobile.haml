@@ -15,12 +15,6 @@
           %br
 
           %p.blue Por favor, ingresá tu número de teléfono aquí:
-          / partial para el form
-
-          = form_for(@channel, :url => subscribers_find_subscriber_and_send_verification_code_path) do |f|
-            .control-group
-              .controls
-                = f.text_field :address, :class => "span10"
-                = f.submit "Ok", :class => "btn btn-small btn-primary"
+          = render "mobile_form", :path => subscribers_find_subscriber_and_send_verification_code_path
       .span8
         = render "side_text"
