@@ -1,0 +1,15 @@
+.steps
+  .row-fluid
+    .span4.active Datos Personales
+    .span4{:class => step >= 2 ? "active" : ""}
+      Teléfono
+      %br
+      móvil
+    .span4{:class => step >= 3 ? "active" : ""} Confirmar teléfono
+  .row-fluid
+    .span12
+      .line
+        .step.s1.active
+        .step.s2{:class => step >= 2 ? "active" : ""}
+        .step.s3{:class => step >= 3 ? "active" : ""}
+        .inner{:class => "f#{step}"}

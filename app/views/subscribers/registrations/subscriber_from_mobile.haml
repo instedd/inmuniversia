@@ -6,18 +6,7 @@
     .row-fluid
       .span4
         .registration-steps
-          .steps
-            .row-fluid
-              .span4.active Teléfono móvil
-              .span4 Confirmar teléfono
-              .span4 Completar datos
-            .row-fluid
-              .span12
-                .line
-                  .step.s1.active
-                  .step.s2
-                  .step.s3
-                  .inner.f1
+          = render "sms_steps", :step => 1
           %p
             Bienvenido a la web de Inmuniversia
           %p
