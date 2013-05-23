@@ -6,24 +6,11 @@
     .row-fluid
       .span4
         .registration-steps
-          .steps
-            .row-fluid
-              .span4.active Datos Personales
-              .span4.active
-                Teléfono
-                %br
-                móvil
-              .span4.active Confirmar teléfono
-            .row-fluid
-              .span12
-                .line
-                  .step.s1.active
-                  .step.s2.active
-                  .step.s3.active
-                  .inner.f3
+          = render "sign_up_steps", :step => 3
           = render "verification_code_header", resend: @resend, error: @error, channel:@channel
           = form_tag(subscribers_submit_verification_code_path) do
             = hidden_field_tag :id, @channel.id
+            = hidden_field_tag :old_sms_subscriber_id, @old_sms_subscriber_id
             .control-group
               .controls
                 = label_tag :codigo

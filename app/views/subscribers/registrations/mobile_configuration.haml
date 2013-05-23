@@ -6,21 +6,7 @@
     .row-fluid
       .span4
         .registration-steps
-          .steps
-            .row-fluid
-              .span4.active Datos Personales
-              .span4.active
-                Teléfono
-                %br
-                móvil
-              .span4 Confirmar teléfono
-            .row-fluid
-              .span12
-                .line
-                  .step.s1.active
-                  .step.s2.active
-                  .step.s3
-                  .inner.f2
+          = render "sign_up_steps", :step => 2
           %p
             Bienvenido! Ya tenes tu cuenta en Inmuniversia.
             / Te enviamos un email a %b= current_subscriber.email para que confirmes tu direccion.

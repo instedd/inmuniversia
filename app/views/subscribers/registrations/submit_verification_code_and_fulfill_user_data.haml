@@ -6,21 +6,8 @@
     .row-fluid
       .span4
         .registration-steps
-          .steps
-            .row-fluid
-              .span4.active
-                Teléfono
-                %br
-                móvil
-              .span4.active Confirmar teléfono
-              .span4.active Completar datos
-            .row-fluid
-              .span12
-                .line
-                  .step.s1.active
-                  .step.s2.active
-                  .step.s3.active
-                  .inner.f3
+          = render "sms_steps", :step => 3
+          / Separar esto a una partial que recibe el subscriber, y el path
           %p Ingrese los siguientes datos para completar su cuenta en Inmuniversia
           = form_for(@subscriber, :as => :subscriber, :url => subscribers_update_sms_user_path) do |f|
             = devise_error_messages!
