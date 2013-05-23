@@ -1,8 +1,7 @@
 - content_for :topbar do
   .row-fluid.static-bar{"data-offset-top" => "65", "data-spy" => "affix"}
-    .span3
+    .span12
       %h1= @vaccine.name
-    .span9
       #sections-bar
         %ul.nav.nav-pills.info-bar
           %li
@@ -45,7 +44,6 @@
       %hr.shadow
       = render :partial => 'comments/comment_with_children', :collection => @comments, :as => :comment_hash
       .accordion-heading
-        %a.accordion-toggle{:href => "#collapse",:data => {'toggle' => 'collapse'} }
+        %h4.blue
           Reportar un caso
-      #collapse.accordion-body.collapse.in
         = render :partial => 'comments/form', :locals => { :comment => @new_comment } if current_subscriber
