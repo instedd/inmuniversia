@@ -9,11 +9,7 @@ $.extend
     window.setTimeout((() -> alert.alert('close')), timeout) if timeout? && timeout > 0
 
   notice: (msg, timeout=5000) ->
-    console.log("tirate un que, tirate un notice")
-    console.log(msg)
     @alert msg, 'alert-info', timeout
 
   error: (msg, timeout=10000) ->
-    console.log("tirate un que, tirate un error")
-    console.log(msg)
     @alert msg, 'alert-error', timeout
