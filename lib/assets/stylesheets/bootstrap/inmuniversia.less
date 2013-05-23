@@ -35,6 +35,10 @@ ul {
       color: @white;
       text-shadow:none !important;
       margin-top: -15px !important;
+
+      .caret {
+        border-top-color: @white;
+      }
       &:focus, &:active, &:hover {
         color: @white;
         outline-offset:0 !important;
@@ -101,9 +105,12 @@ ul {
 
   h1 {
     font-size: 25px;
-    font-weight: normal;
-    color: #4ca300;
+    line-height: 29px;
+    color: @grayDark;
     margin-left: 15px;
+  }
+  #sections-bar {
+    margin: 15px 0 0 15px;
   }
 }
 
@@ -513,7 +520,7 @@ section {
     padding: 10px 0 10px 20px;
     display: inline-block;
     vertical-align: top;
-    width: 295px;
+    width: 285px;
   }
 
   li {
@@ -558,11 +565,18 @@ hr.shadow {
   height: 6px;
   border: none;
 }
-.agenda-entry span {
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: 2px;
-}
+.agenda-entry {
+  .dropdown {
+    display: inline-block;
+    vertical-align: top;
+  }
+  span {
+    display: inline-block;
+    vertical-align: top;
+    width: 620px;
+    margin-top: 2px;
+  }
+} 
 span.loading {
   color: @grayLight;
   font-style: italic;
@@ -806,6 +820,10 @@ em.end {
   h4 {
     color: @black;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
+
+    &.blue {
+      color: #0F618C;
+    }
   }
 
   h5 {
@@ -928,7 +946,9 @@ em.end {
 //-------------Animation---------------
 //-------------------------------------
 
-.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes fadeInDown {
+.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}
+.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}
+@-webkit-keyframes fadeInDown {
   0% {
     opacity: 0;
     -webkit-transform: translateY(-20px);
@@ -1024,11 +1044,113 @@ em.end {
   -o-animation-name: bounceInDown;
   animation-name: bounceInDown;
 }
+
+
+@-webkit-keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(900px) rotateY(90deg);
+        opacity: 0;
+    }
+    
+    40% {
+        -webkit-transform: perspective(900px) rotateY(-10deg);
+    }
+    
+    70% {
+        -webkit-transform: perspective(900px) rotateY(10deg);
+    }
+    
+    100% {
+        -webkit-transform: perspective(900px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+@-moz-keyframes flipInY {
+    0% {
+        -moz-transform: perspective(900px) rotateY(90deg);
+        opacity: 0;
+    }
+    
+    40% {
+        -moz-transform: perspective(900px) rotateY(-10deg);
+    }
+    
+    70% {
+        -moz-transform: perspective(900px) rotateY(10deg);
+    }
+    
+    100% {
+        -moz-transform: perspective(900px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+@-o-keyframes flipInY {
+    0% {
+        -o-transform: perspective(900px) rotateY(90deg);
+        opacity: 0;
+    }
+    
+    40% {
+        -o-transform: perspective(900px) rotateY(-10deg);
+    }
+    
+    70% {
+        -o-transform: perspective(900px) rotateY(10deg);
+    }
+    
+    100% {
+        -o-transform: perspective(900px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+@keyframes flipInY {
+    0% {
+        transform: perspective(900px) rotateY(90deg);
+        opacity: 0;
+    }
+    
+    40% {
+        transform: perspective(900px) rotateY(-10deg);
+    }
+    
+    70% {
+        transform: perspective(900px) rotateY(10deg);
+    }
+    
+    100% {
+        transform: perspective(900px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.flipInY {
+  -webkit-backface-visibility: visible !important;
+  -webkit-animation-name: flipInY;
+  -moz-backface-visibility: visible !important;
+  -moz-animation-name: flipInY;
+  -o-backface-visibility: visible !important;
+  -o-animation-name: flipInY;
+  backface-visibility: visible !important;
+  animation-name: flipInY;
+}
+
+
+
+
 .new-calendar {
   .animated();
   .bounceInDown();
 }
 
+.openCalendar {
+  .animated();
+  .flipInY();
+}
+
+.closeCalendar {
+  .animated();
+  .flipInY();
+}
 
 //-------------Alerts------------------
 //-------------------------------------

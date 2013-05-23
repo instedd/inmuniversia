@@ -67,9 +67,10 @@ $('body.dashboard #calendars')
 
 # Toggle to calendar edit
 .on 'click', '.configure-calendar', () ->
-  $(@).closest('.calendar').hide().next('.calendar-edit').show()
+  $(@).closest('.calendar').hide().next('.calendar-edit').show().addClass('openCalendar')
   false
 
 # Toggle to calendar view
 .on 'click', '.cancel-configure-calendar', () ->
-  $(@).closest('.calendar-edit').hide().prev('.calendar').show()
+  $(@).closest('.calendar-edit').hide().prev('.calendar').show().addClass('openCalendar')
+  false
