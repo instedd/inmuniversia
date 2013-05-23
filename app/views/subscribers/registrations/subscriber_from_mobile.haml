@@ -26,6 +26,7 @@
           %br
 
           %p.blue Por favor, ingresá tu número de teléfono aquí:
+          / partial para el form
 
           = form_for(@channel, :url => subscribers_find_subscriber_and_send_verification_code_path) do |f|
             .control-group
@@ -34,7 +35,3 @@
                 = f.submit "Ok", :class => "btn btn-small btn-primary"
       .span8
         = render "side_text"
-        :javascript
-          window.onload = function() {
-            $("#channel_sms_address").mask("pppppppppppppppppp?", {placeholder:" "});
-          };
