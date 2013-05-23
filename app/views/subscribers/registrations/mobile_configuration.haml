@@ -13,15 +13,12 @@
 
           %p.blue Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o registrar vacunaciones de tus hijos en Inmuniversia, ingresá el número aquí:
 
-          = form_for(@channel, :url => subscribers_add_mobile_number_and_send_verification_code_path) do |f|
-            .control-group
-              .controls
-                = f.text_field :address, :class => "span10"
-                = f.submit "Ok", :class => "btn btn-small btn-primary"
-            .control-group
-              .controls
-                = link_to dashboard_path, class: "btn-link" do
-                  %i.ics-back
-                  Configurar mi teléfono luego
+          = render "mobile_form", :path => subscribers_add_mobile_number_and_send_verification_code_path
+
+          .control-group
+            .controls
+              = link_to dashboard_path, class: "btn-link" do
+                %i.ics-back
+                Configurar mi teléfono luego
       .span8
         = render "side_text"
