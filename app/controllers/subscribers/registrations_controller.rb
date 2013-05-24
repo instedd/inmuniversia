@@ -54,11 +54,26 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     subscriber = Subscriber.where(:id => subscriber_hash[:id]).first
 
     if subscriber && subscriber.sms_only
-      subscriber.attributes = subscriber_hash.except("id")
-      subscriber.build_email_channel
-      subscriber.save
+      # puts "entramos"
+      # p subscriber
+      if subscriber.update_attributes subscriber_hash.except("id")
+        subscriber.build_email_channel
+        subscriber.save
+        # p subscriber.reload
+        # puts "despues"
 
-      sign_in_and_redirect(subscriber)
+        sign_in_and_redirect(subscriber)
+      else
+        puts "lasl
+
+
+        "
+        p subscriber
+        p subscriber.errors.full_messages
+
+        @subscriber = subscriber
+        render "submit_verification_code_and_fulfill_user_data"
+      end
     else
       # No se deberia llegar a este caso
       flash[:alert] = "Hubo un problema. Intentelo de nuevo"
