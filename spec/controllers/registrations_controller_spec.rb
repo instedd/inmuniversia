@@ -24,7 +24,7 @@ describe Subscribers::RegistrationsController do
         Nuntium.any_instance.should_receive(:send_ao)
         channel_sms = subscriber_sms.sms_channels.first
 
-        channel_sms.verification_code.should be_nil
+        channel_sms.verification_code.should eq("verified")
         post :find_subscriber_and_send_verification_code, channel_sms: {address: "12345678"}
 
         channel_sms.reload.verification_code.should be_kind_of(String)
@@ -172,56 +172,113 @@ describe Subscribers::RegistrationsController do
       end
     end
 
-    context "mobile_configuration" do
-
+    context "signed_in" do
       let!(:subscriber) {create(:subscriber)}
       before(:each) {sign_in subscriber}
 
-      it "should have a successful request" do
-        get :mobile_configuration
-        response.should be_success
+      context "mobile_configuration" do
+        it "should have a successful request" do
+          get :mobile_configuration
+          response.should be_success
+        end
       end
 
-      it "should create a channel with valid attributes and send verification code" do
-        Nuntium.any_instance.should_receive(:send_ao)
-        expect do
-          post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "12342"}}
-        end.to change(Channel, :count).by(1)
+      context "add_mobile_number_and_send_verification_code" do
+        it "should create a channel with valid attributes and send verification code" do
+          Nuntium.any_instance.should_receive(:send_ao)
+          expect do
+            post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "12342"}}
+          end.to change(Channel, :count).by(1)
+        end
+
+        it "should not create a subscriber with invalid attributes" do
+          Nuntium.any_instance.should_receive(:send_ao).never
+          expect do
+            post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "123a"}}
+          end.to change(Channel, :count).by(0)
+          expect do
+            post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "asdase"}}
+          end.to change(Channel, :count).by(0)
+        end
+
+        it "should find a previous channel with the same address if it is verified and send the old subscriber id" do
+          subscriber_sms = Subscriber.create_sms_subscriber("12345678")
+          Nuntium.any_instance.should_receive(:send_ao)
+          expect do
+            post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "12345678"}}
+          end.to change(Channel, :count).by(1)
+          assigns(:old_sms_subscriber_id).should eq(subscriber_sms.id)
+        end
+
+        it "should find a previous channel with the same address if it is verified and redirect if the old subscriber is not sms" do
+          subscriber = Subscriber.create_sms_subscriber("12345678")
+          subscriber.update_attributes(:first_name => "Jose", :last_name => "Test", :email => "test@manas.com", :password => "12345678", :password_confirmation => "12345678", :zip_code => "1234", :sms_only => false)
+          subscriber.save!
+
+          expect do
+            post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "12345678"}}
+          end.to change(Channel, :count).by(0)
+
+          response.should redirect_to(subscribers_mobile_configuration_path)
+          flash[:alert].should include("Encontramos que existe un usuario en la web con ese número")
+        end
       end
 
-      it "should not create a subscriber with invalid attributes" do
-        Nuntium.any_instance.should_receive(:send_ao).never
-        expect do
-          post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "123a"}}
-        end.to change(Channel, :count).by(0)
-        expect do
-          post :add_mobile_number_and_send_verification_code, {:channel_sms =>{:address => "asdase"}}
-        end.to change(Channel, :count).by(0)
-      end
-    end
+      context "submit_verification_code" do
+        let!(:channel) {create(:sms_channel, address: "1234512", verification_code: 666)}
 
-    context "confirm code" do
-      let!(:subscriber) {create(:subscriber)}
-      let!(:channel) {create(:sms_channel, address: "1234512", verification_code: 666)}
-      before(:each) {sign_in subscriber}
+        it "should confirm the channel with the valid code" do
+          post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code]}
+          Channel.find(channel.id).verification_code.should eq("verified")
+          response.should redirect_to(dashboard_path)
+        end
 
-      it "should confirm the channel with the valid code" do
-        post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code]}
-        Channel.find(channel.id).verification_code.should eq("verified")
-        response.should redirect_to(dashboard_path)
-      end
+        it "should not confirm the channel with an invalid code" do
+          post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code + 1]}
+          Channel.find(channel.id).verification_code.should eq("666")
+          response.body.should include("ingresado no coincide")
+        end
 
-      it "should not confirm the channel with an invalid code" do
-        post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code + 1]}
-        Channel.find(channel.id).verification_code.should eq("666")
-        response.body.should =~ /ingresado no coincide/m
-      end
+        it "should resend the verification code" do
+          Nuntium.any_instance.should_receive(:send_ao)
+          post :add_mobile_number_and_send_verification_code, {:channel_sms_resend => channel.id}
+          Channel.find(channel.id).verification_code.should eq("666")
+          response.body.should include("Te reenviamos el")
+        end
 
-      it "should resend the verification code" do
-        Nuntium.any_instance.should_receive(:send_ao)
-        post :add_mobile_number_and_send_verification_code, {:channel_sms_resend => channel.id}
-        Channel.find(channel.id).verification_code.should eq("666")
-        response.body.should =~ /Te reenviamos el/m
+        context "with an old subscriber" do
+          let!(:sms_subscriber) {Subscriber.create_sms_subscriber("1234512")}
+
+          it "destroys the old subscriber if the answer is no" do
+            post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code], :answer => 'false', :old_sms_subscriber_id => sms_subscriber.id}
+
+            Channel.find(channel.id).verification_code.should eq("verified")
+            sms_subscriber.reload.sms_channels.should be_empty
+            response.should redirect_to(dashboard_path)
+          end
+
+          it "destroys the old subscriber if the answer is missing" do
+            post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code], :old_sms_subscriber_id => sms_subscriber.id}
+
+            Channel.find(channel.id).verification_code.should eq("verified")
+            sms_subscriber.reload.sms_channels.should be_empty
+            response.should redirect_to(dashboard_path)
+          end
+
+          it "assigns the children of the old subscriber to the new one if the answer is yes" do
+            sms_subscriber.children.build :name => "Josecito", :date_of_birth => (Time.now - 2.years), :gender => 'male'
+            sms_subscriber.children.build :name => "Maria", :date_of_birth => (Time.now - 2.years), :gender => 'female'
+            children = sms_subscriber.children
+            sms_subscriber.save!
+
+            post :submit_verification_code, {:id => channel.id, :verification_code => [channel.verification_code], :answer => 'true', :old_sms_subscriber_id => sms_subscriber.id}
+
+            expect {Subscriber.find(sms_subscriber.id)}.to raise_error
+            Channel.find(channel.id).verification_code.should eq("verified")
+            channel.reload.subscriber.children.should eq(children)
+          end
+
+        end
       end
     end
   end

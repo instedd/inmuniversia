@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Subscribers::RegistrationsController < Devise::RegistrationsController
 
   # prepend_before_filter :authenticate_subscriber!, force: true
@@ -81,7 +82,6 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     @error
     @resend = false
     @error = false
-    @old_sms_subscriber = ""
     if params[:channel_sms_resend]
       @channel = Channel::Sms.find(params[:channel_sms_resend])
       @resend = true
@@ -91,15 +91,12 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
 
     # Check if there is already a subscriber registered with this cellphone
     if old_channel = Channel::Sms.where(:address => @channel.address, :verification_code => "verified").first
-      puts "encontramos un old channel"
       old_subscriber = old_channel.subscriber
-      puts "el old subscriber"
-      p old_subscriber
       if old_subscriber.sms_only
-        puts "es sms_only"
         @old_sms_subscriber_id = old_subscriber.id
       else
-        #que hacemos en este caso? Se intenta registrar con un telefono de un usuario ya creado, y con el celular confirmado
+        flash[:alert] = "Encontramos que existe un usuario en la web con ese número. Intente loguearse con el mismo, o ingrese otro número de celular."
+        redirect_to subscribers_mobile_configuration_url() and return
       end
     end
 
@@ -117,27 +114,26 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
       redirect_to root_url
     else
       @channel = Channel::Sms.find(params[:id])
-      if @channel.verify params[:verification_code][0]
+      if @channel.verification_code == params[:verification_code][0]
         if params[:old_sms_subscriber_id] && params[:old_sms_subscriber_id] != ""
-          puts "tenemos el parametro"
           old_subscriber = Subscriber.find(params[:old_sms_subscriber_id])
-          p old_subscriber
-          # Y chequear que el numero del celu sea el mismo
           if old_subscriber.sms_only && old_subscriber.sms_channels.first.address == @channel.address
-            old_sms_subscriber = old_subscriber
-            puts "es sms_only"
-            new_subscriber = @channel.subscriber
-            p new_subscriber
-            new_subscriber.children = old_sms_subscriber.children
-            p new_subscriber.children
-            new_subscriber.save!
-            old_sms_subscriber.destroy
+            if params[:answer] == 'true'
+              new_subscriber = @channel.subscriber
+              new_subscriber.children = old_subscriber.children
+              new_subscriber.save!
+              old_subscriber.destroy
+            else
+              old_subscriber.sms_channels.first.destroy
+            end
           else
             #puts "alguien toco el request"
           end
         end
-        flash[:notice] = "El celular ha sido agregado correctamente"
-        redirect_to dashboard_path
+        if @channel.verify params[:verification_code][0]
+          flash[:notice] = "El celular ha sido agregado correctamente"
+          redirect_to dashboard_path
+        end
       else
         @error = true
         render "add_mobile_number_and_send_verification_code"

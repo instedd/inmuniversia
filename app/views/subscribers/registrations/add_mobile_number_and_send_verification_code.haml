@@ -7,8 +7,7 @@
       .span4
         .registration-steps
           = render "sign_up_steps", :step => 3
-          = render "verification_code_header", resend: @resend, error: @error, channel:@channel
-          = render "verification_code_form", :path => subscribers_submit_verification_code_path, :channel => @channel, :old_sms_subscriber_id => @old_sms_subscriber_id
+          = render "verification_code_form", :path => subscribers_submit_verification_code_path, :channel => @channel, :old_sms_subscriber_id => @old_sms_subscriber_id, resend: @resend, error: @error
           .control-group
             .controls
               - unless @resend

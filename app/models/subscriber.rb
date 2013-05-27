@@ -17,12 +17,12 @@ class Subscriber < ActiveRecord::Base
   has_many :email_channels, class_name: "Channel::Email", dependent: :destroy
   has_many :sms_channels,   class_name: "Channel::Sms",   dependent: :destroy
 
-  before_create :build_email_channel
+  before_create :build_email_channel, unless: :sms_only
 
   def self.create_sms_subscriber phone_number
     subscriber = self.new(sms_only: true)
-    subscriber.sms_channels.build(address: phone_number, notifications_enabled: true)
-    subscriber.save
+    subscriber.sms_channels.build(address: phone_number, notifications_enabled: true, verification_code: "verified")
+    subscriber.save!
     subscriber
   end
 
