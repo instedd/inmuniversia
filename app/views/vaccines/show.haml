@@ -43,7 +43,8 @@
         Reportes de usuarios
       %hr.shadow
       = render :partial => 'comments/comment_with_children', :collection => @comments, :as => :comment_hash
-      .accordion-heading
-        %h4.blue
-          Reportar un caso
-        = render :partial => 'comments/form', :locals => { :comment => @new_comment } if current_subscriber
+      - if current_subscriber
+        .accordion-heading
+          %h4.blue
+            Reportar un caso
+          = render :partial => 'comments/form', :locals => { :comment => @new_comment }
