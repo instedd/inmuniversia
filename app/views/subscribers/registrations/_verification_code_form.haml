@@ -3,6 +3,16 @@
   = hidden_field_tag :old_sms_subscriber_id, old_sms_subscriber_id
   .control-group
     .controls
+      - if old_sms_subscriber_id
+        Encontramos que este celular ya se estaba usando para recibir notificaciones en Inmuniversia. Deseas cargar los datos en la nueva cuenta?
+        %br
+        = radio_button_tag :answer, true, true
+        Si
+        = radio_button_tag :answer, false
+        No
+        %br
+        %br
+      = render "verification_code_header", resend: resend, error: error, channel: channel
       = label_tag :codigo
       = text_field :verification_code, ""
       = submit_tag "Ok", :class => "btn btn-small btn-primary"

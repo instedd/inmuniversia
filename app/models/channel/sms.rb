@@ -31,11 +31,9 @@ class Channel::Sms < Channel
   end
 
   def send_verification_code
-    unless self.verification_code == "verified"
-      generate_verification_code.tap do |code|
-        puts "Verification code is: #{code}" if Rails.env.development?
-        nuntium.send_ao message("Su código de verificación en Inmuniversia es: #{code}")
-      end
+    generate_verification_code.tap do |code|
+      puts "Verification code is: #{code}" if Rails.env.development?
+      nuntium.send_ao message("Su código de verificación en Inmuniversia es: #{code}")
     end
   end
 
