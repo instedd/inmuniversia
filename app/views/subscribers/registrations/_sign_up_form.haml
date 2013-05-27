@@ -1,31 +1,31 @@
-= form_for(resource, :as => :subscriber, :url => path) do |f|
-  = devise_error_messages!
+= form_for(resource, :builder => BootstrapFormBuilder, :as => :subscriber, :url => path) do |f|
+  / = devise_error_messages!
   = f.hidden_field :id
   .control-group
     .controls
       .row-fluid
         .span6
           = f.label :nombre
-          = f.text_field :first_name, :class => 'span12'
+          = f.text_field :first_name, :class => 'span12', :required => true
         .span6
           = f.label :apellido
-          = f.text_field :last_name, :class => 'span12'
+          = f.text_field :last_name, :class => 'span12', :required => true
   .control-group
     .controls
       = f.label :email
-      = f.email_field :email, :class => 'span12'
+      = f.email_field :email, :class => 'span12', :required => true
   .control-group
     .controls
       = f.label :codigo_postal, "Código postal"
-      = f.text_field :zip_code, :class => 'span12'
+      = f.text_field :zip_code, :class => 'span12', :required => true
   .control-group
     .controls
       = f.label :password, "Contraseña"
-      = f.password_field :password, :class => 'span12'
+      = f.password_field :password, :class => 'span12', :required => true
   .control-group
     .controls
       = f.label :confirmacion_del_password, "Confirmar contraseña"
-      = f.password_field :password_confirmation, :class => 'span12'
+      = f.password_field :password_confirmation, :class => 'span12', :required => true
   .control-group
     .controls
       = f.submit "Siguiente", :class => 'btn btn-primary'
