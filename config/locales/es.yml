@@ -200,6 +200,9 @@ es:
     errors:
       <<: *errors
   enumerize:
+    gender:
+      male: "Masculino"
+      female: "Femenino"
     vaccination:
       status:
         planned: "Planeada"
