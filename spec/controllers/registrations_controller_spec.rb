@@ -123,7 +123,7 @@ describe Subscribers::RegistrationsController do
 
         empty_subscriber.reload.sms_only.should be_true
         response.should render_template("submit_verification_code_and_fulfill_user_data")
-        response.body.should include("Password no coincide con la confirmación")
+        response.body.should include("no coincide con la confirmación")
         subject.current_subscriber.should be_nil
       end
 
@@ -134,7 +134,7 @@ describe Subscribers::RegistrationsController do
 
         empty_subscriber.reload.sms_only.should be_true
         response.should render_template("submit_verification_code_and_fulfill_user_data")
-        response.body.should include("Email no es válido")
+        response.body.should include("No es válido")
         subject.current_subscriber.should be_nil
       end
 
