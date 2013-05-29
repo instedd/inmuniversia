@@ -18,8 +18,8 @@ jQuery ->
         .val('')
   # Delete a comment
   $(document)
-    .on "ajax:beforeSend", ".comment", ->
-      $(this).fadeTo('fast', 0.5)
+    # .on "ajax:beforeSend", ".comment", ->
+    #   $(this).fadeTo('fast', 0.5)
     .on "ajax:success", ".comment", ->
       $(this).hide('fast')
     .on "ajax:error", ".comment", ->
@@ -33,7 +33,7 @@ window.commentReport = (event, comment_id, commentable_id) ->
     dataType: 'html'
     success: (content) =>
       $("#comment-link-#{comment_id}").hide()
-      $(content).hide().insertAfter($("#comment-#{comment_id}")).show('slow')
+      $(content).hide().insertAfter($("#comment-#{comment_id}").children().last()).show('slow')
       loadBeforeAndAfterFunctionsFor(comment_id)
     error: =>
   false
@@ -50,7 +50,8 @@ window.loadBeforeAndAfterFunctionsFor = (comment_id) ->
         .addClass('uneditable-input')
         .attr('disabled', 'disabled')
     .on "ajax:success", (evt, data, status, xhr) ->
-      $(xhr.responseText).hide().insertAfter($(this)).show('slow')
+      $(xhr.responseText).hide().insertBefore($(this).siblings('.comment-link')).show('slow')
+      $(this).siblings('.comment-link').show()
       $(this).remove()
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).find('textarea')
