@@ -1,5 +1,5 @@
 class VaccinePresenter < Presenter
-  delegate :name, :diseases, to: :@vaccine
+  delegate :name, :published, :diseases, to: :@vaccine
   delegate :id, :status, :status_active?, :status_disabled?, to: :@subscription
 
   def initialize(vaccine, opts={})

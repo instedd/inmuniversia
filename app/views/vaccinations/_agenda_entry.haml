@@ -1,9 +1,8 @@
 .agenda-entry{'data-vaccination-id' => vaccination.id, 'data-date-format' => date_format}
   = render_vaccination_status(vaccination)
   %span
-    - p vaccination
     = vaccination.full_description_part1
-    = link_to vaccination.vaccine_name, vaccine_path(vaccination.vaccine_id)
+    = link_to_if vaccination.vaccine_published, vaccination.vaccine_name, vaccine_path(vaccination.vaccine_id)
     = vaccination.full_description_part2
     - if vaccination.status.taken?
       aplicada el
