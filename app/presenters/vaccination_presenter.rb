@@ -1,5 +1,6 @@
 class VaccinationPresenter < Presenter
   delegate :id, :status, :status_text, :planned_age, to: :@vaccination
+  
   display :id, :date, :date_string, :date_short, :child_name, :vaccine_name, :name, :status, :status_icon, :status_text
 
   def date
@@ -32,6 +33,10 @@ class VaccinationPresenter < Presenter
 
   def vaccine_id
     @vaccination.vaccine.id
+  end
+
+  def vaccine_published
+    @vaccination.vaccine.published
   end
 
   def full_description_part1

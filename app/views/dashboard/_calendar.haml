@@ -16,7 +16,7 @@
       - calendar.active_vaccines.each do |vaccine|
         %tr
           %td.disease
-            = link_to vaccine.name, vaccine_path(vaccine.vaccine_id)
+            = link_to_if vaccine.published, vaccine.name, vaccine_path(vaccine.vaccine_id)
             - unless vaccine.diseases_list.blank?
               %span
                 = vaccine.diseases_list
