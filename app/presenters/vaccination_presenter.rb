@@ -30,6 +30,18 @@ class VaccinationPresenter < Presenter
     "#{name} de #{vaccine_name} a #{child_name}"
   end
 
+  def vaccine_id
+    @vaccination.vaccine.id
+  end
+
+  def full_description_part1
+    "#{name} de "
+  end
+
+  def full_description_part2
+    " a #{child_name}"
+  end
+
   def status_icon
     "st-#{status}"
   end
