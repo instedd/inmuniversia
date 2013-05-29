@@ -3,11 +3,11 @@ module ApplicationHelper
   def body_tag
     attrs = case @body_class
       when 'public-content'
-        {'data-spy' => 'scroll', 'data-target' => '#sections-bar', 'data-offset' => 120}
+        {'data-spy' => 'scroll', 'data-target' => '#sections-bar', 'data-offset' => 210}
       else
         {'class' => @body_class}
       end
-    
+
     content_tag :body, attrs do
       yield
     end
@@ -22,10 +22,10 @@ module ApplicationHelper
 
   def tab_pane(opts={})
     active = opts.delete(:active)
-    opts[:class] ||= "" 
+    opts[:class] ||= ""
     opts[:class] << ' active in' if active
     opts[:class] << ' tab-pane'
-    
+
     content_tag :div, opts do
       yield
     end
@@ -35,8 +35,8 @@ module ApplicationHelper
     opts[:href] = "##{target}"
     opts[:'data-tab-name'] = target
     opts[:'data-toggle'] = "tab"
-    
-    opts[:class] ||= "" 
+
+    opts[:class] ||= ""
     opts[:class] << ' active' if opts.delete(:active)
     opts[:class] << ' btn'
 
