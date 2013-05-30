@@ -21,7 +21,7 @@ class Subscriber < ActiveRecord::Base
 
   def self.create_sms_subscriber phone_number
     subscriber = self.new(sms_only: true)
-    subscriber.sms_channels.build(address: phone_number, notifications_enabled: true, verification_code: "verified")
+    subscriber.sms_channels.build(address: phone_number.to_s, notifications_enabled: true, verification_code: "verified")
     subscriber.save!
     subscriber
   end
@@ -54,6 +54,22 @@ class Subscriber < ActiveRecord::Base
 
   def build_email_channel
     email_channels.build(address: email, notifications_enabled: true)
+  end
+
+  def self.create_sms_with_children
+    names_m = ["Josecito","Mario", "Ernestito", "Peter", "Arnaldo"]
+    names_f = ["Maria", "Florencia", "Victoria", "Yolanda", "Yesica"]
+
+    subscriber = Subscriber.create_sms_subscriber(rand(9999999999))
+    child1 = subscriber.children.build name: names_m.sample, date_of_birth: rand(3.years).ago, gender: "male"
+
+    child1.setup! if child1.save
+
+    child2 = subscriber.children.build name: names_f.sample, date_of_birth: rand(3.years).ago, gender: "female"
+
+    child2.setup! if child2.save
+
+    subscriber
   end
 
 end
