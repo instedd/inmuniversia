@@ -1,8 +1,10 @@
 .channel.email
-  %h2 
-    %i.ics-mail 
+  %h2
+    %i.ics-mail
     Email
   %hr
   = form_for email, remote: true, format: 'html' do |f|
-    = f.text_field :address, class: 'span12'
-    = f.submit class: 'btn'
+    = f.text_field :address, class: 'span12', disabled: true
+    .switch.switch{"data-off-label" => "", "data-on-label" => ""}
+      = f.check_box :notifications_enabled, class: 'checkbox-submit'
+    %p.checkbox-text
