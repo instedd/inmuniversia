@@ -27,7 +27,11 @@ class Channel::Sms < Channel
   end
 
   def generate_verification_code
-    self.verification_code ||= rand(999999)
+    if self.verification_code && self.verification_code != "verified"
+      self.verification_code
+    else
+      self.verification_code = rand(999999)
+    end
   end
 
   def send_verification_code
