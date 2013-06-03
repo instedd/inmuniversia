@@ -32,3 +32,5 @@
   .control-group
     .controls
       = f.submit (edit ? "Guardar" : "Siguiente"), :class => 'btn btn-primary'
+      - if edit
+        = link_to "Cancelar", root_path, :class => 'btn'
