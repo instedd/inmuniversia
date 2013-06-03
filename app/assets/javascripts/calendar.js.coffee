@@ -13,6 +13,19 @@ vaccinationOptionsFor = (status) ->
     options.push(option)
   options
 
+updateSubscriptionStatus = () ->
+  $("#vaccines .switch").each (index, element) =>
+    updateVaccineText(element)
+
+updateVaccineText = (element) =>
+  id = element.getAttribute("vaccine-id")
+  if $("#switch-#{id} input[type=checkbox]").is(':checked')
+    $("#vaccine-text#{id}").text("Notificaciones Activadas")
+    $("#vaccine-text#{id}").css("color", "#4CA300")
+  else
+    $("#vaccine-text#{id}").text("Notificaciones Desctivadas")
+    $("#vaccine-text#{id}").css("color", "#BCBCBC")
+
 # Attach handlers to calendars div
 $('body.dashboard #calendars')
 
@@ -67,6 +80,7 @@ $('body.dashboard #calendars')
 
 # Toggle to calendar edit
 .on 'click', '.configure-calendar', () ->
+  updateSubscriptionStatus()
   $(@).closest('.calendar').hide().next('.calendar-edit').show().addClass('openCalendar')
   false
 
@@ -74,3 +88,6 @@ $('body.dashboard #calendars')
 .on 'click', '.cancel-configure-calendar', () ->
   $(@).closest('.calendar-edit').hide().prev('.calendar').show().addClass('openCalendar')
   false
+
+.on 'change', '.calendar-switch', () ->
+  updateVaccineText(this)
