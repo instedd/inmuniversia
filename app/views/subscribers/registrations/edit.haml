@@ -1,0 +1,9 @@
+- content_for :topbar do
+  %h1 Editá tu cuenta
+
+- content_for :body do
+  .registration
+    .row-fluid
+      .span4
+        .registration-steps
+          = render "sign_up_form", resource: resource, path: subscribers_update_path, edit: true
