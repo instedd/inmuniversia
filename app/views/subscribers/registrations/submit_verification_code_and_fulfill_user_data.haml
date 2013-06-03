@@ -8,7 +8,7 @@
         .registration-steps
           = render "sms_steps", :step => 3
           %p Ingrese los siguientes datos para completar su cuenta en Inmuniversia
-          = render "sign_up_form", resource: @subscriber, path: subscribers_update_sms_user_path
+          = render "sign_up_form", resource: @subscriber, path: subscribers_update_sms_user_path, edit: false
 
       .span8
         = render "links"

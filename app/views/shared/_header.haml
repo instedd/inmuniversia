@@ -13,7 +13,7 @@
                   = current_subscriber.email
                   %span.caret
                 %ul.dropdown-menu.black.settings
-                  %li= link_to 'Editar mi cuenta', '#' 
+                  %li= link_to 'Editar mi cuenta', subscribers_edit_path
                   %li= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
         .row-fluid
           .span12
