@@ -1,6 +1,6 @@
 class Channel < ActiveRecord::Base
   belongs_to :subscriber
-  
+
   attr_accessible :notifications_enabled, :address, :verification_code
 
   validates :address, presence: true
