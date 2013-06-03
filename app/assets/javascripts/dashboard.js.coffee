@@ -9,16 +9,17 @@ $('#cancel-add-new-child').on 'click', ->
 
 $('.checkbox-submit').on 'change', ->
   $(this).closest('form').submit()
-  updateCheckboxText()
+  updateCheckboxText(this)
 
-updateCheckboxText = ->
-  if $('.checkbox-submit').is(':checked')
-    $('.checkbox-text').text("Notificaciones activadas")
+updateCheckboxText = (checkbox) ->
+  if $(checkbox).is(':checked')
+    $(checkbox).parent().parent().siblings('p').text("Notificaciones activadas")
   else
-    $('.checkbox-text').text("Notificaciones desactivadas")
+    $(checkbox).parent().parent().siblings('p').text("Notificaciones desactivadas")
 
 $ ->
-  updateCheckboxText()
+  $('.checkbox-submit').each (index, element) =>
+    updateCheckboxText(element)
 
 # Update user preference on current active tab when the user switches tabs
 $('.dashboard-tabs button').on 'shown', (evt) ->

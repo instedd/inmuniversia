@@ -6,12 +6,12 @@
     .row-fluid
       .span4
         .registration-steps
-          = render "sign_up_steps", :step => 3
-          = render "verification_code_form", :path => subscribers_submit_verification_code_path, :channel => @channel, :old_sms_subscriber_id => @old_sms_subscriber_id, resend: @resend, error: @error
+          = render "sign_up_steps", :step => 3, :from_dashboard => @from_dashboard
+          = render "verification_code_form", :path => subscribers_submit_verification_code_path, :channel => @channel, :old_sms_subscriber_id => @old_sms_subscriber_id, resend: @resend, error: @error, from_dashboard: @from_dashboard
           .control-group
             .controls
               - unless @resend
-                = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel), class: "btn-link", method: 'POST' do
+                = link_to subscribers_add_mobile_number_and_send_verification_code_path(:channel_sms_resend => @channel, :channel_sms =>{ from_dashboard: @from_dashboard}), class: "btn-link", method: 'POST' do
                   %i.ics-refresh
                   No recibí el código
                 %br

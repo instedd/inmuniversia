@@ -1,15 +1,22 @@
 .steps
   .row-fluid
-    .span4.active Datos Personales
+    - unless from_dashboard
+      .span4.active Datos Personales
     .span4{:class => step >= 2 ? "active" : ""}
       Teléfono
       %br
       móvil
+    - if from_dashboard
+      .span4
     .span4{:class => step >= 3 ? "active" : ""} Confirmar teléfono
   .row-fluid
     .span12
       .line
         .step.s1.active
-        .step.s2{:class => step >= 2 ? "active" : ""}
+        - unless from_dashboard
+          .step.s2{:class => step >= 2 ? "active" : ""}
         .step.s3{:class => step >= 3 ? "active" : ""}
-        .inner{:class => "f#{step}"}
+        - if from_dashboard
+          .inner{:class => (step == 2 ? "f1" : "f3")}
+        - else
+          .inner{:class => "f#{step}"}

@@ -1,4 +1,5 @@
 class Channel::Email < Channel
+  scope :verified, scoped
 
   def do_send_reminders(reminders)
     reminders.each do |reminder|

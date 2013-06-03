@@ -6,14 +6,15 @@
     .row-fluid
       .span4
         .registration-steps
-          = render "sign_up_steps", :step => 2
-          %p
-            Bienvenido! Ya tenes tu cuenta en Inmuniversia.
-            / Te enviamos un email a %b= current_subscriber.email para que confirmes tu direccion.
+          = render "sign_up_steps", :step => 2, :from_dashboard => @from_dashboard
+          - unless @from_dashboard
+            %p
+              Bienvenido! Ya tenes tu cuenta en Inmuniversia.
+              / Te enviamos un email a %b= current_subscriber.email para que confirmes tu direccion.
 
           %p.blue Si queres usar tu teléfono móvil para recibir recordatorios de vacunas, o registrar vacunaciones de tus hijos en Inmuniversia, ingresá el número aquí:
 
-          = render "mobile_form", :path => subscribers_add_mobile_number_and_send_verification_code_path
+          = render "mobile_form", :path => subscribers_add_mobile_number_and_send_verification_code_path, :from_dashboard => @from_dashboard
 
           .control-group
             .controls

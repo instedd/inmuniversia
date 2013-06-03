@@ -75,6 +75,7 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
   def mobile_configuration
     # authenticate_subscriber!
     @email = current_subscriber.email
+    @from_dashboard = params.get_bool :from_dashboard
     @channel = Channel::Sms.new
   end
 
@@ -82,6 +83,7 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     @error
     @resend = false
     @error = false
+    @from_dashboard = params[:channel_sms].get_bool :from_dashboard
     if params[:channel_sms_resend]
       @channel = Channel::Sms.find(params[:channel_sms_resend])
       @resend = true
@@ -135,6 +137,7 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
           redirect_to dashboard_path
         end
       else
+        @from_dashboard = params[:from_dashboard]
         @error = true
         render "add_mobile_number_and_send_verification_code"
       end

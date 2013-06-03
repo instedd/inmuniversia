@@ -6,7 +6,7 @@
     .row-fluid
       .span4
         .registration-steps
-          = render "sign_up_steps", :step => 1
+          = render "sign_up_steps", :step => 1, from_dashboard: nil
           %p Ingrese los siguientes datos para  crear su nueva cuenta en Inmuniversia
           = render "sign_up_form", resource: resource, path: registration_path(resource_name)
 

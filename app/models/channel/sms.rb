@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Channel::Sms < Channel
-
+  scope :verified,  where(verification_code: 'verified')
   validate :address_should_be_a_phone_number
 
   def do_send_reminders(reminders)
@@ -19,7 +19,7 @@ class Channel::Sms < Channel
   end
 
   def address
-    if self.read_attribute(:address).strip != self.read_attribute(:address)
+    if self.read_attribute(:address) && self.read_attribute(:address).strip != self.read_attribute(:address)
       write_attribute(:address, self.read_attribute(:address).strip)
       self.save
     end
@@ -47,6 +47,7 @@ class Channel::Sms < Channel
 
   def verify code
     if verification_code == code
+      self.notifications_enabled = true
       self.verification_code = "verified"
       save!
     end
