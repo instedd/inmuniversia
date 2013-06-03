@@ -1,0 +1,13 @@
+.channel.email
+  %h2
+    %i.ics-mail
+    SMS
+  %hr
+  - if sms.id
+    = form_for sms, remote: true, format: 'html' do |f|
+      = f.text_field :address, class: 'span12', disabled: true
+      .switch.switch{"data-off-label" => "", "data-on-label" => ""}
+        = f.check_box :notifications_enabled, class: 'checkbox-submit'
+      %p.checkbox-text
+  - else
+    = link_to "Configurar Teléfono", subscribers_mobile_configuration_path(:from_dashboard => true)
