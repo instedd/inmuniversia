@@ -13,7 +13,7 @@
   .control-group
     .controls
       = f.label :email
-      = f.email_field :email, :class => 'span12', :required => true
+      = f.email_field :email, :class => 'span12', :required => true, :disabled => edit
   .control-group
     .controls
       = f.label :codigo_postal, "Código postal"
@@ -21,11 +21,14 @@
   .control-group
     .controls
       = f.label :password, "Contraseña"
-      = f.password_field :password, :class => 'span12', :required => true
+      - if edit
+        %p.blue{style: "font-size:8pt;"}
+          Si no queres cambiar tu contraseña, dejala en blanco
+      = f.password_field :password, :class => 'span12', :required => !edit
   .control-group
     .controls
       = f.label :confirmacion_del_password, "Confirmar contraseña"
-      = f.password_field :password_confirmation, :class => 'span12', :required => true
+      = f.password_field :password_confirmation, :class => 'span12', :required => !edit
   .control-group
     .controls
-      = f.submit "Siguiente", :class => 'btn btn-primary'
+      = f.submit (edit ? "Guardar" : "Siguiente"), :class => 'btn btn-primary'

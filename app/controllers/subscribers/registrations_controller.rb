@@ -11,6 +11,26 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     @channel = Channel::Sms.new
   end
 
+  def edit
+    @subscriber = current_subscriber
+  end
+
+  def update
+    if params[:subscriber][:password].blank?
+      params[:subscriber].delete("password")
+      params[:subscriber].delete("password_confirmation")
+    end
+    subscriber = current_subscriber
+
+    if current_subscriber.id == params[:subscriber][:id].to_i && current_subscriber.update_attributes(params[:subscriber].except("id"))
+      sign_in(subscriber, :bypass => true) if params[:subscriber][:password]
+      flash[:notice] = "Sus datos se han actualizado correctamente"
+      redirect_to root_path
+    else
+      render "edit"
+    end
+  end
+
   # Update sms subscriber
   def find_subscriber_and_send_verification_code
     @resend = false
