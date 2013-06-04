@@ -109,7 +109,10 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
     @error
     @resend = false
     @error = false
-    @from_dashboard = params[:channel_sms].get_bool :from_dashboard
+    @from_dashboard = false
+    if params[:channel_sms]
+      params[:channel_sms].get_bool :from_dashboard
+    end
     if params[:channel_sms_resend]
       @channel = Channel::Sms.find(params[:channel_sms_resend])
       @resend = true
