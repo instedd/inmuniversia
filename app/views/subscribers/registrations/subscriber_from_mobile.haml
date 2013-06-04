@@ -15,6 +15,6 @@
           %br
 
           %p.blue Por favor, ingresá tu número de teléfono aquí:
-          = render "mobile_form", :path => subscribers_find_subscriber_and_send_verification_code_path
+          = render "mobile_form", :path => subscribers_find_subscriber_and_send_verification_code_path, :from_dashboard => nil
       .span8
         = render "side_text"
