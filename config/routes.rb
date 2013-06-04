@@ -27,7 +27,7 @@ Inmuniversia::Application.routes.draw do
   resources :vaccines, only: [:show, :index]
 
   # Application resources
-  resources :children,        only: :create
+  resources :children,        only: [:create, :destroy]
   resources :channel_emails,  only: [:create, :update, :destroy]
   resources :channel_sms,     only: [:create, :update, :destroy]
   resources :vaccinations,    only: :update

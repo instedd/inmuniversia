@@ -8,6 +8,15 @@ class ChildrenController < AuthenticatedController
     @child.setup! if @child.save
   end
 
+  def destroy
+    @child = Child.find(params[:id])
+    if @child.destroy
+      redirect_to root_path
+    else
+      render :js => "alert('Hubo un error desuscribiendo a #{@child.name}');"
+    end
+  end
+
   protected
 
   def load_children
