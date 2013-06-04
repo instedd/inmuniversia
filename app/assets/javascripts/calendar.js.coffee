@@ -13,13 +13,16 @@ vaccinationOptionsFor = (status) ->
     options.push(option)
   options
 
-updateSubscriptionStatus = () ->
+updateSubscriptionStatus = (update = false) ->
   $("#vaccines .switch").each (index, element) =>
-    updateVaccineText(element)
+    updateVaccineText(element, update)
 
-updateVaccineText = (element) =>
+updateVaccineText = (element, update) =>
   id = element.getAttribute("vaccine-id")
-  if $("#switch-#{id} input[type=checkbox]").is(':checked')
+  status = $("#switch-#{id} input[type=checkbox]").is(':checked')
+  if update
+    $("#switch-#{id}").bootstrapSwitch('setState', status)
+  if status
     $("#vaccine-text#{id}").text("Notificaciones Activadas")
     $("#vaccine-text#{id}").css("color", "#4CA300")
   else
@@ -86,6 +89,8 @@ $('body.dashboard #calendars')
 
 # Toggle to calendar view
 .on 'click', '.cancel-configure-calendar', () ->
+  $(this).closest('form').get(0).reset()
+  updateSubscriptionStatus(true)
   $(@).closest('.calendar-edit').hide().prev('.calendar').show().addClass('openCalendar')
   false
 
