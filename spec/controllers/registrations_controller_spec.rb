@@ -39,7 +39,7 @@ describe Subscribers::RegistrationsController do
         post :find_subscriber_and_send_verification_code, channel_sms: {address: channel.address}
 
         channel.verification_code.should be_nil
-        flash[:alert].should =~ /Ya existe un usuario web con ese numero/m
+        flash[:alert].should =~ /Ya existe un usuario creado en la web con ese numero/m
         response.should redirect_to(root_path)
       end
 
