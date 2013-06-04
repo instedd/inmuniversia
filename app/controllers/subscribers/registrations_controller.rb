@@ -46,7 +46,13 @@ class Subscribers::RegistrationsController < Devise::RegistrationsController
         @channel.send_verification_code
         @channel.save
       else
-        flash[:alert] = "Ya existe un usuario web con ese numero. Por favor intente loguearse con el mismo."
+        begin
+          splitted_email = @channel.subscriber.email.split("@")
+          hidden_email = "#{splitted_email[0][0]}xxxxx#{splitted_email[0][-1]}@#{splitted_email[1]}"
+          flash[:alert] = "Ya existe un usuario creado en la web con ese numero, con email #{hidden_email}. Por favor intente ingresar con el mismo."
+        rescue
+          flash[:alert] = "Ya existe un usuario creado en la web con ese numero. Por favor intente ingresar con el mismo."
+        end
         redirect_to root_path
       end
     else
