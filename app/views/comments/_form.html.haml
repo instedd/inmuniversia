@@ -1,6 +1,6 @@
 .comment-form{:id => "comment_form_#{comment.parent_id}"}
   = form_for comment, builder: BootstrapFormBuilder, :remote => true do |f|
-    = f.text_area :body, :label => false, :class => 'span12', :rows => 5
+    = f.text_area :body, :label => false, :class => 'span12', :rows => 5, required: true
     = f.hidden_field :parent_id, :value => comment.parent_id
     = f.hidden_field :commentable_id, :value => comment.commentable_id
     = f.hidden_field :commentable_type, :value => comment.commentable_type

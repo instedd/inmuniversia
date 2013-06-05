@@ -3,17 +3,14 @@ jQuery ->
   $(".comment-form")
     .on "ajax:beforeSend", (evt, xhr, settings) ->
       $(this).find('textarea')
-        .addClass('uneditable-input')
         .attr('disabled', 'disabled')
     .on "ajax:success", (evt, data, status, xhr) ->
       $(this).find('textarea')
-        .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('')
       $(xhr.responseText).hide().insertAfter($(this).parent().siblings('hr').last()).show('slow')
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).find('textarea')
-        .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('')
   # Delete a comment
@@ -47,7 +44,6 @@ window.loadBeforeAndAfterFunctionsFor = (comment_id) ->
   $("#comment_form_#{comment_id}")
     .on "ajax:beforeSend", (evt, xhr, settings) ->
       $(this).find('textarea')
-        .addClass('uneditable-input')
         .attr('disabled', 'disabled')
     .on "ajax:success", (evt, data, status, xhr) ->
       $(xhr.responseText).hide().insertBefore($(this).siblings('.comment-link')).show('slow')
@@ -55,6 +51,5 @@ window.loadBeforeAndAfterFunctionsFor = (comment_id) ->
       $(this).remove()
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).find('textarea')
-        .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('')
