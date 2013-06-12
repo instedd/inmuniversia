@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523162954) do
+ActiveRecord::Schema.define(:version => 20130612160448) do
 
   create_table "channels", :force => true do |t|
     t.string   "type"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130523162954) do
     t.integer  "parent_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "dni"
   end
 
   add_index "children", ["parent_id"], :name => "index_children_on_parent_id"
@@ -262,6 +263,7 @@ ActiveRecord::Schema.define(:version => 20130523162954) do
     t.string   "zip_code"
     t.text     "preferences"
     t.boolean  "sms_only",               :default => false
+    t.string   "address"
   end
 
   add_index "subscribers", ["email"], :name => "index_subscribers_on_email", :unique => true
