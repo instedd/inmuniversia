@@ -153,6 +153,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.3.1)
     libv8 (3.11.8.13)
+    licit (0.2.2)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -324,6 +325,7 @@ DEPENDENCIES
   js-routes
   json
   less-rails (~> 2.3.3)
+  licit
   mysql2
   newrelic_rpm
   nuntium_api
