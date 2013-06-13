@@ -1,0 +1,5 @@
+copyright: Copyright (C) 2013, InSTEDD
+program_name: Inmuniversia
+exclude:
+- db/schema.rb
+- db/migrate/
