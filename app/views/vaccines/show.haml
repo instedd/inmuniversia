@@ -34,10 +34,11 @@
 
 - content_for :content do
   .public-contents.bullets
-    = section("Información general", :general_info, @vaccine)
-    = section("Recomendaciones", :recommendations, @vaccine)
-    = section("Efectos secundarios", :side_effects, @vaccine)
-    = section("Más información", :more_info, @vaccine)
+    = section("Información general", :general_info,     @vaccine)
+    = section("Recomendaciones",     :recommendations,  @vaccine)
+    = section("Efectos secundarios", :side_effects,     @vaccine)
+    = section("Más información",     :more_info,        @vaccine)
+    = section("Fuentes",             :sources,          @vaccine)
     #user_reports.comments
       %h4
         Reportes de usuarios
