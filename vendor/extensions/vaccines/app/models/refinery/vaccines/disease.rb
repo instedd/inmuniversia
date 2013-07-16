@@ -19,7 +19,7 @@ module Refinery
   module Vaccines
     class Disease < Refinery::Core::BaseModel
 
-      attr_accessible :name, :summary, :transmission, :diagnosis, :treatment, :statistics, :published, :position
+      attr_accessible :name, :summary, :transmission, :diagnosis, :treatment, :statistics, :published, :position, :sources
 
       acts_as_indexed :fields => [:name, :summary, :transmission, :diagnosis, :treatment, :statistics]
 
