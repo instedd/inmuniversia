@@ -1,3 +1,6 @@
+analytics:
+  google: UA-xxxxxx-x
+
 hosts:
   local: inmuniversia.instedd.org
 

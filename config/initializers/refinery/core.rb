@@ -37,7 +37,7 @@ Refinery::Core.configure do |config|
   # This activates Google Analytics tracking within your website. If this
   # config is left blank or set to UA-xxxxxx-x then no remote calls to
   # Google Analytics are made.
-  # config.google_analytics_page_code = "UA-xxxxxx-x"
+  config.google_analytics_page_code = Settings.analytics.google
 
   # Enable/disable authenticity token on frontend
   # config.authenticity_token_on_frontend = true
