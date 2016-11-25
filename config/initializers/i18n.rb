@@ -15,4 +15,5 @@
 # You should have received a copy of the GNU General Public License
 # along with Inmuniversia.  If not, see <http://www.gnu.org/licenses/>.
 
+I18n.enforce_available_locales = false
 I18n.locale = "es"
