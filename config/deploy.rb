@@ -15,38 +15,69 @@
 # You should have received a copy of the GNU General Public License
 # along with Inmuniversia.  If not, see <http://www.gnu.org/licenses/>.
 
-set :stages, %w(staging)
-set :default_stage, "staging"
+# config valid only for current version of Capistrano
+lock '3.4.1'
 
-require 'capistrano/ext/multistage'
-require 'bundler/capistrano'
-require 'rvm/capistrano'
+set :application, 'inmuniversia'
+set :repo_url, 'git@github.com:instedd/inmuniversia.git'
 
-set :rvm_ruby_string, '1.9.3'
-set :rvm_type, :system
-set :application, "inmuniversia"
-set :repository,  "https://bitbucket.org/instedd/inmuniversia"
-set :scm, :mercurial
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-ssh_options[:forward_agent] = true
-default_environment['TERM'] = ENV['TERM']
+set :deploy_to, "/u/apps/#{fetch(:application)}"
+set :scm, :git
+set :pty, true
+set :keep_releases, 5
+set :rails_env, :production
+set :migration_role, :app
 
-load 'lib/deploy/seed'
+# Default value for :linked_files is []
+set :linked_files, ['config/database.yml', 'config/settings.yml', 'config/newrelic.yml']
 
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
+# Default value for linked_dirs is []
+set :linked_dirs, ['log', 'tmp/pids', 'tmp/cache']
 
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+# Name for the exported service
+set :service_name, fetch(:application)
+
+namespace :service do
+  task :export do
+    on roles(:app) do
+      opts = {
+        app: fetch(:service_name),
+        log: File.join(shared_path, 'log'),
+        user: fetch(:deploy_user),
+        concurrency: "puma=1,delayed=1,notifier=1,web=0"
+      }
+
+      execute(:mkdir, "-p", opts[:log])
+
+      within release_path do
+        execute :sudo, '/usr/local/bin/bundle', 'exec', 'foreman', 'export',
+                'upstart', '/etc/init', '-t', "etc/upstart",
+                opts.map { |opt, value| "--#{opt}=\"#{value}\"" }.join(' ')
+      end
+    end
   end
 
-  task :symlinks, :roles => :app do
-    run "ln -nfs #{shared_path}/settings.yml #{release_path}/config/settings.local.yml"
-    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/"
-    run "ln -nfs #{shared_path}/newrelic.yml #{release_path}/config/"
+  # Capture the environment variables for Foreman
+  before :export, :set_env do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, "env | grep '^\\(PATH\\|GEM_PATH\\|GEM_HOME\\|RAILS_ENV\\|PUMA_OPTS\\)'", "> .env"
+        end
+      end
+    end
+  end
+
+  task :safe_restart do
+    on roles(:app) do
+      execute "sudo stop #{fetch(:service_name)} ; sudo start #{fetch(:service_name)}"
+    end
   end
 end
 
-before "deploy:finalize_update", "deploy:symlinks"
-after "deploy:update_code", "deploy:migrate"
+namespace :deploy do
+  after :updated, "service:export"         # Export foreman scripts
+  after :restart, "service:safe_restart"   # Restart background services
+end

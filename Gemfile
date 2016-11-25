@@ -38,9 +38,10 @@ group :webserver do
 end
 
 group :development do
-  gem 'capistrano'
-  gem 'rvm'
-  gem 'rvm-capistrano'
+  gem 'capistrano',         '~> 3.4.1', :require => false
+  gem 'capistrano-rails',   '~> 1.2', :require => false
+  gem 'capistrano-bundler', '~> 1.2', :require => false
+  gem 'net-ssh',            '~> 2.8', :require => false
   gem 'thin'
   gem 'html2haml'
   gem 'better_errors'
