@@ -1,4 +1,3 @@
-syntax: glob
 .bundle
 *.log
 *.sqlite3
