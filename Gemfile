@@ -21,7 +21,7 @@ gem 'dynamic_form'
 gem 'js-routes'
 gem 'gon'
 gem 'acts_as_commentable_with_threading'
-gem 'foreman'
+gem 'foreman', '~> 0.64.0'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
