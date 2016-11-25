@@ -21,6 +21,7 @@ gem 'dynamic_form'
 gem 'js-routes'
 gem 'gon'
 gem 'acts_as_commentable_with_threading'
+gem 'foreman'
 
 # We are using timecop for scaling time in dev and production for testing purposes
 gem 'timecop'
@@ -30,6 +31,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
   gem 'handlebars_assets'
+end
+
+group :webserver do
+  gem 'puma', '~> 3.0.2'
 end
 
 group :development do
